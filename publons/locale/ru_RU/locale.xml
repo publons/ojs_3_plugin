@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+<!--
+  * plugins/generic/publons/locale/ru_RU/locale.xml
+  *
+  * Copyright (c) 2013-2014 Simon Fraser University Library
+  * Copyright (c) 2003-2014 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings for the ru_RU (Russian) locale.
+  * With updates from Pavel Pisklakov (revising translation). 
+  -->
+<locale name="ru_RU" full_name="Russian">
+  <message key="plugins.generic.publons.displayName">Плагин Экспорт в Publons</message>
+  <message key="plugins.generic.publons.list">Перечень рецензий, отправленных в Publons</message>
+  <message key="plugins.generic.publons.description">Этот плагин позволяет размещать рецензии на Publons.</message>
+
+  <message key="plugins.generic.publons.export_page">Экспорт рецензии в Publons.</message>
+  <message key="plugins.generic.publons.submitExportReview">Опубликовать мою рецензию на Publons</message>
+  <message key="plugins.generic.publons.publishedReview">Данная рецензия уже опубликована на Publons</message>
+  <message key="plugins.generic.publons.reviewer">Рецензент</message>
+  <message key="plugins.generic.publons.submission.review">Рецензия</message>
+  <message key="plugins.generic.publons.date.added">Дата добавления</message>
+  <message key="plugins.generic.publons.backToReviewPage">Назад на страницу рецензента</message>
+
+  <message key="plugins.generic.publons.exportSuccessful">Рецензия успешно отправлена</message>
+  <message key="plugins.generic.publons.exportError">Ошибка при отправке</message>
+  <message key="plugins.generic.publons.exportErrorInfo">Отчет об ошибках:</message>
+  <message key="plugins.generic.publons.reviewBody">Текст рецензии:</message>
+  <message key="plugins.generic.publons.exportStatus">Статус:</message>
+  <message key="plugins.generic.publons.bodyIsEmpty">Отсутствует текст рецензии</message>
+  <message key="plugins.generic.publons.badToken">Ошибка авторизации на Publons</message>
+
+
+  <message key="plugins.generic.publons.settings">Опубликовано</message>
+  <message key="plugins.generic.publons.settings.connect">Подключение</message>
+  <message key="plugins.generic.publons.settings.usernameRequired">Пожалуйста, введите правильное имя пользователя для сети Publons.</message>
+  <message key="plugins.generic.publons.settings.passwordRequired">Пожалуйста, введите правильный пароль для сети Publons.</message>
+  <message key="plugins.generic.publons.settings.auth_keyRequired">Пожалуйста, введите правильный ключ для сети Publons.</message>
+
+  <message key="plugins.generic.publons.settings.usernameDescription">Имя пользователя, которое будет использоваться для экспорта рецензий в Publons</message>
+  <message key="plugins.generic.publons.settings.passwordDescription">Пароль для имени пользователя, указанного выше</message>
+  <message key="plugins.generic.publons.settings.auth_key">Ключ</message>
+  <message key="plugins.generic.publons.settings.auth_keyDescription">Значение ключа для авторизации в сети Publons</message>
+
+  <message key="plugins.generic.publons.connect.info"><![CDATA[     Если Вы хотите, чтобы Ваши рецензенты получили возможность отправлять рецензии на Publons, необходимо зарегистрировать журнал на портале <a href="http://publons.com">http://publons.com</a>. После регистрации введите полученные регистрационные данные в соответствующие поля:        ]]></message>
+  <message key="plugins.generic.publons.connect.ps"><![CDATA[     <p>После активации плагина на странице рецензируемой статьи у рецензента появится кнопка «Опубликовать рецензию на Publons». При нажатии на кнопку рецензия автоматически отправляется в Publons и рецензент получает приглашение добавить рецензию к своему профилю. В дальнейшем данный процесс может быть автоматизирован если пользователь выберет соответствующую опцию в профиле Publons.</p><p>На сайте Publons указывается только факт выполнения рецензентом рецензии для данного журнала. Текст рецензии может быть раскрыт только после публикации рецензируемой статьи. Рецензент может раскрыть текст своих рецензий, указав на сайте Publons DOI опубликованных статей.</p><p> Список рецензий, отправленных рецензентами данного журнала в Publons, можно просмотреть на вкладке «Опубликовано».</p>        ]]></message>
+</locale>

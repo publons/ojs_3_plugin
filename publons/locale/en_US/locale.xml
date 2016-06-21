@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/generic/publons/locale/en_US/locale.xml
+  *
+  * Copyright (c) 2013-2014 Simon Fraser University Library
+  * Copyright (c) 2003-2014 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings
+  -->
+ 
+<locale name="en_US" full_name="U.S. English">
+  <message key="plugins.generic.publons.displayName">Publons Plugin</message>
+  <message key="plugins.generic.publons.description">This plugin allows you to post reviews to Publons.</message>
+  <message key="plugins.generic.publons.list">A list of reviews sent in Publons</message>
+
+  <message key="plugins.generic.publons.export_page">Export reviews to Publons.</message>
+  <message key="plugins.generic.publons.submitExportReview">Publish my review on Publons</message>
+  <message key="plugins.generic.publons.publishedReview">This review is already published on Publons</message>
+  <message key="plugins.generic.publons.reviewer">Reviewer</message>
+  <message key="plugins.generic.publons.submission.review">Review</message>
+  <message key="plugins.generic.publons.date.added">Date added</message>
+  <message key="plugins.generic.publons.backToReviewPage">Back to page of the reviewer</message>
+
+  <message key="plugins.generic.publons.exportSuccessful">The review has been successfully sent</message>
+  <message key="plugins.generic.publons.exportError">Sending error</message>
+  <message key="plugins.generic.publons.exportErrorInfo">The error report:</message>
+  <message key="plugins.generic.publons.reviewBody">The text of the review:</message>
+  <message key="plugins.generic.publons.exportStatus">Status:</message>
+  <message key="plugins.generic.publons.bodyIsEmpty">Missing the text of the review</message>
+  <message key="plugins.generic.publons.badToken">Authorization error on Publons</message>
+
+
+  <message key="plugins.generic.publons.settings">Published</message>
+  <message key="plugins.generic.publons.settings.connect">Connection</message>
+  <message key="plugins.generic.publons.settings.usernameRequired">Please enter the correct user name for the network Publons.</message>
+  <message key="plugins.generic.publons.settings.passwordRequired">Please enter the correct password for the network Publons.</message>
+  <message key="plugins.generic.publons.settings.auth_keyRequired">Please enter the correct key for the network Publons.</message>
+
+  <message key="plugins.generic.publons.settings.usernameDescription">The user name that will be used for the publication of reviews to Publons</message>
+  <message key="plugins.generic.publons.settings.passwordDescription">The password for the username specified above</message>
+  <message key="plugins.generic.publons.settings.auth_key">Key</message>
+  <message key="plugins.generic.publons.settings.auth_keyDescription">The key value for authorization in the network Publons</message>
+
+  <message key="plugins.generic.publons.connect.info"><![CDATA[    <p> In order to provide your reviewers the opportunity to get credit for their reviews on Publons, please register your interest with Publons either at this <a href="http://publons.com">link</a> or <a href="mailto:partnerships@publons.com">email</a> Publons. You will then be provided with access to the partner dashboard and will find the information you need in order to complete the set-up process under the Instructions heading on the navigation bar on the left hand side of the screen. There will be a link in here that will take you to the set-up process.</p><p>To enable the plugin fill in the fields below</p>        ]]></message>
+  <message key="plugins.generic.publons.connect.ps"><![CDATA[     <p>After enabling the plugin, the option for Reviewers to receive credit for their review on Publons will appear on the review submission page.</p><p>If the reviewer has selected to receive credit for their review then, upon submission of their review, the data will be transmitted securely to Publons and the reviewer will then be sent an email (to the email address they have registered with the journal) from Publons that contains a link to claim their review.</p><p>After following this link the Reviewer will be asked to sign up to Publons and the review will then be added to the reviewers account. There will be no need to claim reviews each time you do them 
+if you use "Automatically add reviews from partnered journals" option at Publons profile.</p><p>By default, Publons doesn`t publish the content of reviews. However, if both the journal and Reviewer opt in then Publons will publish the text once the article has been published. </p>
+<p>The link 'Published' will allow you to see a list of the reviews added to Publons. </p>        ]]></message>
+
+</locale>
