@@ -81,6 +81,9 @@ class PublonsHandler extends Handler {
 			$publonsReviews->setContent($rbody, $locale);// Localized	
 			
 
+			$publonsReviewsDao = new PublonsReviewsDAO();
+			DAORegistry::registerDAO('PublonsReviewsDAO', $publonsReviewsDao);
+
 			$publonsReviewsDao->insertObject($publonsReviews);
 
 			$arr_token = json_decode($returned['result'], true);
