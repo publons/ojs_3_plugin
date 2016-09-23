@@ -21,12 +21,12 @@ import('classes.handler.Handler');
 class PublonsHandler extends Handler {
 
 	/**
-	 * Display 
+	 * Display
 	 * @param array $args
 	 * @param Request $request
 	 */
 	function exportReviews($args, &$request) {
-		
+
 		$plugin =& PluginRegistry::getPlugin('generic', PUBLONS_PLUGIN_NAME);
 		$templateMgr =& TemplateManager::getManager();
 
@@ -77,9 +77,9 @@ class PublonsHandler extends Handler {
 			$publonsReviews->setTitleEn($rtitle_en);
 			$publonsReviews->setDateAdded(Core::getCurrentDate());
 
-			$publonsReviews->setTitle($rtitle, $locale);// Localized	
-			$publonsReviews->setContent($rbody, $locale);// Localized	
-			
+			$publonsReviews->setTitle($rtitle, $locale);// Localized
+			$publonsReviews->setContent($rbody, $locale);// Localized
+
 
 			$publonsReviewsDao = new PublonsReviewsDAO();
 			DAORegistry::registerDAO('PublonsReviewsDAO', $publonsReviewsDao);
@@ -91,8 +91,8 @@ class PublonsHandler extends Handler {
 			    "Authorization: Token ". $arr_token["token"],
 			    'Content-Type: application/json'
 			);
-		
-			$data = array(); 
+
+			$data = array();
 			$data["key"] = $auth_key;
 			$data["reviewer"]["name"] = $rname;
 			$data["reviewer"]["email"] = $remail;
@@ -101,7 +101,7 @@ class PublonsHandler extends Handler {
 			$data["complete_date"]["day"] = date('d');
 			$data["complete_date"]["month"] = date('m');
 			$data["complete_date"]["year"] = date('Y');
-				
+
 			$json_data = json_encode($data, JSON_UNESCAPED_UNICODE);
 
 			$templateMgr->assign('json_data',$json_data);
@@ -110,14 +110,14 @@ class PublonsHandler extends Handler {
 				CURLOPT_SSL_VERIFYPEER => false,
 				CURLOPT_POST => true,
 				CURLOPT_RETURNTRANSFER => true,
-				CURLOPT_URL => "https://staging.publons.com/api/v2/review/",
+				CURLOPT_URL => "https://publons.com/api/v2/review/",
 				CURLOPT_HTTPHEADER => $headers,
 				CURLOPT_POSTFIELDS => $json_data
-			);	
+			);
 
 			$returned = array();
 			$returned = $this->_curlPost($options);
-			  
+
 
 			$responseCodes = array(
 				'200' => 'OK - Success.',
@@ -131,18 +131,18 @@ class PublonsHandler extends Handler {
 		}
 		else  {
 			$templateMgr->assign('info', __('plugins.generic.publons.badToken'));
-		} 
+		}
 		$templateMgr->assign('result',$returned['result']);
 		$templateMgr->assign('status',$returned['status'].' '.$responseCodes[$returned['status']]);
 		$templateMgr->assign('error', $returned['error']);
-				
-		
+
+
 		$templateMgr->assign('rname',$rname);
 		$templateMgr->assign('rbody',$rbody);
 		$templateMgr->assign('rtitle',$rtitle);
 		$templateMgr->assign('rtitle_en',$rtitle_en);
 		$templateMgr->assign('remail',$remail);
-               
+
 		$templateMgr->display($plugin->getTemplatePath() . 'export.tpl');
 	}
 
@@ -153,10 +153,10 @@ class PublonsHandler extends Handler {
 	 * @return array
 	 */
 	function _curlPost($curlopt) {
-			
-		$curl = curl_init(); 
+
+		$curl = curl_init();
 		curl_setopt_array($curl, $curlopt);
-		
+
 		$httpResult = curl_exec($curl);
 		$httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 		$httpError = curl_error($curl);
