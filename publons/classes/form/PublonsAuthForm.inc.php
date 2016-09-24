@@ -12,7 +12,6 @@
  *
  * @brief Plugin settings: connect to a Publons Network 
  */
-define('PUBLONS_PLUGIN_PASSWORD_SLUG', '********');
 
 import('lib.pkp.classes.form.Form');
 
@@ -54,7 +53,7 @@ class PublonsAuthForm extends Form {
 		// If password has already been set, echo back slug
 		$password = $plugin->getSetting($this->_journalId, 'password');
 		if (!empty($password)) {
-			$this->setData('password', PUBLONS_PLUGIN_PASSWORD_SLUG);
+			$this->setData('password', $password);
 		}
 	}
 
@@ -65,10 +64,8 @@ class PublonsAuthForm extends Form {
 		$this->readUserVars(array('auth_key', 'username', 'password'));
 		$request =& PKPApplication::getRequest();
 		$password = $request->getUserVar('password');
-		if ($password === PUBLONS_PLUGIN_PASSWORD_SLUG) {
-			$plugin =& $this->_plugin;
-			$password = $plugin->getSetting($this->_journalId, 'password');
-		}
+
+
 		$this->setData('password', $password);
 	}
 
