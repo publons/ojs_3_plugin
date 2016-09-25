@@ -198,7 +198,7 @@ class PublonsPlugin extends GenericPlugin {
 			$tableInsertPoint =strpos($beforeCommentOutput, '<img');
 			$indexTable = $fourStepPoint + $tableInsertPoint;
 			$newOutput = substr($output,0,$indexTable);
-                        $newOutput .= '<table class="data" width="100%"><tr valign="top"><td class="label" width="30%">';
+                       // $newOutput .= '<table class="data" width="100%"><tr valign="top"><td class="label" width="30%">';
                         $newOutput .= substr($output, $indexTable);
 			$output = $newOutput;
 
@@ -271,6 +271,8 @@ class PublonsPlugin extends GenericPlugin {
 					}
 				}        
 			}        
+			$body = str_replace("\r", '', $body);
+			$body = str_replace("\n", '\r\n', $body);
 			$templateMgr->assign('rbody', $body);
 			$templateMgr->assign('rtitle', $submission->getLocalizedTitle());
 			$templateMgr->assign('rtitle_en', $submission->getTitle('en_US'));
@@ -294,7 +296,8 @@ class PublonsPlugin extends GenericPlugin {
 			$newOutput .= $templateMgr->fetch($this->getTemplatePath() . 'code.tpl');		
 
 
-			$newOutput .= '</td></tr></table>';
+//			$newOutput .= '</td></tr></table>';
+			$newOutput .= '</td>';
 			$newOutput .= substr($output, $index);
 			$output = $newOutput;
 
