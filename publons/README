@@ -2,7 +2,7 @@
 === OJS Publons Plugin
 === Version: 1.1
 === Developed by: Media Sphera Publishing House, Moscow, Russian Federation (http://mediasphera.ru/)
-=== Last update: May 2016
+=== Last update: September 2016
 ================================================================
 
 About
@@ -24,13 +24,15 @@ ZipArchive support for PHP.
 Installation
 ------------
 To install the plugin:
- - copy the plugin tar.gz file to your OJS/plugins/generic directory
- - to unzip the plugin inside the plugins/generic directory:
-    $ tar xvzf publons-1.0.tar.gz
- - install the database schema run the following command from your OJS directory:
+ - On the OJS site go to Home > User > Journal Management > Plugin Management > Install a New Plugin, 
+   select the .tar.gz file with the plugin and click "Continue"
+ - Install the database schema: run the following command from your OJS directory:
     $ php tools/dbXMLtoSQL.php -schema execute plugins/generic/publons/schema.xml
- - enable the plugin by going to:  Home > User > Journal Management > Plugin Management > Generic Plugins and selecting "ENABLE" under "Publons Plugin"
-
+ - Enable the plugin by going to:  Home > User > Journal Management > Plugin Management > Generic Plugins and selecting "ENABLE" under "Publons Plugin"
+ - Set up correct credentials to post reviews to Publons: go to 
+   Home > User > Journal Management > Plugin Management > Generic Plugins 
+   and click “CONNECTION” under "Publons Plugin". Enter username and the password of the Publons user who has API access to Publons and the API key of the journal at Publons.
+  
 Usage
 -----
 For correct work of the plugin the journal should be registered at http://publons.com (See https://publons.com/partner/info/ for more info). Then corresponding registration data should be entered in the appropriate fields on the plugin page "Connection": Home > User > Journal Management > Plugin Management > Generic Plugins > Publons.
@@ -38,7 +40,7 @@ For correct work of the plugin the journal should be registered at http://publon
 The link "Published" 
 Here Journal Manager can see the list of reviews transferred to Publons for the current journal.
 
-When the plugin is enabled, button �Send review to Publons� will emerge at all Reviewers pages. As reviewer clicks on this button, the review data is sent to Publons automatically and reviewer receives an invitation to claim it (or it is automatically added if reviewer has profile with Publons and opted in to automatically add reviews from partnered journals). Publons website certifies only the fact of completing peer review for the current journal. The text of the review can be disclosed on Publons website only after publication of the article. To disclose the text of the review reviewer should input the DOI of published article on Publons. 
+When the plugin is enabled, button “Send review to Publons” will emerge at all Reviewers pages. As reviewer clicks on this button, the review data is sent to Publons automatically and reviewer receives an invitation to claim it (or it is automatically added if reviewer has profile with Publons and opted in to automatically add reviews from partnered journals). Publons website certifies only the fact of completing peer review for the current journal. The text of the review can be disclosed on Publons website only after publication of the article. To disclose the text of the review reviewer should input the DOI of published article on Publons. 
 
 
 Contact/Support
@@ -50,3 +52,4 @@ Email: <natalya-molleker@yandex.ru>
 Version History
 ---------------
 1.0	- Initial Release
+1.1 - Fixed small issues
