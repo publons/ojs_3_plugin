@@ -48,90 +48,73 @@ class PublonsHandler extends Handler {
 		$reviewerId = $request->getUserVar('reviewerId');
 
 
-		$username = $plugin->getSetting($journalId, 'username');
-		$password = $plugin->getSetting($journalId, 'password');
 		$auth_key = $plugin->getSetting($journalId, 'auth_key');
-
-		$curlopt = array(
-			CURLOPT_SSL_VERIFYPEER => false,
-			CURLOPT_POST => true,
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_URL => "https://publons.com/api/v2/token/",
-                        CURLOPT_POSTFIELDS =>  'username='.$username.'&password='.$password
-		);
-		$returned = array();
-		$returned = $this->_curlPost($curlopt);
-
+		$auth_token = $plugin->getSetting($journalId, 'auth_token');
 
 		$plugin->import('classes.PublonsReviews');
 
-		if($returned['status'] == 200) {
+  		$locale = AppLocale::getLocale();
 
-      			$locale = AppLocale::getLocale();
+		$publonsReviews = new PublonsReviews();
 
-			$publonsReviews = new PublonsReviews();
+		$publonsReviews->setJournalId($journalId);
+		$publonsReviews->setArticleId($articleId);
+		$publonsReviews->setReviewerId($reviewerId);
+		$publonsReviews->setTitleEn($rtitle_en);
+		$publonsReviews->setDateAdded(Core::getCurrentDate());
 
-			$publonsReviews->setJournalId($journalId);
-			$publonsReviews->setArticleId($articleId);
-			$publonsReviews->setReviewerId($reviewerId);
-			$publonsReviews->setTitleEn($rtitle_en);
-			$publonsReviews->setDateAdded(Core::getCurrentDate());
-
-			$publonsReviews->setTitle($rtitle, $locale);// Localized
-			$publonsReviews->setContent($rbody, $locale);// Localized
+		$publonsReviews->setTitle($rtitle, $locale);// Localized
+		$publonsReviews->setContent($rbody, $locale);// Localized
 
 
-			$publonsReviewsDao = new PublonsReviewsDAO();
-			DAORegistry::registerDAO('PublonsReviewsDAO', $publonsReviewsDao);
+		$publonsReviewsDao = new PublonsReviewsDAO();
+		DAORegistry::registerDAO('PublonsReviewsDAO', $publonsReviewsDao);
 
-			$publonsReviewsDao->insertObject($publonsReviews);
+		$publonsReviewsDao->insertObject($publonsReviews);
 
-			$arr_token = json_decode($returned['result'], true);
-			$headers = array(
-			    "Authorization: Token ". $arr_token["token"],
-			    'Content-Type: application/json'
-			);
+		$headers = array(
+		    "Authorization: Token ". $auth_token,
+		    'Content-Type: application/json'
+		);
 
-			$data = array();
-			$data["key"] = $auth_key;
-			$data["reviewer"]["name"] = $rname;
-			$data["reviewer"]["email"] = $remail;
-			$data["publication"]["title"] = $rtitle;
-			$data["content"] = $rbody;
-			$data["complete_date"]["day"] = date('d');
-			$data["complete_date"]["month"] = date('m');
-			$data["complete_date"]["year"] = date('Y');
+		$data = array();
+		$data["key"] = $auth_key;
+		$data["reviewer"]["name"] = $rname;
+		$data["reviewer"]["email"] = $remail;
+		$data["publication"]["title"] = $rtitle;
+		$data["content"] = $rbody;
+		$data["complete_date"]["day"] = date('d');
+		$data["complete_date"]["month"] = date('m');
+		$data["complete_date"]["year"] = date('Y');
 
-			$json_data = json_encode($data, JSON_UNESCAPED_UNICODE);
+		$json_data = json_encode($data, JSON_UNESCAPED_UNICODE);
 
-			$templateMgr->assign('json_data',$json_data);
+		$templateMgr->assign('json_data',$json_data);
 
-			$options = array(
-				CURLOPT_SSL_VERIFYPEER => false,
-				CURLOPT_POST => true,
-				CURLOPT_RETURNTRANSFER => true,
-				CURLOPT_URL => "https://publons.com/api/v2/review/",
-				CURLOPT_HTTPHEADER => $headers,
-				CURLOPT_POSTFIELDS => $json_data
-			);
+		$options = array(
+			CURLOPT_SSL_VERIFYPEER => false,
+			CURLOPT_POST => true,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_URL => "http://172.17.0.1:8000/api/v2/review/",
+			CURLOPT_HTTPHEADER => $headers,
+			CURLOPT_POSTFIELDS => $json_data
+		);
 
-			$returned = array();
-			$returned = $this->_curlPost($options);
+		$returned = array();
+		$returned = $this->_curlPost($options);
 
 
-			$responseCodes = array(
-				'200' => 'OK - Success.',
-				'201' => 'Created - Success.',
-				'400' => 'Bad Request - You are doing something wrong.',
-				'403' => 'Forbidden - You do not have permission to do this.',
-				'404' => 'Not Found - Resource not found.',
-				'405' => 'Method Not Allowed - You`re probably trying to post to a resource that only supports GET.',
-				'500' => '500 Internal Server Error - Please contact api@publons.com.'
-			);
-		}
-		else  {
-			$templateMgr->assign('info', __('plugins.generic.publons.badToken'));
-		}
+		$responseCodes = array(
+			'200' => 'OK - Success.',
+			'201' => 'Created - Success.',
+			'400' => 'Bad Request - You are doing something wrong.',
+			'403' => 'Forbidden - You do not have permission to do this.',
+			'404' => 'Not Found - Resource not found.',
+			'405' => 'Method Not Allowed - You`re probably trying to post to a resource that only supports GET.',
+			'500' => '500 Internal Server Error - Please contact api@publons.com.'
+		);
+
+
 		$templateMgr->assign('result',$returned['result']);
 		$templateMgr->assign('status',$returned['status'].' '.$responseCodes[$returned['status']]);
 		$templateMgr->assign('error', $returned['error']);
