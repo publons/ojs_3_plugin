@@ -194,6 +194,10 @@ class PublonsPlugin extends GenericPlugin {
 
         $fourStepPoint =strpos($output, '<td>4.</td>');
         if ($fourStepPoint !== false) {
+
+            $user =& Request::getUser();
+            $reviewerId = $user->getId();
+
             $beforeCommentOutput = substr($output,$fourStepPoint);
             $tableInsertPoint =strpos($beforeCommentOutput, '<img');
             $indexTable = $fourStepPoint + $tableInsertPoint;
@@ -209,7 +213,7 @@ class PublonsPlugin extends GenericPlugin {
             $index = $commentPoint + $insertPoint;
             $newOutput = substr($output,0,$index);
 
-            $newOutput .= '<td class="value" width="70%">';
+            $newOutput .= '<td class="value" style="position: relative;">';
 
 
 
@@ -220,18 +224,30 @@ class PublonsPlugin extends GenericPlugin {
             $journal =& Request::getJournal();
 
             $reviewerSubmissionDao =& DAORegistry::getDAO('ReviewerSubmissionDAO');
+            echo '<pre>';
+            var_dump(Request::getContext());
+            // var_dump(DAORegistry::getDAOs());
+            // var_dump($templateMgr->_tpl_vars['submission']);
+            // print_r($reviewerSubmissionDao->reviewAssignmentDao) . '</pre>';
+            echo '</pre>';
             $reviewId = $templateMgr->get_template_vars('reviewId');
             $submission =& $reviewerSubmissionDao->getReviewerSubmission($reviewId);
             $submissionId = $submission->getId();
+            // var_dump($reviewerSubmissionDao);
+            // var_dump($submissionId);
+
 
             $articleCommentDao =& DAORegistry::getDAO('ArticleCommentDAO');
             $reviewAssignmentDao =& DAORegistry::getDAO('ReviewAssignmentDAO');
-            $reviewAssignments =& $reviewAssignmentDao->getBySubmissionId($submissionId, $submission->getCurrentRound());
+            $reviewAssignments =& $reviewAssignmentDao->getReviewAssignment($submissionId, $reviewerId, $submission->getCurrentRound());
             $reviewIndexes =& $reviewAssignmentDao->getReviewIndexesForRound($submissionId, $submission->getCurrentRound());
             $body = '';
+            var_dump($reviewAssignments);
             foreach ($reviewAssignments as $reviewAssignment) {
+                var_dump($reviewAssignment->getId());
                 // If the reviewer has completed the assignment, then import the review.
                 if (!$reviewAssignment->getCancelled()) {
+                    var_dump('here');
                     // Get the comments associated with this review assignment
                     $articleComments =& $articleCommentDao->getArticleComments($submissionId, COMMENT_TYPE_PEER_REVIEW, $reviewAssignment->getId());
                     if($articleComments) {
@@ -281,11 +297,9 @@ class PublonsPlugin extends GenericPlugin {
 
                     $journal =& Request::getJournal();
             $journalId = $journal->getId();
-            $user =& Request::getUser();
-            $reviewerId = $user->getId();
 
             $publonsReviewsDao =& DAORegistry::getDAO('PublonsReviewsDAO');
-            $published =& $publonsReviewsDao->getPublonsReviewsIdByArticle($journalId, $submissionId);
+            $published =& $publonsReviewsDao->getPublonsReviewsIdByArticle($journalId, $submissionId, $reviewerId);
 
             $templateMgr->assign('journalId', $journalId);
             $templateMgr->assign('articlelId', $submissionId);

@@ -35,7 +35,7 @@ class PublonsReviewsDAO extends DAO {
 		return $returner;
 	}
 
-	/**     
+	/**
 	 * Get a list of localized field names
 	 * @return array
 	 */
@@ -47,10 +47,10 @@ class PublonsReviewsDAO extends DAO {
 	 * Internal function to return a PublonsReviews object from a row.
 	 * @param $row array
 	 * @return PublonsReviews
-	*/ 
+	*/
 	function &_returnPublonsReviewsFromRow(&$row) {
 		$publonsPlugin =& PluginRegistry::getPlugin('generic', $this->parentPluginName);
-		
+
 		$publonsReviews = new PublonsReviews();
 		$publonsReviews->setId($row['publons_reviews_id']);
 		$publonsReviews->setJournalId($row['journal_id']);
@@ -67,7 +67,7 @@ class PublonsReviewsDAO extends DAO {
 	/**
 	 * Insert a new review into the Publons.
 	 * @param $publonsReviews PublonsReviews
-	 * @return int 
+	 * @return int
 	 */
 	function insertObject(&$publonsReviews) {
 		$ret = $this->update(
@@ -168,16 +168,18 @@ class PublonsReviewsDAO extends DAO {
 	 * @param $articleId int
 	 * @return int
 	 */
-	function getPublonsReviewsIdByArticle($journalId, $articleId) {
+	function getPublonsReviewsIdByArticle($journalId, $articleId, $reviewerId) {
 
 		$result =& $this->retrieve(
-			'SELECT publons_reviews_id 
-				FROM publons_reviews 
+			'SELECT publons_reviews_id
+				FROM publons_reviews
 				WHERE article_id = ?
-				AND journal_id = ?',
+				AND journal_id = ?
+				AND reviewer_id = ?',
 			array(
 				$articleId,
-				$journalId
+				$journalId,
+				$reviewerId
 			)
 		);
 

@@ -45,6 +45,7 @@ class PublonsHandler extends Handler {
 
 		$journalId = $request->getUserVar('journalId');
 		$articleId = $request->getUserVar('articleId');
+		echo '<pre>' . var_dump($request) . '</pre>';
 		$reviewerId = $request->getUserVar('reviewerId');
 
 
