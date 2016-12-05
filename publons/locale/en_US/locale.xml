@@ -18,7 +18,7 @@
 
   <message key="plugins.generic.publons.export_page">Export reviews to Publons.</message>
   <message key="plugins.generic.publons.submitExportReview">Publish my review on Publons</message>
-  <message key="plugins.generic.publons.publishedReview">This review is already published on Publons</message>
+  <message key="plugins.generic.publons.publishedReview">This review is published on Publons</message>
   <message key="plugins.generic.publons.reviewer">Reviewer</message>
   <message key="plugins.generic.publons.submission.review">Review</message>
   <message key="plugins.generic.publons.date.added">Date added</message>
@@ -30,6 +30,8 @@
   <message key="plugins.generic.publons.reviewBody">The text of the review:</message>
   <message key="plugins.generic.publons.exportStatus">Status:</message>
   <message key="plugins.generic.publons.bodyIsEmpty">Missing the text of the review</message>
+  <message key="plugins.generic.publons.alreadyExported">Review has already been exported to Publons</message>
+  <message key="plugins.generic.publons.invalidUser">Invalid OJS login details</message>
   <message key="plugins.generic.publons.badToken">Authorization error on Publons</message>
 
 

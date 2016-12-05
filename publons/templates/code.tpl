@@ -8,99 +8,37 @@
  * Publons plugin setup instructions for journal managers
  *
  *}
-<form method="post" action="{*url op="exportReviews"*} javascript:openComments('{url op="exportReviews" rname=$rname remail=$remail rbody=$rbody rtitle=$rtitle rtitle_en=$rtitle_en journalId=$journalId articleId=$articleId reviewerId=$reviewerId}');" style="position: absolute; right: 0;">
-	<input type="hidden" name="rbody" id="rbody" value="{$rbody}"/>
-	<input type="hidden" name="rname" id="rname" value="{$rname}"/>
-	<input type="hidden" name="remail" id="remail" value="{$remail}"/>
-	<input type="hidden" name="rtitle" id="rtitle" value="{$rtitle}"/>
-	<input type="hidden" name="rtitle_en" id="rtitle_en" value="{$rtitle_en}"/>
-
-	<input type="hidden" name="journalId" id="journalId" value="{$journalId}"/>
-	<input type="hidden" name="articleId" id="articleId" value="{$articleId}"/>
-	<input type="hidden" name="reviewerId" id="reviewerId" value="{$reviewerId}"/>
+<form method="post" action="{*url op="exportReviews"*} javascript:openComments('{url op="exportReviews" reviewId=$reviewId}');" style="position: absolute; right: 0; top: -15px;">
+	<input type="hidden" name="reviewId" id="reviewId" value="{$reviewId}"/>
 	{if !$published}
-		<input type="submit" class="button" value="{translate key="plugins.generic.publons.submitExportReview"}" style="
-		border-radius: 3px;
-		    border: none;
-		    white-space: nowrap;
-		    text-overflow: ellipsis;
-		    color: #fff;
-		    background-color: #336699;
-		    box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.2) inset;
-		    transition-property: all;
-		    transition-duration: 0.1s;
-		    transition-timing-function: ease-out;
-		    overflow: hidden;
-		    position: relative;
-		    padding: 0 15px;
-		    line-height: 36px;
-		    display: block;
-		    text-align: center;
-		    font-weight: 600;
-		    outline: none;
-		    border-top: 1px solid rgba(255, 255, 255, 0.1);
-		    -ms-box-sizing: border-box;
-		    -moz-box-sizing: border-box;
-		    -webkit-box-sizing: border-box;
-		    box-sizing: border-box;
-		    -webkit-transition-property: all;
-		    -webkit-transition-duration: 0.1s;
-		    -webkit-transition-timing-function: ease-out;
-		    -moz-transition-property: all;
-		    -moz-transition-duration: 0.1s;
-		    -moz-transition-timing-function: ease-out;
-		    -ms-transition-property: all;
-		    -ms-transition-duration: 0.1s;
-		    -ms-transition-timing-function: ease-out;
-		    -o-transition-property: all;
-		    -o-transition-duration: 0.1s;
-		    -o-transition-timing-function: ease-out;
-		    font-size: 11px !important;
-		    cursor: pointer;
-		    text-transform: uppercase;
-		    box-sizing: border-box;
-		    font-family: "Roboto", sans-serif;"
-		/>        <br>
+		<button id="sendToPublons" type="submit" class="button" style="
+		    border-radius: 3px;
+            border: none;
+            width: 280px;
+            text-align: left;
+            background-color: #ccc;
+            transition-property: all;
+            transition-duration: 0.1s;
+            transition-timing-function: ease-out;
+            padding: 0px;
+            cursor: pointer;"
+		/><a title="{translate key="plugins.generic.publons.submitExportReview"}" style="display: inline-block;padding: 0px;line-height: 40px; width: 100%; text-align: left;text-decoration: none;border-radius: 3px;color: #111;font-weight: 600; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
+    <img style="float: left;margin-right: 10px;border-top-left-radius: 3px;border-bottom-left-radius: 3px;" src="https://publons.com/static/images/logos/square/blue_white_shadow.png" height="40" width="40">
+    {translate key="plugins.generic.publons.submitExportReview"}
+        </a></button>        <br>
 	{else}
-		<input type="submit" class="button" value="{translate key="plugins.generic.publons.publishedReview"}" disabled style="
+		<button type="submit" class="button" disabled style="
 		border-radius: 3px;
-		    border: none;
-		    white-space: nowrap;
-		    text-overflow: ellipsis;
-		    color: #444;
-		    background-color: #eee;
-		    box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.2) inset;
-		    transition-property: all;
-		    transition-duration: 0.1s;
-		    transition-timing-function: ease-out;
-		    overflow: hidden;
-		    position: relative;
-		    padding: 0 8px;
-		    line-height: 26px;
-		    display: block;
-		    text-align: center;
-		    font-weight: 600;
-		    outline: none;
-		    border-top: 1px solid rgba(255, 255, 255, 0.1);
-		    -ms-box-sizing: border-box;
-		    -moz-box-sizing: border-box;
-		    -webkit-box-sizing: border-box;
-		    box-sizing: border-box;
-		    -webkit-transition-property: all;
-		    -webkit-transition-duration: 0.1s;
-		    -webkit-transition-timing-function: ease-out;
-		    -moz-transition-property: all;
-		    -moz-transition-duration: 0.1s;
-		    -moz-transition-timing-function: ease-out;
-		    -ms-transition-property: all;
-		    -ms-transition-duration: 0.1s;
-		    -ms-transition-timing-function: ease-out;
-		    -o-transition-property: all;
-		    -o-transition-duration: 0.1s;
-		    -o-transition-timing-function: ease-out;
-		    font-size: 11px !important;
-		    text-transform: uppercase;
-		    box-sizing: border-box;
-		    font-family: "Roboto", sans-serif;"/>
+            border: none;
+            width: 300px;
+            text-align: left;
+            background-color: #ccc;
+            transition-property: all;
+            transition-duration: 0.1s;
+            transition-timing-function: ease-out;
+            padding: 0px;"><span title="{translate key="plugins.generic.publons.publishedReview"}" style="display: inline-block; width: 100%; text-align: left;padding: 0px;line-height: 40px;text-decoration: none;border-radius: 3px;color: #111;font-weight: 600; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
+    <img style="float: left;margin-right: 10px;border-top-left-radius: 3px;border-bottom-left-radius: 3px;" src="https://publons.com/static/images/logos/square/blue_white_shadow.png" height="40" width="40">
+    {translate key="plugins.generic.publons.publishedReview"}
+        </span></button>
 	{/if}
 </form>

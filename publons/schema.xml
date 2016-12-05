@@ -32,7 +32,9 @@
 		<field name="reviewer_id" type="I8">
 			<NOTNULL/>
 		</field>
-
+		<field name="review_id" type="I8">
+			<NOTNULL/>
+		</field>
 		<field name="title_en" type="C2" size="255"/>
 
 		<field name="date_added" type="T">

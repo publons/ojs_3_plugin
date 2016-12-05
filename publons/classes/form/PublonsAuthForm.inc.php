@@ -68,6 +68,12 @@ class PublonsAuthForm extends Form {
 
         $this->setData('password', $password);
 
+        if (is_null($_SERVER["HTTP_PUBLONS_URL"])){
+            $url = "https://publons.com/api/v2/token/";
+        } else {
+            $url = $_SERVER["HTTP_PUBLONS_URL"]."/api/v2/token/";
+        }
+
         $curlopt = array(
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_POST => true,

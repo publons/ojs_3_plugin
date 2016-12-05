@@ -195,125 +195,41 @@ class PublonsPlugin extends GenericPlugin {
         $fourStepPoint =strpos($output, '<td>4.</td>');
         if ($fourStepPoint !== false) {
 
-            $user =& Request::getUser();
-            $reviewerId = $user->getId();
-
             $beforeCommentOutput = substr($output,$fourStepPoint);
             $tableInsertPoint =strpos($beforeCommentOutput, '<img');
             $indexTable = $fourStepPoint + $tableInsertPoint;
             $newOutput = substr($output,0,$indexTable);
-                       // $newOutput .= '<table class="data" width="100%"><tr valign="top"><td class="label" width="30%">';
-                        $newOutput .= substr($output, $indexTable);
+            $newOutput .= substr($output, $indexTable);
             $output = $newOutput;
 
 
-                        $commentPoint =strpos($output, 'comment');
+            $commentPoint =strpos($output, 'comment');
             $afterCommentOutput = substr($output,$commentPoint);
             $insertPoint =strpos($afterCommentOutput, '</td>');
             $index = $commentPoint + $insertPoint;
-            $newOutput = substr($output,0,$index);
 
+
+            $newOutput = substr($output,0,$index);
             $newOutput .= '<td class="value" style="position: relative;">';
 
 
-
-            $templateMgr =& TemplateManager::getManager();
-
-
-            $user =& Request::getUser();
-            $journal =& Request::getJournal();
-
-            $reviewerSubmissionDao =& DAORegistry::getDAO('ReviewerSubmissionDAO');
-            echo '<pre>';
-            var_dump(Request::getContext());
-            // var_dump(DAORegistry::getDAOs());
-            // var_dump($templateMgr->_tpl_vars['submission']);
-            // print_r($reviewerSubmissionDao->reviewAssignmentDao) . '</pre>';
-            echo '</pre>';
             $reviewId = $templateMgr->get_template_vars('reviewId');
-            $submission =& $reviewerSubmissionDao->getReviewerSubmission($reviewId);
-            $submissionId = $submission->getId();
-            // var_dump($reviewerSubmissionDao);
-            // var_dump($submissionId);
 
-
-            $articleCommentDao =& DAORegistry::getDAO('ArticleCommentDAO');
-            $reviewAssignmentDao =& DAORegistry::getDAO('ReviewAssignmentDAO');
-            $reviewAssignments =& $reviewAssignmentDao->getReviewAssignment($submissionId, $reviewerId, $submission->getCurrentRound());
-            $reviewIndexes =& $reviewAssignmentDao->getReviewIndexesForRound($submissionId, $submission->getCurrentRound());
-            $body = '';
-            var_dump($reviewAssignments);
-            foreach ($reviewAssignments as $reviewAssignment) {
-                var_dump($reviewAssignment->getId());
-                // If the reviewer has completed the assignment, then import the review.
-                if (!$reviewAssignment->getCancelled()) {
-                    var_dump('here');
-                    // Get the comments associated with this review assignment
-                    $articleComments =& $articleCommentDao->getArticleComments($submissionId, COMMENT_TYPE_PEER_REVIEW, $reviewAssignment->getId());
-                    if($articleComments) {
-                        if (is_array($articleComments)) {
-                            foreach ($articleComments as $comment) {
-                                // If the comment is viewable by the author, then add the comment.
-                                if ($comment->getViewable()) $body .= String::html2text($comment->getComments()) . "\n\n";
-                            }
-                        }
-                    }
-                    if ($reviewFormId = $reviewAssignment->getReviewFormId()) {
-                        $reviewId = $reviewAssignment->getId();
-                        $reviewFormResponseDao =& DAORegistry::getDAO('ReviewFormResponseDAO');
-                        $reviewFormElementDao =& DAORegistry::getDAO('ReviewFormElementDAO');
-                        $reviewFormElements =& $reviewFormElementDao->getReviewFormElements($reviewFormId);
-
-                        foreach ($reviewFormElements as $reviewFormElement) if ($reviewFormElement->getIncluded()) {
-                            $body .= String::html2text($reviewFormElement->getLocalizedQuestion()) . ": \n";
-                            $reviewFormResponse = $reviewFormResponseDao->getReviewFormResponse($reviewId, $reviewFormElement->getId());
-
-                            if ($reviewFormResponse) {
-                                $possibleResponses = $reviewFormElement->getLocalizedPossibleResponses();
-                                if (in_array($reviewFormElement->getElementType(), $reviewFormElement->getMultipleResponsesElementTypes())) {
-                                    if ($reviewFormElement->getElementType() == REVIEW_FORM_ELEMENT_TYPE_CHECKBOXES) {
-                                        foreach ($reviewFormResponse->getValue() as $value) {
-                                            $body .= "\t" . String::html2text($possibleResponses[$value-1]['content']) . "\n";
-                                        }
-                                    } else {
-                                        $body .= "\t" . String::html2text($possibleResponses[$reviewFormResponse->getValue()-1]['content']) . "\n";
-                                    }
-                                    $body .= "\n";
-                                } else {
-                                    $body .= "\t" . $reviewFormResponse->getValue() . "\n\n";
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            $body = str_replace("\r", '', $body);
-            $body = str_replace("\n", '\r\n', $body);
-            $templateMgr->assign('rbody', $body);
-            $templateMgr->assign('rtitle', $submission->getLocalizedTitle());
-            $templateMgr->assign('rtitle_en', $submission->getTitle('en_US'));
-            $templateMgr->assign('rname', $user->getFullName());
-            $templateMgr->assign('remail', $user->getEmail());
-
-                    $journal =& Request::getJournal();
-            $journalId = $journal->getId();
 
             $publonsReviewsDao =& DAORegistry::getDAO('PublonsReviewsDAO');
-            $published =& $publonsReviewsDao->getPublonsReviewsIdByArticle($journalId, $submissionId, $reviewerId);
+            $published =& $publonsReviewsDao->getPublonsReviewsIdByReviewId($reviewId);
 
-            $templateMgr->assign('journalId', $journalId);
-            $templateMgr->assign('articlelId', $submissionId);
-            $templateMgr->assign('reviewerId', $reviewerId);
+            $templateMgr =& TemplateManager::getManager();
+            $templateMgr->assign('reviewId', $reviewId);
             $templateMgr->assign('published', $published);
 
 
             $newOutput .= $templateMgr->fetch($this->getTemplatePath() . 'code.tpl');
 
-
-//          $newOutput .= '</td></tr></table>';
             $newOutput .= '</td>';
             $newOutput .= substr($output, $index);
             $output = $newOutput;
+
 
         }
         $templateMgr->unregister_outputfilter('submissionOutputFilter');

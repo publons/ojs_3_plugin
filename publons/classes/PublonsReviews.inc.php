@@ -67,6 +67,22 @@ class PublonsReviews extends DataObject {
 		return $this->setData('reviewerId', $reviewerId);
 	}
 
+		/**
+	 * Get the review ID of the publons review.
+	 * @return int
+	 */
+	function getReviewId() {
+		return $this->getData('reviewId');
+	}
+
+	/**
+	 * Set the review ID of the publons review.
+	 * @param $reviewId int
+	 */
+	function setReviewId($reviewId) {
+		return $this->setData('reviewId', $reviewId);
+	}
+
 	/**
 	 * Get the date added a review into the Publons.
 	 * @return date
