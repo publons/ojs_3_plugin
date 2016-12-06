@@ -35,6 +35,8 @@
   <message key="plugins.generic.publons.notSubmitted">You must submit you review before you can send it to Publons</message>
   <message key="plugins.generic.publons.invalidUser">Invalid OJS login details</message>
   <message key="plugins.generic.publons.badToken">Authorization error on Publons</message>
+  <message key="plugins.generic.publons.TnCTitle">Send you review to Publons</message>
+  <message key="plugins.generic.publons.termsAndConditions"><![CDATA[ You have chosen to export your review to publons .... <br> Terms and conditions go here.]]></message>
 
 
   <message key="plugins.generic.publons.settings">Published</message>

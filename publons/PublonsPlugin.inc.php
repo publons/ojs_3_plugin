@@ -88,6 +88,13 @@ class PublonsPlugin extends GenericPlugin {
         return $this->getPluginPath() . DIRECTORY_SEPARATOR . 'schema.xml';
     }
 
+        /**
+     * Get the stylesheet for this plugin.
+     */
+    function getStyleSheet() {
+        return $this->getPluginPath() . '/styles/publons.css';
+    }
+
     /**
      * @see GenericPlugin::getManagementVerbs()
      */
@@ -190,35 +197,55 @@ class PublonsPlugin extends GenericPlugin {
      */
     function submissionOutputFilter($output, &$templateMgr) {
 
-        preg_match('/id="reviewSteps".+<td>5\.<\/td>.+<\/tr>(.+)/s', $output, $matches, PREG_OFFSET_CAPTURE);
-        if (!is_null($matches[1])){
-            $plugin =& PluginRegistry::getPlugin('generic', $this->getName());
+        $plugin =& PluginRegistry::getPlugin('generic', $this->getName());
 
-            $beforeInsertPoint = substr($output, 0, $matches[1][1]);
-            $afterInsertPoint = substr($output, $matches[1][1] - strlen($output));
+        $reviewerSubmissionDao =& DAORegistry::getDAO('ReviewerSubmissionDAO');
+        $reviewId = $templateMgr->get_template_vars('reviewId');
+        $reviewSubmission = $reviewerSubmissionDao->getReviewerSubmission($reviewId);
+        $journalId = $reviewSubmission->getJournalId();
+        $auth_token = $plugin->getSetting($journalId, 'auth_token');
 
-            $reviewId = $templateMgr->get_template_vars('reviewId');
-            $journalId = $templateMgr->get_template_vars('submission')->getJournalId();
+        // Only display if the plugin has been setup
+        if ($auth_token){
+            // Insert css onto review page
+            preg_match('/<\/head>/', $output, $cssMatch, PREG_OFFSET_CAPTURE);
+            if (!is_null($cssMatch[0])){
+                $beforeInsertPoint = substr($output, 0, $cssMatch[0][1]);
+                $afterInsertPoint = substr($output, $cssMatch[0][1] - strlen($output));
+                $newOutput = $beforeInsertPoint;
+                $newOutput .= '<link rel="stylesheet" href="'.Request::getBaseUrl() . '/' . $plugin->getStyleSheet().'" type="text/css">';
+                $newOutput .= $afterInsertPoint;
+                $output = $newOutput;
+            }
 
-            $eas = $templateMgr->get_template_vars()['submission']->getEditAssignments();
+            // Insert Publons step onto review page
+            preg_match('/id="reviewSteps".+<td>5\.<\/td>.+<\/tr>(.+)/s', $output, $matches, PREG_OFFSET_CAPTURE);
+            if (!is_null($matches[1])){
 
-            $publonsReviewsDao =& DAORegistry::getDAO('PublonsReviewsDAO');
-            $published =& $publonsReviewsDao->getPublonsReviewsIdByReviewId($reviewId);
+                $beforeInsertPoint = substr($output, 0, $matches[1][1]);
+                $afterInsertPoint = substr($output, $matches[1][1] - strlen($output));
 
-            $info_url = $this->getSetting($journalId, 'info_url');
+                $journalId = $templateMgr->get_template_vars('submission')->getJournalId();
 
-            $templateMgr =& TemplateManager::getManager();
-            $templateMgr->assign('reviewId', $reviewId);
-            $templateMgr->assign('published', $published);
-            $templateMgr->assign('infoURL', $info_url);
+                $eas = $templateMgr->get_template_vars()['submission']->getEditAssignments();
 
-            $newOutput = $beforeInsertPoint;
-            $newOutput .= $templateMgr->fetch($this->getTemplatePath() . 'publonsStep.tpl');
-            $newOutput .= $afterInsertPoint;
+                $publonsReviewsDao =& DAORegistry::getDAO('PublonsReviewsDAO');
+                $published =& $publonsReviewsDao->getPublonsReviewsIdByReviewId($reviewId);
 
-            $output = $newOutput;
+                $info_url = $this->getSetting($journalId, 'info_url');
+
+                $templateMgr =& TemplateManager::getManager();
+                $templateMgr->assign('reviewId', $reviewId);
+                $templateMgr->assign('published', $published);
+                $templateMgr->assign('infoURL', $info_url);
+
+                $newOutput = $beforeInsertPoint;
+                $newOutput .= $templateMgr->fetch($this->getTemplatePath() . 'publonsStep.tpl');
+                $newOutput .= $afterInsertPoint;
+
+                $output = $newOutput;
+            }
         }
-
 
         $templateMgr->unregister_outputfilter('submissionOutputFilter');
         return $output;

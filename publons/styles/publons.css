@@ -1,0 +1,38 @@
+
+.publons-button {
+    border-radius: 3px;
+    border: none;
+    text-align: left;
+    background-color: #ddd;
+    transition-property: all;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+    padding: 0px;
+}
+
+.publons-button a,
+.publons-button span {
+    display: inline-block;
+    text-align: left;
+    padding: 0px 10px 0px 0px;
+    line-height: 30px;
+    text-decoration: none;
+    border-radius: 3px;
+    color: #111;
+    font-weight: 600;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.publons-button a:hover {
+    background-color: #aaa;
+}
+
+.publons-button a img,
+.publons-button span img {
+    float: left;
+    margin-right: 10px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
