@@ -35,16 +35,24 @@ class PublonsHandler extends Handler {
         $articleCommentDao =& DAORegistry::getDAO('ArticleCommentDAO');
         $reviewerSubmissionDao =& DAORegistry::getDAO('ReviewerSubmissionDAO');
 
-        $published =& $publonsReviewsDao->getPublonsReviewsIdByReviewId($reviewId);
+        $exported =& $publonsReviewsDao->getPublonsReviewsIdByReviewId($reviewId);
 
-        // Check that user is person who wrote review
-        if ($published){
+        // Check that the review hasn't been exported already
+        if ($exported){
             $templateMgr->assign('info', __('plugins.generic.publons.alreadyExported'));
             $templateMgr->display($plugin->getTemplatePath() . 'export.tpl');
             return;
         }
 
         $reviewSubmission = $reviewerSubmissionDao->getReviewerSubmission($reviewId);
+
+        // Check that the review has been submitted to the editor
+        if (($reviewSubmission->getRecommendation() === null) || ($reviewSubmission->getRecommendation() === '')){
+            $templateMgr->assign('info', __('plugins.generic.publons.notSubmitted'));
+            $templateMgr->display($plugin->getTemplatePath() . 'export.tpl');
+            return;
+        }
+
         $journalId = $reviewSubmission->getJournalId();
         $articleId = $reviewSubmission->getArticleId();
         $reviewerId = $reviewSubmission->getReviewerId();
