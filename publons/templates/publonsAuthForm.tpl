@@ -29,7 +29,7 @@
 			<tr valign="top">
 				<td class="label">{fieldLabel name="username" required="true" key="user.username"}</td>
 				<td class="value"><input type="text" size="73" name="username" id="username" value="{$username|escape}" size="20" maxlength="90" class="textField" /></td>
-			</tr>			 
+			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td>{translate key="plugins.generic.publons.settings.usernameDescription"}</td>
@@ -47,15 +47,25 @@
 			<tr valign="top">
 				<td class="label">{fieldLabel name="auth_key" required="true" key="plugins.generic.publons.settings.auth_key"}</td>
 				<td class="value">
-					<input type="password" size="73" name="auth_key" id="auth_key" value="{$auth_key|escape}" size="20" maxlength="90" class="textField"/>
+					<input type="text" size="73" name="auth_key" id="auth_key" value="{$auth_key|escape}" size="20" maxlength="90" class="textField"/>
 				</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td>{translate key="plugins.generic.publons.settings.auth_keyDescription"}</td>
 			</tr>
+			<tr valign="top">
+				<td class="label">{fieldLabel name="info_url" key="plugins.generic.publons.settings.url"}</td>
+				<td class="value">
+					<input type="text" size="73" name="info_url" id="info_url" value="{$info_url|escape}" size="20" maxlength="90" class="textField"/>
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>{translate key="plugins.generic.publons.settings.urlDescription"}</td>
+			</tr>
 		</table>
-		<input type="submit" class="button defaultButton" name="save" value="{translate key="common.save"}"	/> 
+		<input type="submit" class="button defaultButton" name="save" value="{translate key="common.save"}"	/>
 		<input type="button" class="button" value="{translate key="common.cancel"}" onclick="document.location='{plugin_url path=""}';"/>
 	</form>
 	<p><span class="formRequired">{translate key="common.requiredField"}</span></p>

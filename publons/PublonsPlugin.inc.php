@@ -192,17 +192,25 @@ class PublonsPlugin extends GenericPlugin {
 
         preg_match('/id="reviewSteps".+<td>5\.<\/td>.+<\/tr>(.+)/s', $output, $matches, PREG_OFFSET_CAPTURE);
         if (!is_null($matches[1])){
+            $plugin =& PluginRegistry::getPlugin('generic', $this->getName());
+
             $beforeInsertPoint = substr($output, 0, $matches[1][1]);
             $afterInsertPoint = substr($output, $matches[1][1] - strlen($output));
 
             $reviewId = $templateMgr->get_template_vars('reviewId');
+            $journalId = $templateMgr->get_template_vars('submission')->getJournalId();
+
+            $eas = $templateMgr->get_template_vars()['submission']->getEditAssignments();
 
             $publonsReviewsDao =& DAORegistry::getDAO('PublonsReviewsDAO');
             $published =& $publonsReviewsDao->getPublonsReviewsIdByReviewId($reviewId);
 
+            $info_url = $this->getSetting($journalId, 'info_url');
+
             $templateMgr =& TemplateManager::getManager();
             $templateMgr->assign('reviewId', $reviewId);
             $templateMgr->assign('published', $published);
+            $templateMgr->assign('infoURL', $info_url);
 
             $newOutput = $beforeInsertPoint;
             $newOutput .= $templateMgr->fetch($this->getTemplatePath() . 'publonsStep.tpl');

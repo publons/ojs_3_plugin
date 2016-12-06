@@ -38,6 +38,7 @@ class PublonsAuthForm extends Form {
         $this->addCheck(new FormValidator($this, 'password', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.publons.settings.passwordRequired'));
         $this->addCheck(new FormValidator($this, 'auth_key', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.publons.settings.auth_keyRequired'));
         $this->addCheck(new FormValidator($this, 'auth_token', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.publons.settings.auth_tokenRequired'));
+        $this->addCheck(new FormValidator($this, 'info_url', FORM_VALIDATOR_OPTIONAL_VALUE));
         $this->addCheck(new FormValidatorPost($this));
     }
 
@@ -50,6 +51,7 @@ class PublonsAuthForm extends Form {
         // Initialize from plugin settings
         $this->setData('username', $plugin->getSetting($this->_journalId, 'username'));
         $this->setData('auth_key', $plugin->getSetting($this->_journalId, 'auth_key'));
+        $this->setData('info_url', $plugin->getSetting($this->_journalId, 'info_url'));
 
         // If password has already been set, echo back slug
         $password = $plugin->getSetting($this->_journalId, 'password');
@@ -62,7 +64,7 @@ class PublonsAuthForm extends Form {
      * @see Form::readInputData()
      */
     function readInputData() {
-        $this->readUserVars(array('auth_key', 'username', 'password'));
+        $this->readUserVars(array('auth_key', 'username', 'password', 'info_url'));
         $request =& PKPApplication::getRequest();
         $password = $request->getUserVar('password');
 
@@ -108,6 +110,7 @@ class PublonsAuthForm extends Form {
         $plugin =& $this->_plugin;
         $plugin->updateSetting($this->_journalId, 'auth_token', $this->getData('auth_token') , 'string');
         $plugin->updateSetting($this->_journalId, 'auth_key', $this->getData('auth_key'), 'string');
+        $plugin->updateSetting($this->_journalId, 'info_url', $this->getData('info_url'), 'string');
     }
 
 

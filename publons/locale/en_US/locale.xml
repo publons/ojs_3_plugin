@@ -44,8 +44,10 @@
 
   <message key="plugins.generic.publons.settings.usernameDescription">The user name that will be used for the publication of reviews to Publons</message>
   <message key="plugins.generic.publons.settings.passwordDescription">The password for the username specified above</message>
+  <message key="plugins.generic.publons.settings.urlDescription">The url for the journal landing page on Publons</message>
+  <message key="plugins.generic.publons.settings.url">URL</message>
   <message key="plugins.generic.publons.settings.auth_key">Key</message>
-  <message key="plugins.generic.publons.settings.auth_keyDescription">The key value for authorization in the network Publons</message>
+  <message key="plugins.generic.publons.settings.auth_keyDescription">The journal API token for posting to Publons</message>
 
   <message key="plugins.generic.publons.connect.info"><![CDATA[    <p> In order to provide your reviewers the opportunity to get credit for their reviews on Publons, please register your interest with Publons either at this <a href="http://publons.com">link</a> or <a href="mailto:partnerships@publons.com">email</a> Publons. You will then be provided with access to the partner dashboard and will find the information you need in order to complete the set-up process under the Instructions heading on the navigation bar on the left hand side of the screen. There will be a link in here that will take you to the set-up process.</p><p>To enable the plugin fill in the fields below</p>        ]]></message>
   <message key="plugins.generic.publons.connect.ps"><![CDATA[     <p>After enabling the plugin, the option for Reviewers to receive credit for their review on Publons will appear on the review submission page.</p><p>If the reviewer has selected to receive credit for their review then, upon submission of their review, the data will be transmitted securely to Publons and the reviewer will then be sent an email (to the email address they have registered with the journal) from Publons that contains a link to claim their review.</p><p>After following this link the Reviewer will be asked to sign up to Publons and the review will then be added to the reviewers account. There will be no need to claim reviews each time you do them

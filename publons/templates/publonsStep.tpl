@@ -10,7 +10,7 @@
  <tr>
     <td>6.</td>
     <td>
-        <span>{translate key="plugins.generic.publons.export_page"} {translate key="plugins.generic.publons.reviewInstructions"} <a href="{$infoURL}" target="_blank">{$infoURL}</a></span>
+        <span>{translate key="plugins.generic.publons.export_page"} {if $infoURL }{translate key="plugins.generic.publons.reviewInstructions"} <a href="{$infoURL}" target="_blank">{$infoURL}</a> {/if}</span>
     </td>
 </tr>
 <tr>
