@@ -78,7 +78,7 @@ class PublonsAuthForm extends Form {
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_POST => true,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => "http://172.17.0.1:8000/api/v2/token/",
+            CURLOPT_URL => $url,
             CURLOPT_POSTFIELDS =>  'username='.$this->getData('username').'&password='.$this->getData('password')
         );
 

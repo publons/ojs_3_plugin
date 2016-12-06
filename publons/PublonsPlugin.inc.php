@@ -3,9 +3,8 @@
 /**
  * @file plugins/generic/publons/PublonsPlugin.inc.php
  *
- * Copyright (c) 2013-2014 Simon Fraser University Library
- * Copyright (c) 2003-2014 John Willinsky
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * Copyright (c) 2016 Publons Ltd.
+ * Distributed under the GNU GPL v2.
  *
  * @class PublonsPlugin
  * @ingroup plugins_generic_publons
@@ -50,7 +49,6 @@ class PublonsPlugin extends GenericPlugin {
         return 'PublonsPlugin';
     }
 
-    /**
     /**
      * Get the display name of this plugin
      * @return string
@@ -185,36 +183,19 @@ class PublonsPlugin extends GenericPlugin {
     }
 
     /**
-     * Output filter adds data citation to submission summary.
+     * Output filter adds publons export step to submission process.
      * @param $output string
      * @param $templateMgr TemplateManager
      * @return $string
      */
     function submissionOutputFilter($output, &$templateMgr) {
 
-        $fourStepPoint =strpos($output, '<td>4.</td>');
-        if ($fourStepPoint !== false) {
-
-            $beforeCommentOutput = substr($output,$fourStepPoint);
-            $tableInsertPoint =strpos($beforeCommentOutput, '<img');
-            $indexTable = $fourStepPoint + $tableInsertPoint;
-            $newOutput = substr($output,0,$indexTable);
-            $newOutput .= substr($output, $indexTable);
-            $output = $newOutput;
-
-
-            $commentPoint =strpos($output, 'comment');
-            $afterCommentOutput = substr($output,$commentPoint);
-            $insertPoint =strpos($afterCommentOutput, '</td>');
-            $index = $commentPoint + $insertPoint;
-
-
-            $newOutput = substr($output,0,$index);
-            $newOutput .= '<td class="value" style="position: relative;">';
-
+        preg_match('/id="reviewSteps".+<td>5\.<\/td>.+<\/tr>(.+)/s', $output, $matches, PREG_OFFSET_CAPTURE);
+        if (!is_null($matches[1])){
+            $beforeInsertPoint = substr($output, 0, $matches[1][1]);
+            $afterInsertPoint = substr($output, $matches[1][1] - strlen($output));
 
             $reviewId = $templateMgr->get_template_vars('reviewId');
-
 
             $publonsReviewsDao =& DAORegistry::getDAO('PublonsReviewsDAO');
             $published =& $publonsReviewsDao->getPublonsReviewsIdByReviewId($reviewId);
@@ -223,15 +204,14 @@ class PublonsPlugin extends GenericPlugin {
             $templateMgr->assign('reviewId', $reviewId);
             $templateMgr->assign('published', $published);
 
+            $newOutput = $beforeInsertPoint;
+            $newOutput .= $templateMgr->fetch($this->getTemplatePath() . 'publonsStep.tpl');
+            $newOutput .= $afterInsertPoint;
 
-            $newOutput .= $templateMgr->fetch($this->getTemplatePath() . 'code.tpl');
-
-            $newOutput .= '</td>';
-            $newOutput .= substr($output, $index);
             $output = $newOutput;
-
-
         }
+
+
         $templateMgr->unregister_outputfilter('submissionOutputFilter');
         return $output;
     }

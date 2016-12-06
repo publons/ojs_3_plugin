@@ -4,9 +4,7 @@
 <!--
   * plugins/generic/publons/locale/en_US/locale.xml
   *
-  * Copyright (c) 2013-2014 Simon Fraser University Library
-  * Copyright (c) 2003-2014 John Willinsky
-  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  * Distributed under the GNU GPL v2.
   *
   * Localization strings
   -->
@@ -16,7 +14,8 @@
   <message key="plugins.generic.publons.description">This plugin allows you to post reviews to Publons.</message>
   <message key="plugins.generic.publons.list">A list of reviews sent in Publons</message>
 
-  <message key="plugins.generic.publons.export_page">Export reviews to Publons.</message>
+  <message key="plugins.generic.publons.info">Info</message>
+  <message key="plugins.generic.publons.export_page">Get credit for your review by publishing to Publons.</message>
   <message key="plugins.generic.publons.submitExportReview">Publish my review on Publons</message>
   <message key="plugins.generic.publons.publishedReview">This review is published on Publons</message>
   <message key="plugins.generic.publons.reviewer">Reviewer</message>
@@ -24,6 +23,7 @@
   <message key="plugins.generic.publons.date.added">Date added</message>
   <message key="plugins.generic.publons.backToReviewPage">Back to page of the reviewer</message>
 
+  <message key="plugins.generic.publons.reviewInstructions">To find out more follow this link:</message>
   <message key="plugins.generic.publons.exportSuccessful">The review has been successfully sent</message>
   <message key="plugins.generic.publons.exportError">Sending error</message>
   <message key="plugins.generic.publons.exportErrorInfo">The error report:</message>
