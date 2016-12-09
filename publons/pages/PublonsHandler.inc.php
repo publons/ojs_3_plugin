@@ -72,6 +72,8 @@ class PublonsHandler extends Handler {
         if ($request->isGet())
         {
             $templateMgr->assign('reviewId', $reviewId);
+            $templateMgr->addStyleSheet(Request::getBaseUrl() . '/' . $plugin->getPluginPath() . '/styles/publons-page.css');
+            $templateMgr->addStyleSheet('https://fonts.googleapis.com/css?family=Roboto');
             $templateMgr->display($plugin->getTemplatePath() . 'confirmReviewExport.tpl');
         }
         elseif ($request->isPost())
@@ -191,31 +193,45 @@ class PublonsHandler extends Handler {
 
             $returned = $this->_curlPost($options);
 
+            // If success then save into database
+            // if (($returned['status'] >= 200) && ($returned['status'] < 300)){
+            //     $publonsReviewsDao->insertObject($publonsReviews);
+            // }
+
             $responseCodes = array(
-                '200' => 'OK - Success.',
                 '201' => 'Created - Success.',
                 '400' => 'Bad Request - You are doing something wrong.',
-                '403' => 'Forbidden - You do not have permission to do this.',
-                '404' => 'Not Found - Resource not found.',
-                '405' => 'Method Not Allowed - You`re probably trying to post to a resource that only supports GET.',
                 '500' => '500 Internal Server Error - Please contact api@publons.com.'
             );
 
-            $templateMgr->assign('result',$returned['result']);
-            $templateMgr->assign('status',$returned['status'].' '.$responseCodes[$returned['status']]);
-            $templateMgr->assign('error', $returned['error']);
+            $templateMgr->assign('status',$returned['status']);
 
-            # If success then save into database
-            if (($returned['status'] >= 200) && ($returned['status'] < 300)){
-                $publonsReviewsDao->insertObject($publonsReviews);
+
+
+
+
+            if ($returned['status'] == 201){
+                $templateMgr->assign('serverAction',$returned['result']['action']);
+                if (is_null($_SERVER["HTTP_PUBLONS_URL"])) {
+                    $claimUrl = "https://publons.com/review/credit/" . $returned['result']['token'] . "/claim/";
+                } else {
+                    $claimUrl = $_SERVER["HTTP_PUBLONS_URL"]."/review/credit/" . $returned['result']['token'] . "/claim/";
+                }
+
+                $templateMgr->assign('claimURL', $claimUrl);
             }
 
-            $templateMgr->assign('rname',$rname);
-            $templateMgr->assign('rbody',$body);
-            $templateMgr->assign('rtitle',$rtitle);
-            $templateMgr->assign('rtitle_en',$rtitle_en);
-            $templateMgr->assign('remail',$remail);
+            $templateMgr->assign('result',$returned['result']);
+            $templateMgr->assign('error', $returned['error']);
 
+            // $templateMgr->assign('rname',$rname);
+            // $templateMgr->assign('rbody',$body);
+            // $templateMgr->assign('rtitle',$rtitle);
+            // $templateMgr->assign('rtitle_en',$rtitle_en);
+            // $templateMgr->assign('remail',$remail);
+
+            $templateMgr->addStyleSheet(Request::getBaseUrl() . '/' . $plugin->getPluginPath() . '/styles/publons-page.css');
+            $templateMgr->addStyleSheet('https://fonts.googleapis.com/css?family=Roboto');
             $templateMgr->display($plugin->getTemplatePath() . 'export.tpl');
         }
 
@@ -239,7 +255,7 @@ class PublonsHandler extends Handler {
         curl_close ($curl);
         return array(
             'status' => $httpStatus,
-            'result' => $httpResult,
+            'result' => json_decode($httpResult, true),
             'error'  => $httpError
         );
     }

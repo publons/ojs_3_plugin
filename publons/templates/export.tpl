@@ -9,38 +9,69 @@
  *
  *}
 {strip}
-{assign var="pageTitle" value="plugins.generic.publons.export_page"}
-{include file="submission/comment/header.tpl"}
+    {include file="submission/comment/header.tpl"}
 {/strip}
-
-<div id="publonsExport">
-{if $status==201 OR $status==201}
-	<h3>{translate key="plugins.generic.publons.exportSuccessful"}</h3>
-	<table width="100%" class="data">
-		<tr valign="top">
-			<td class="label">{translate key="plugins.generic.publons.reviewBody"}</td>
-			<td class="value">{$rbody}</td>
-		</tr>
-	</table>
-{else }
-	<h3>{translate key="plugins.generic.publons.exportError"}</h3>
-	<table width="100%" class="data">
-		{if $status}
-		<tr valign="top">
-			<td class="label">{translate key="plugins.generic.publons.exportStatus"}</td>
-			<td class="value">{$status}</td>
-		</tr>
-		{/if}
-		{if $error OR $info}
-		<tr valign="top">
-			<td class="label">{translate key="plugins.generic.publons.exportErrorInfo"}</td>
-			<td class="value">{$info}&nbsp;&nbsp;&nbsp;{$error}</td>
-		</tr>
-		{/if}
-	</table>
-
-{/if}
-
+<div id="publons-header">
+    <img src="https://publons.com/static/images/logos/full/blue_white.png"/>
 </div>
-<input type="button" value="{translate key="plugins.generic.publons.backToReviewPage"}" class="button" onclick="window.close()" />
+<div id="publons-content">
+    <div id="publonsExport">
+    {if $status==201}
+        <h2>
+        {if $serverAction == 'REVIEWER_UNSUBSCRIBED'}
+            {translate key="plugins.generic.publons.export.Successful"}
+        {elseif $serverAction == 'REVIEWER_EMAILED'}
+            {translate key="plugins.generic.publons.export.Successful"}
+        {elseif $serverAction == 'REVIEWER_CLAIMED'}
+            {translate key="plugins.generic.publons.export.Successful"}
+        {elseif $serverAction == 'PARTNER_TO_EMAIL'}
+            {translate key="plugins.generic.publons.export.Successful"}
+        {elseif $serverAction == 'DUPLICATE_REVIEW'}
+            {translate key="plugins.generic.publons.export.Duplicate"}
+        {else}
+            {translate key="plugins.generic.publons.export.Successful"}
+        {/if}
+        </h2>
+        <p>
+            {if $serverAction == 'REVIEWER_CLAIMED'}
+                {translate key="plugins.generic.publons.export.next.AutoClaimed"}
+            {elseif $serverAction == 'PARTNER_TO_EMAIL'}
+                {translate key="plugins.generic.publons.export.next.PartnerEmailed"} <br>
+                {translate key="plugins.generic.publons.export.next.SetAutoClaim"}
+            {elseif $serverAction == 'REVIEWER_EMAILED'}
+                {translate key="plugins.generic.publons.export.next.PublonsEmailed"} <br>
+                {translate key="plugins.generic.publons.export.next.SetAutoClaim"}
+            {elseif $serverAction == 'REVIEWER_UNSUBSCRIBED'}
+                {translate key="plugins.generic.publons.export.next.LinkClick"} <br>
+                {translate key="plugins.generic.publons.export.next.SetAutoClaim"}
+            {else}
+            {/if}
+        </p>
+    {else }
+        <h3>{translate key="plugins.generic.publons.export.Error"}</h3>
+        <table width="100%" class="data">
+            {if $status}
+            <tr valign="top">
+                <td class="label">{translate key="plugins.generic.publons.exportStatus"}</td>
+                <td class="value">{$status}</td>
+            </tr>
+            {/if}
+            {if $error OR $info}
+            <tr valign="top">
+                <td class="label">{translate key="plugins.generic.publons.exportErrorInfo"}</td>
+                <td class="value">{$info}&nbsp;&nbsp;&nbsp;{$error}</td>
+            </tr>
+            {/if}
+        </table>
+
+    {/if}
+
+    </div>
+    {if $serverAction == 'PARTNER_TO_EMAIL' ||  $serverAction == 'REVIEWER_EMAILED' || $serverAction == 'REVIEWER_UNSUBSCRIBED'}
+        <a href="{ $claimURL}" target="_blank"><button class="primary autowidth" >{translate key="plugins.generic.publons.export.claimReview"}</button></a>
+    {/if}
+    <button class="autowidth" onclick="window.close()" >
+        {translate key="plugins.generic.publons.backToReviewPage"}
+    </button>
+</div>
 {include file="submission/comment/footer.tpl"}

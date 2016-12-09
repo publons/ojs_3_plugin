@@ -22,11 +22,9 @@
   <message key="plugins.generic.publons.reviewer">Reviewer</message>
   <message key="plugins.generic.publons.submission.review">Review</message>
   <message key="plugins.generic.publons.date.added">Date added</message>
-  <message key="plugins.generic.publons.backToReviewPage">Back to page of the reviewer</message>
+  <message key="plugins.generic.publons.backToReviewPage">Back to review page</message>
 
   <message key="plugins.generic.publons.reviewInstructions">To find out more follow this link:</message>
-  <message key="plugins.generic.publons.exportSuccessful">The review has been successfully sent</message>
-  <message key="plugins.generic.publons.exportError">Sending error</message>
   <message key="plugins.generic.publons.exportErrorInfo">The error report:</message>
   <message key="plugins.generic.publons.reviewBody">The text of the review:</message>
   <message key="plugins.generic.publons.exportStatus">Status:</message>
@@ -35,8 +33,18 @@
   <message key="plugins.generic.publons.notSubmitted">You must submit you review before you can send it to Publons</message>
   <message key="plugins.generic.publons.invalidUser">Invalid OJS login details</message>
   <message key="plugins.generic.publons.badToken">Authorization error on Publons</message>
-  <message key="plugins.generic.publons.TnCTitle">Send you review to Publons</message>
+  <message key="plugins.generic.publons.TnCTitle">Send your review to Publons</message>
   <message key="plugins.generic.publons.termsAndConditions"><![CDATA[ You have chosen to export your review to publons .... <br> Terms and conditions go here.]]></message>
+
+  <message key="plugins.generic.publons.export.Successful">The review has been successfully sent</message>
+  <message key="plugins.generic.publons.export.Duplicate">This review has already been added to Publons</message>
+  <message key="plugins.generic.publons.export.Error">Sending error</message>
+  <message key="plugins.generic.publons.export.claimReview">Claim review</message>
+  <message key="plugins.generic.publons.export.next.AutoClaimed">You review has been auto-claimed on Publons.</message>
+  <message key="plugins.generic.publons.export.next.PartnerEmailed">Your journal has emailed you with a link to clain this review or you can click on the button below.</message>
+  <message key="plugins.generic.publons.export.next.PublonsEmailed">Publons has emailed you with a link to clain this review or you can click on the button below.</message>
+  <message key="plugins.generic.publons.export.next.SetAutoClaim">To skip this step in future please check auto claim reviews checkbox in your Publons settings.</message>
+  <message key="plugins.generic.publons.export.next.LinkClick">You have opted out of recieving Publons emails, to claim this review you must click this link below.</message>
 
 
   <message key="plugins.generic.publons.settings">Published</message>
