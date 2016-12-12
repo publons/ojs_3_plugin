@@ -1,6 +1,6 @@
 # OJS Publons Plugin
 
-Version: 1.1
+Version: 2.0
 
 Developed and maintained by: Publons Ltd.
 
