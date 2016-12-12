@@ -1,28 +1,31 @@
 # OJS Publons Plugin
 ---------------------------
 Version: 1.1
+
 Developed and maintained by: Publons Ltd.
-Original code from: Media Sphera Publishing House, Moscow, Russian Federation (http://mediasphera.ru/)
+
+Original code from: Media Sphera Publishing House
 
 ### About
 This plugin provides the ability to send and publish reviews to Publons (https://publons.com).
 
 ### License
-This plugin is licensed under the GNU General Public License v4.
+This plugin is licensed under the GNU General Public License v3.
+
 See the accompanying OJS file docs/COPYING for the complete terms of this license.
 
 ### System Requirements
-OJS 2.4.5 or greater.
-PHP 5.2 or greater.
-CURL support for PHP.
-ZipArchive support for PHP.
+- OJS 2.4.5 or greater (Not working on OJS 3.0 yet).
+- PHP 5.2 or greater.
+- CURL support for PHP.
+- ZipArchive support for PHP.
 
 ### Installation
 To install the plugin:
  - On the OJS site go to Home > User > Journal Management > Plugin Management > Install a New Plugin,
    select the .tar.gz file with the plugin and click "Continue"
  - Install the database schema: run the following command from your OJS directory:
-    ```$ php tools/dbXMLtoSQL.php -schema execute plugins/generic/publons/schema.xml```
+    `$ php tools/dbXMLtoSQL.php -schema execute plugins/generic/publons/schema.xml`
  - Enable the plugin by going to:  Home > User > Journal Management > Plugin Management > Generic Plugins and selecting "ENABLE" under "Publons Plugin"
  - Set up correct credentials to post reviews to Publons by going to Home > User > Journal Management > Plugin Management > Generic Plugins and click “CONNECTION” under "Publons Plugin"
    - Enter the username and the password of the Publons user who has API access to Publons so that the plugin can retrieve the authorisation token required.
@@ -40,10 +43,12 @@ The Publons website certifies only the fact the reviewer has completed peer revi
 
 ### Contact/Support
 Please email us for support, bugfixes or comments.
+
 Email: <ojs@publons.com>
-Original version written by Natalya Mollecker for the Media Sphera Publishing House, Moscow, Russian Federation
+
+Original version written by Natalya Mollecker for the Media Sphera Publishing House, Moscow, Russian Federation (http://mediasphera.ru/)
 
 ### Version History
-1.0 - Initial Release
-1.1 - Fixed small issues
-2.0 - Refactor of how plugin works, large bugfixes, styling changes.
+- 1.0 - Initial Release
+- 1.1 - Fixed small issues
+- 2.0 - Refactor of how plugin works, large bugfixes, styling changes.
