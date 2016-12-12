@@ -101,8 +101,8 @@ class PublonsPlugin extends GenericPlugin {
     function getManagementVerbs() {
         $verbs = array();
         if ($this->getEnabled()) {
-            $verbs[] = array('connect', __('plugins.generic.publons.settings.connect'));
-            $verbs[] = array('settings', __('plugins.generic.publons.settings'));
+            $verbs[] = array('connect', __('plugins.generic.publons.settings.connection'));
+            $verbs[] = array('settings', __('plugins.generic.publons.settings.published'));
         }
         return parent::getManagementVerbs($verbs);
     }

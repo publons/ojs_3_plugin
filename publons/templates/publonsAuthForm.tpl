@@ -1,9 +1,8 @@
 {**
  * plugins/generic/publons/templates/publonsAuthForm.tpl
  *
- * Copyright (c) 2013-2014 Simon Fraser University Library
- * Copyright (c) 2003-2014 John Willinsky
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * Copyright (c) 2016 Publons Ltd.
+ * Distributed under the GNU GPL v3.
  *
  * Connect to Publons Network
  *
@@ -14,11 +13,11 @@
 {/strip}
 
 <ul class="menu">
-	<li class="current"><a href="{plugin_url path="connect"}">{translate key="plugins.generic.publons.settings.connect"}</a></li>
-	<li><a href="{plugin_url path="settings"}">{translate key="plugins.generic.publons.settings"}</a></li>
+	<li class="current"><a href="{plugin_url path="connect"}">{translate key="plugins.generic.publons.settings.connection"}</a></li>
+	<li><a href="{plugin_url path="settings"}">{translate key="plugins.generic.publons.settings.published"}</a></li>
 </ul>
 
-<p>{translate key="plugins.generic.publons.connect.info"}</p>
+<p>{translate key="plugins.generic.publons.settings.info"}</p>
 
 <div style="margin: 1em 0;">
 
@@ -27,7 +26,7 @@
 
 		<table width="100%" class="data">
 			<tr valign="top">
-				<td class="label">{fieldLabel name="username" required="true" key="user.username"}</td>
+				<td class="label">{fieldLabel name="username" required="true" key="user.email"}</td>
 				<td class="value"><input type="text" size="73" name="username" id="username" value="{$username|escape}" size="20" maxlength="90" class="textField" /></td>
 			</tr>
 			<tr>
@@ -70,5 +69,5 @@
 	</form>
 	<p><span class="formRequired">{translate key="common.requiredField"}</span></p>
 </div>
-<p>{translate key="plugins.generic.publons.connect.ps"}</p>
+<p>{translate key="plugins.generic.publons.settings.ps"}</p>
 {include file="common/footer.tpl"}

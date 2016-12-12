@@ -3,12 +3,11 @@
 <!--
   * plugins/generic/publons/locale/ru_RU/locale.xml
   *
-  * Copyright (c) 2013-2014 Simon Fraser University Library
-  * Copyright (c) 2003-2014 John Willinsky
-  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  * Copyright (c) 2016 Publons Ltd.
+  * Distributed under the GNU GPL v3.
   *
   * Localization strings for the ru_RU (Russian) locale.
-  * With updates from Pavel Pisklakov (revising translation). 
+  * With updates from Pavel Pisklakov (revising translation).
   -->
 <locale name="ru_RU" full_name="Russian">
   <message key="plugins.generic.publons.displayName">Плагин Экспорт в Publons</message>
