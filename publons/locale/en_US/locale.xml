@@ -45,7 +45,7 @@
   <message key="plugins.generic.publons.confirmation.termsAndConditions">
     <![CDATA[
       <p>
-        You have chosen to export your review to publons .... <br> Terms and conditions go here.
+        You have chosen to export your review to Publons. <br> <a href="https://publons.com/about/terms">Terms and conditions</a>.
       </p>
     ]]>
   </message>
@@ -58,7 +58,7 @@
 
   <message key="plugins.generic.publons.export.claimReview">Claim review</message>
   <message key="plugins.generic.publons.export.next.autoClaimed">You review has been auto-claimed on Publons.</message>
-  <message key="plugins.generic.publons.export.next.partnerEmailed">Your journal has emailed you with a link to clain this review or you can click on the button below.</message>
+  <message key="plugins.generic.publons.export.next.partnerEmailed">Your journal has emailed you with a link to claim this review or you can click on the button below.</message>
   <message key="plugins.generic.publons.export.next.publonsEmailed">Publons has emailed you with a link to clain this review or you can click on the button below.</message>
   <message key="plugins.generic.publons.export.next.setAutoClaim">To skip this step in future please select "Automatically add reviews from partnered journals" in your Publons settings.</message>
   <message key="plugins.generic.publons.export.next.linkClick">You have opted out of receiving Publons emails, to claim this review you must click the link below.</message>
@@ -101,7 +101,7 @@
         Publons will publish the full review text once the article has been published.
       </p>
       <p>
-        The 'Published' tab will show you the list of the reviews exported to Publons.
+        The 'Exported Reviews' tab will show you the list of the reviews exported to Publons.
       </p>
     ]]>
   </message>
