@@ -1,9 +1,8 @@
 {**
  * plugins/generic/publons/templates/publonsAuthForm.tpl
  *
- * Copyright (c) 2013-2014 Simon Fraser University Library
- * Copyright (c) 2003-2014 John Willinsky
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * Copyright (c) 2016 Publons Ltd.
+ * Distributed under the GNU GPL v3.
  *
  * Connect to Publons Network
  *
@@ -14,11 +13,11 @@
 {/strip}
 
 <ul class="menu">
-	<li class="current"><a href="{plugin_url path="connect"}">{translate key="plugins.generic.publons.settings.connect"}</a></li>
-	<li><a href="{plugin_url path="settings"}">{translate key="plugins.generic.publons.settings"}</a></li>
+	<li class="current"><a href="{plugin_url path="connect"}">{translate key="plugins.generic.publons.settings.connection"}</a></li>
+	<li><a href="{plugin_url path="settings"}">{translate key="plugins.generic.publons.settings.published"}</a></li>
 </ul>
 
-<p>{translate key="plugins.generic.publons.connect.info"}</p>
+<p>{translate key="plugins.generic.publons.settings.info"}</p>
 
 <div style="margin: 1em 0;">
 
@@ -27,9 +26,9 @@
 
 		<table width="100%" class="data">
 			<tr valign="top">
-				<td class="label">{fieldLabel name="username" required="true" key="user.username"}</td>
+				<td class="label">{fieldLabel name="username" required="true" key="user.email"}</td>
 				<td class="value"><input type="text" size="73" name="username" id="username" value="{$username|escape}" size="20" maxlength="90" class="textField" /></td>
-			</tr>			 
+			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td>{translate key="plugins.generic.publons.settings.usernameDescription"}</td>
@@ -47,18 +46,28 @@
 			<tr valign="top">
 				<td class="label">{fieldLabel name="auth_key" required="true" key="plugins.generic.publons.settings.auth_key"}</td>
 				<td class="value">
-					<input type="password" size="73" name="auth_key" id="auth_key" value="{$auth_key|escape}" size="20" maxlength="90" class="textField"/>
+					<input type="text" size="73" name="auth_key" id="auth_key" value="{$auth_key|escape}" size="20" maxlength="90" class="textField"/>
 				</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td>{translate key="plugins.generic.publons.settings.auth_keyDescription"}</td>
 			</tr>
+			<tr valign="top">
+				<td class="label">{fieldLabel name="info_url" key="plugins.generic.publons.settings.url"}</td>
+				<td class="value">
+					<input type="text" size="73" name="info_url" id="info_url" value="{$info_url|escape}" size="20" maxlength="90" class="textField"/>
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>{translate key="plugins.generic.publons.settings.urlDescription"}</td>
+			</tr>
 		</table>
-		<input type="submit" class="button defaultButton" name="save" value="{translate key="common.save"}"	/> 
+		<input type="submit" class="button defaultButton" name="save" value="{translate key="common.save"}"	/>
 		<input type="button" class="button" value="{translate key="common.cancel"}" onclick="document.location='{plugin_url path=""}';"/>
 	</form>
 	<p><span class="formRequired">{translate key="common.requiredField"}</span></p>
 </div>
-<p>{translate key="plugins.generic.publons.connect.ps"}</p>
+<p>{translate key="plugins.generic.publons.settings.ps"}</p>
 {include file="common/footer.tpl"}

@@ -2,14 +2,13 @@
 /**
  * @file plugins/generic/publons/classes/form/SettingsForm.inc.php
  *
- * Copyright (c) 2013-2014 Simon Fraser University Library
- * Copyright (c) 2003-2014 John Willinsky
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * Copyright (c) 2016 Publons Ltd.
+ * Distributed under the GNU GPL v3.
  *
  * @class SettingsForm
  * @ingroup plugins_generic_publons
  *
- * @brief Plugin settings. 
+ * @brief Plugin settings.
  */
 import('lib.pkp.classes.form.Form');
 
@@ -22,7 +21,7 @@ class SettingsForm extends Form {
 	var $_plugin;
 
 	/**
-	 * Constructor. 
+	 * Constructor.
 	 * @param $plugin PublonsPlugin
 	 * @param $journalId int
 	 * @see Form::Form()
@@ -45,7 +44,7 @@ class SettingsForm extends Form {
 		$sort = isset($sort) ? $sort : 'date_added';
 
 		$publonsReviewsDao =& DAORegistry::getDAO('PublonsReviewsDAO');
-		$reviewsByJournal =& $publonsReviewsDao->getPublonsReviewsByJournal($journalId, $rangeInfo, $sort);	
+		$reviewsByJournal =& $publonsReviewsDao->getPublonsReviewsByJournal($journalId, $rangeInfo, $sort);
 
 		$userDao =& DAORegistry::getDAO('UserDAO');
 
@@ -60,7 +59,7 @@ class SettingsForm extends Form {
 	/**
 	 * @see Form::execute()
 	 */
-	function execute() { 
+	function execute() {
 		$plugin =& $this->_plugin;
 	}
 }

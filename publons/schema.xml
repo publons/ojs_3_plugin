@@ -4,9 +4,8 @@
 <!--
  * plugins/generic/publons/schema.xml
  *
- * Copyright (c) 2013-2014 Simon Fraser University Library
- * Copyright (c) 2003-2014 John Willinsky
- * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ * Copyright (c) 2016 Publons Ltd.
+ * Distributed under the GNU GPL v3.
  *
  * Publons plugin schema in XML.
  *
@@ -32,7 +31,9 @@
 		<field name="reviewer_id" type="I8">
 			<NOTNULL/>
 		</field>
-
+		<field name="review_id" type="I8">
+			<NOTNULL/>
+		</field>
 		<field name="title_en" type="C2" size="255"/>
 
 		<field name="date_added" type="T">

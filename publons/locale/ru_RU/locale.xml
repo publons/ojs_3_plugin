@@ -1,48 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
 <!--
   * plugins/generic/publons/locale/ru_RU/locale.xml
   *
-  * Copyright (c) 2013-2014 Simon Fraser University Library
-  * Copyright (c) 2003-2014 John Willinsky
-  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  * Copyright (c) 2016 Publons Ltd.
+  * Distributed under the GNU GPL v3.
   *
   * Localization strings for the ru_RU (Russian) locale.
-  * With updates from Pavel Pisklakov (revising translation). 
+  * By Publons
   -->
-<locale name="ru_RU" full_name="Russian">
-  <message key="plugins.generic.publons.displayName">Плагин Экспорт в Publons</message>
-  <message key="plugins.generic.publons.list">Перечень рецензий, отправленных в Publons</message>
-  <message key="plugins.generic.publons.description">Этот плагин позволяет размещать рецензии на Publons.</message>
 
-  <message key="plugins.generic.publons.export_page">Экспорт рецензии в Publons.</message>
-  <message key="plugins.generic.publons.submitExportReview">Опубликовать мою рецензию на Publons</message>
-  <message key="plugins.generic.publons.publishedReview">Данная рецензия уже опубликована на Publons</message>
-  <message key="plugins.generic.publons.reviewer">Рецензент</message>
-  <message key="plugins.generic.publons.submission.review">Рецензия</message>
-  <message key="plugins.generic.publons.date.added">Дата добавления</message>
-  <message key="plugins.generic.publons.backToReviewPage">Назад на страницу рецензента</message>
+<locale name="en_US" full_name="U.S. English">
+  <message key="plugins.generic.publons.displayName">Publons Плагин</message>
+  <message key="plugins.generic.publons.description">Данный плагин позволяет добавлять рецензии к профилю рецензента на Publons.</message>
+  <message key="plugins.generic.publons.list">Список рецензий отправленных Publons</message>
 
-  <message key="plugins.generic.publons.exportSuccessful">Рецензия успешно отправлена</message>
-  <message key="plugins.generic.publons.exportError">Ошибка при отправке</message>
-  <message key="plugins.generic.publons.exportErrorInfo">Отчет об ошибках:</message>
-  <message key="plugins.generic.publons.reviewBody">Текст рецензии:</message>
-  <message key="plugins.generic.publons.exportStatus">Статус:</message>
-  <message key="plugins.generic.publons.bodyIsEmpty">Отсутствует текст рецензии</message>
-  <message key="plugins.generic.publons.badToken">Ошибка авторизации на Publons</message>
+  <message key="plugins.generic.publons.review.publonsStepInstructions">Получите признание за свою рецензию добавив ее к своему профилю на Publons.com</message>
+  <message key="plugins.generic.publons.review.urlHelp">Что это? Перейдите по данной ссылке чтобы узнать больше:</message>
+
+  <message key="plugins.generic.publons.button.submitExportReview">Отправить мою рецензию Publons</message>
+  <message key="plugins.generic.publons.button.publishedReview">Эта рецензия уже отправлена Publons</message>
+  <message key="plugins.generic.publons.button.completeReview">Вы должны закончить свою рецензию прежде чем отправлять её Publons</message>
 
 
-  <message key="plugins.generic.publons.settings">Опубликовано</message>
-  <message key="plugins.generic.publons.settings.connect">Подключение</message>
-  <message key="plugins.generic.publons.settings.usernameRequired">Пожалуйста, введите правильное имя пользователя для сети Publons.</message>
-  <message key="plugins.generic.publons.settings.passwordRequired">Пожалуйста, введите правильный пароль для сети Publons.</message>
-  <message key="plugins.generic.publons.settings.auth_keyRequired">Пожалуйста, введите правильный ключ для сети Publons.</message>
+  <message key="plugins.generic.publons.settings.published">Отправленные Рецензии</message>
+  <message key="plugins.generic.publons.settings.connection">Настройки</message>
+  <message key="plugins.generic.publons.settings.publishedTable.reviewer">Рецензент</message>
+  <message key="plugins.generic.publons.settings.publishedTable.date.added">Дата добавления</message>
+  <message key="plugins.generic.publons.settings.publishedTable.review">Рецензия</message>
+  <message key="plugins.generic.publons.settings.publishedTable.noReviews">Нет рецензий отправленных Publons</message>
+  <message key="plugins.generic.publons.settings.usernameRequired">Пожалуйста введите логин (адрес электронной почты) пользователя Publons с правом доступа к API.</message>
+  <message key="plugins.generic.publons.settings.passwordRequired">Пожалуйста введите верный пароль.</message>
+  <message key="plugins.generic.publons.settings.authKeyRequired">Пожалуйста введите верный API ключ для интеграции с Publons.</message>
+  <message key="plugins.generic.publons.settings.authTokenRequired">Пожалуйста убедитесь что вы ввели верные логин и пароль.</message>
+  <message key="plugins.generic.publons.settings.invalidHelpUrl">Пожалуйста убедитесь что URL начинается с https://</message>
+  <message key="plugins.generic.publons.settings.usernameDescription">Логин (адрес электронной почты) пользователя Publons с правом доступа к API.</message>
+  <message key="plugins.generic.publons.settings.passwordDescription">Пароль учетной записи Publons.</message>
+  <message key="plugins.generic.publons.settings.urlDescription">URL адрес целевой страницы (landing page) на Publons.</message>
+  <message key="plugins.generic.publons.settings.url">URL</message>
+  <message key="plugins.generic.publons.settings.auth_key">API ключ</message>
+  <message key="plugins.generic.publons.settings.auth_keyDescription">API ключ журнала для отправки рецензий Publons</message>
 
-  <message key="plugins.generic.publons.settings.usernameDescription">Имя пользователя, которое будет использоваться для экспорта рецензий в Publons</message>
-  <message key="plugins.generic.publons.settings.passwordDescription">Пароль для имени пользователя, указанного выше</message>
-  <message key="plugins.generic.publons.settings.auth_key">Ключ</message>
-  <message key="plugins.generic.publons.settings.auth_keyDescription">Значение ключа для авторизации в сети Publons</message>
 
-  <message key="plugins.generic.publons.connect.info"><![CDATA[     Если Вы хотите, чтобы Ваши рецензенты получили возможность отправлять рецензии на Publons, необходимо зарегистрировать журнал на портале <a href="http://publons.com">http://publons.com</a>. После регистрации введите полученные регистрационные данные в соответствующие поля:        ]]></message>
-  <message key="plugins.generic.publons.connect.ps"><![CDATA[     <p>После активации плагина на странице рецензируемой статьи у рецензента появится кнопка «Опубликовать рецензию на Publons». При нажатии на кнопку рецензия автоматически отправляется в Publons и рецензент получает приглашение добавить рецензию к своему профилю. В дальнейшем данный процесс может быть автоматизирован если пользователь выберет соответствующую опцию в профиле Publons.</p><p>На сайте Publons указывается только факт выполнения рецензентом рецензии для данного журнала. Текст рецензии может быть раскрыт только после публикации рецензируемой статьи. Рецензент может раскрыть текст своих рецензий, указав на сайте Publons DOI опубликованных статей.</p><p> Список рецензий, отправленных рецензентами данного журнала в Publons, можно просмотреть на вкладке «Опубликовано».</p>        ]]></message>
+  <message key="plugins.generic.publons.confirmation.title">Отправить мою рецензию Publons</message>
+  <message key="plugins.generic.publons.confirmation.termsAndConditions">
+    <![CDATA[
+      <p>
+        Вы согласились отправить свою рецензию Publons. <br> <a href="https://publons.com/about/terms">Условия пользования</a>.
+      </p>
+    ]]>
+  </message>
+
+  <message key="plugins.generic.publons.export.successful">Данная рецензия успешно отправлена</message>
+  <message key="plugins.generic.publons.export.duplicate">Эта рецензия уже отправлена Publons</message>
+  <message key="plugins.generic.publons.export.error">Ошибка отправки рецензии Publons</message>
+  <message key="plugins.generic.publons.export.error.400">Ошибка доступа. Пожалуйста свяжитесь с администратором журнала.</message>
+  <message key="plugins.generic.publons.export.error.500">Ошибка сервера. Publons не отвечает, пожалуйста попробуйте еще раз через 10 минут.</message>
+
+  <message key="plugins.generic.publons.export.claimReview">Добавить рецензию</message>
+  <message key="plugins.generic.publons.export.next.autoClaimed">Ваша рецензия была автоматически добавлена к профилю Publons.</message>
+  <message key="plugins.generic.publons.export.next.partnerEmailed">Ссылка на добавление рецензии была отправлена вам по email от журнала, вы также можете добавить рецензию нажав на кнопку ниже.</message>
+  <message key="plugins.generic.publons.export.next.publonsEmailed">Ссылка на добавление рецензии была отправлена вам по email от Publons, вы также можете добавить рецензию нажав на кнопку ниже.</message>
+  <message key="plugins.generic.publons.export.next.setAutoClaim">Чтобы пропустить данный шаг в будущем - выберите "Automatically add reviews from partnered journals" в настройках профиля Publons.</message>
+  <message key="plugins.generic.publons.export.next.linkClick">Вы отписаны от писем Publons, для добавления рецензии Вам надо перейти по ссылке ниже.</message>
+  <message key="plugins.generic.publons.export.backToReviewPage">Назад к странице рецензии</message>
+
+  <message key="plugins.generic.publons.export.error.alreadyExported">Эта рецензия уже отправлена Publons</message>
+  <message key="plugins.generic.publons.export.error.reviewNotSubmitted">Вы должны закончить свою рецензию прежде чем отправлять её Publons</message>
+  <message key="plugins.generic.publons.export.error.invalidUser">Неверные имя пользователя/пароль для журнала</message>
+
+
+
+  <message key="plugins.generic.publons.settings.info">
+    <![CDATA[
+      <p> Для активации возможности получать признание за написанные рецензии на Publons, пожалуйста зарегистрируйте
+        свой интерес по <a href="http://publons.com/partner/info">данной ссылке</a> или
+        <a href="mailto:partnerships@publons.com">напишите Publons</a>. Вам будет предоставлен соответствующий доступ
+        к сайту с инструкцией по настройке плагина.
+      </p>
+      <p>
+        Для активации плагина заполните поля ниже
+      </p>
+    ]]>
+  </message>
+
+  <message key="plugins.generic.publons.settings.ps">
+    <![CDATA[
+      <p>
+        После активации плагина рецензенты могут добавлять рецензии к своим профилям на Publons.
+        Соответствующая опция будет доступна на странице рецензирования, после того как рецензия закончена.</p><p>
+        Если рецензент подтвердил отправление своей рецензии Publon, информация о рецензии будет автоматически отправлена
+        Publons и рецензент получит email (на адрес электронной почты с которым они зарегистрированы на сайте журнала)
+        с приглашением добавить рецензию к их профилю на Publons.
+      </p>
+      <p>
+        Когда пользователь переходит по ссылке в приглашении, он будет перенаправлен на сайт Publons,
+        где после регистрации (или входа в существующую учетную запись) рецензия будет добавлена к их профилю.
+        Пользователи также могут выбрать соответствующую опцию "Automatically add reviews from partnered journals"
+        на странице настроек профиля Publons чтобы автоматически добавлять отправленные рецензии.
+      </p>
+      <p>
+        По умолчанию Publons не публикует содержимое рецензий. Тем не менее, если редакция журнала и рецензент позволяют,
+        Publons опубликует содержимое рецензии как только статья будет опубликована.
+      </p>
+      <p>
+        Вкладка "Отправленные Рецензии" показывает список рецензий отправленных Publons.
+      </p>
+    ]]>
+  </message>
+
 </locale>
+

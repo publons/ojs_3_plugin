@@ -3,9 +3,8 @@
 /**
  * @file plugins/generic/publons/classes/PublonsReviews.inc.php
  *
- * Copyright (c) 2013-2014 Simon Fraser University Library
- * Copyright (c) 2003-2014 John Willinsky
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * Copyright (c) 2016 Publons Ltd.
+ * Distributed under the GNU GPL v3.
  *
  * @class PublonsReviews
  * @ingroup plugins_generic_publons
@@ -65,6 +64,22 @@ class PublonsReviews extends DataObject {
 	 */
 	function setReviewerId($reviewerId) {
 		return $this->setData('reviewerId', $reviewerId);
+	}
+
+		/**
+	 * Get the review ID of the publons review.
+	 * @return int
+	 */
+	function getReviewId() {
+		return $this->getData('reviewId');
+	}
+
+	/**
+	 * Set the review ID of the publons review.
+	 * @param $reviewId int
+	 */
+	function setReviewId($reviewId) {
+		return $this->setData('reviewId', $reviewId);
 	}
 
 	/**
