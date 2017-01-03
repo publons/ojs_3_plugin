@@ -58,7 +58,7 @@
   <message key="plugins.generic.publons.export.error.500">There is a server error. Publons is not responding, please try again in 10 minutes.</message>
 
   <message key="plugins.generic.publons.export.claimReview">Claim review</message>
-  <message key="plugins.generic.publons.export.next.autoClaimed">You review has been auto-claimed on Publons.</message>
+  <message key="plugins.generic.publons.export.next.autoClaimed">Your review has been auto-claimed on Publons.</message>
   <message key="plugins.generic.publons.export.next.partnerEmailed">Your journal has emailed you with a link to claim this review or you can click on the button below.</message>
   <message key="plugins.generic.publons.export.next.publonsEmailed">Publons has emailed you with a link to clain this review or you can click on the button below.</message>
   <message key="plugins.generic.publons.export.next.setAutoClaim">To skip this step in future please select "Automatically add reviews from partnered journals" in your Publons settings.</message>
@@ -66,7 +66,7 @@
   <message key="plugins.generic.publons.export.backToReviewPage">Back to review page</message>
 
   <message key="plugins.generic.publons.export.error.alreadyExported">Review has already been exported to Publons</message>
-  <message key="plugins.generic.publons.export.error.reviewNotSubmitted">You must submit you review before you can export it to Publons</message>
+  <message key="plugins.generic.publons.export.error.reviewNotSubmitted">You must submit your review before you can export it to Publons</message>
   <message key="plugins.generic.publons.export.error.invalidUser">Invalid OJS login details</message>
 
 
