@@ -35,11 +35,11 @@ To install the plugin:
 ### Usage
 For the plugin to work correctly the journal should be registered at http://publons.com. (See https://publons.com/partner/info/ for more info). Then the corresponding registration data should be entered in the appropriate fields on the plugin page "Connection": Home > User > Journal Management > Plugin Management > Generic Plugins > Publons.
 
-The link "Published" in the settings
-Here the Journal Manager can see the list of reviews transferred to Publons for the current journal.
+Click the link "Published" in the settings.
+Here is where the Journal Manager can see the list of reviews transferred to Publons for the current journal.
 
-When the plugin is enabled, a button “Publish my review on Publons” will be present on all submission pages after the review has submitted their review. After the reviewer has clicked on this button and confirmed they want to send their review to Publons, the review data is sent to Publons automatically and reviewer receives an invitation to claim it (or it is automatically added if reviewer has profile with Publons and opted in to automatically add reviews from partnered journals).
-The Publons website certifies only the fact the reviewer has completed peer review for the current journal. The text of the review can be disclosed on Publons website only after publication of the article. To disclose the text of the review reviewer should input the DOI of published article on Publons.
+When the plugin is enabled, a button “Publish my review on Publons” will be present on all submission pages after the reviewer has submitted their review. After the reviewer has clicked on this button and confirmed they want to send their review to Publons, the review data is sent to Publons automatically and reviewer receives an invitation to claim it (or it is automatically added if reviewer has profile with Publons and opted in to automatically add reviews from partnered journals).
+The Publons website certifies only the fact the reviewer has completed peer review for the current journal. The text of the review can be disclosed on Publons website only after publication of the article. To disclose the text of the review, the reviewer should input the DOI of the published article on Publons.
 
 ### Contact/Support
 Please email us for support, bugfixes or comments.
