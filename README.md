@@ -39,7 +39,7 @@ Click the link "Published" in the settings.
 Here is where the Journal Manager can see the list of reviews transferred to Publons for the current journal.
 
 When the plugin is enabled, a button “Publish my review on Publons” will be present on all submission pages after the reviewer has submitted their review. After the reviewer has clicked on this button and confirmed they want to send their review to Publons, the review data is sent to Publons automatically and reviewer receives an invitation to claim it (or it is automatically added if reviewer has profile with Publons and opted in to automatically add reviews from partnered journals).
-The Publons website certifies only the fact the reviewer has completed peer review for the current journal. The text of the review can be disclosed on Publons website only after publication of the article. To disclose the text of the review, the reviewer should input the DOI of the published article on Publons.
+The Publons website certifies only the fact the reviewer has completed peer review for the current journal. The text of the review can be disclosed on Publons website only after publication of the article and if both the publication author and journal allow it. To disclose the text of the review, the reviewer should input the DOI of the published article on Publons.
 
 ### Contact/Support
 Please email us for support, bugfixes or comments.
