@@ -22,15 +22,16 @@ See the accompanying OJS file docs/COPYING for the complete terms of this licens
 
 ### Installation
 To install the plugin:
- - On the OJS site go to Home > User > Journal Management > Plugin Management > Install a New Plugin,
-   select the .tar.gz file with the plugin and click "Continue"
+ - Download the plugin file `publons.tar.gz` from https://github.com/publons/ojs/releases/latest
+ - On your OJS site go to Home > User > Journal Management > Plugin Management > Install a New Plugin,
+   select the publons.tar.gz file you downloaded  and click "Continue"
  - Install the database schema: run the following command from your OJS directory:
     `$ php tools/dbXMLtoSQL.php -schema execute plugins/generic/publons/schema.xml`
  - Enable the plugin by going to:  Home > User > Journal Management > Plugin Management > Generic Plugins and selecting "ENABLE" under "Publons Plugin"
  - Set up correct credentials to post reviews to Publons by going to Home > User > Journal Management > Plugin Management > Generic Plugins and click “CONNECTION” under "Publons Plugin"
    - Enter the username and the password of the Publons user who has API access to Publons so that the plugin can retrieve the authorisation token required.
    - Enter the API key of the journal found on the Publons partner dashboard under 'Integrations'.
-   - __Optional__. Add the link to your journal landing page on publons so users can find more info about this.
+   - __Optional__. Add the link to your journal landing page on Publons so users can find more info about this.
 
 ### Usage
 For the plugin to work correctly the journal should be registered at http://publons.com. (See https://publons.com/partner/info/ for more info). Then the corresponding registration data should be entered in the appropriate fields on the plugin page "Connection": Home > User > Journal Management > Plugin Management > Generic Plugins > Publons.
