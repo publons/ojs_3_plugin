@@ -166,10 +166,13 @@ class PublonsHandler extends Handler {
             $data["reviewer"]["name"] = $rname;
             $data["reviewer"]["email"] = $remail;
             $data["publication"]["title"] = $rtitle;
-            $data["content"] = $body;
             $data["complete_date"]["day"] = date('d');
             $data["complete_date"]["month"] = date('m');
             $data["complete_date"]["year"] = date('Y');
+
+            // Don't send content if it is empty
+            if ($body !== '')
+                $data["content"] = $body;
 
             $json_data = json_encode($data, JSON_UNESCAPED_UNICODE);
 
