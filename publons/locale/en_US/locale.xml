@@ -11,6 +11,10 @@
   -->
 
 <locale name="en_US" full_name="U.S. English">
+
+  <message key="user.password">Password</message>
+  <message key="user.email">Email</message>
+
   <message key="plugins.generic.publons.displayName">Publons Plugin</message>
   <message key="plugins.generic.publons.description">This plugin allows you to post reviews to Publons.</message>
   <message key="plugins.generic.publons.list">A list of reviews which have been exported to Publons</message>

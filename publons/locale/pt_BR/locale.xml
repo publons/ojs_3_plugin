@@ -12,6 +12,10 @@
   -->
 
 <locale name="pt_BR" full_name="Brazilian Portuguese">
+
+  <message key="user.password">Senha</message>
+  <message key="user.email">E-mail</message>
+
   <message key="plugins.generic.publons.displayName">Publons Plugin</message>
   <message key="plugins.generic.publons.description">Este plugin permite que você publique suas avaliações no Publons.</message>
   <message key="plugins.generic.publons.list">Lista de avaliações enviadas para Publons</message>

@@ -8,66 +8,56 @@
  *
  *}
 {strip}
-	{assign var="pageTitle" value="plugins.generic.publons.displayName"}
-	{include file="common/header.tpl"}
+    {assign var="pageTitle" value="plugins.generic.publons.displayName"}
 {/strip}
 
-<ul class="menu">
-	<li class="current"><a href="{plugin_url path="connect"}">{translate key="plugins.generic.publons.settings.connection"}</a></li>
-	<li><a href="{plugin_url path="settings"}">{translate key="plugins.generic.publons.settings.published"}</a></li>
-</ul>
+<script>
+    $(function() {ldelim}
+        // Attach the form handler.
+        $('#publonsConnectionForm').pkpHandler('$.pkp.controllers.form.AjaxFormHandler');
+    {rdelim});
+</script>
 
 <p>{translate key="plugins.generic.publons.settings.info"}</p>
 
-<div style="margin: 1em 0;">
+<div>
 
-	<form method="post" action="{plugin_url path="connect"}"">
-		{include file="common/formErrors.tpl"}
+    <form class="pkp_form" id="publonsConnectionForm" method="post" action="{url router=$smarty.const.ROUTE_COMPONENT op="manage" category="generic" plugin=$pluginName verb="connect" save=true}">
+        {csrf}
+        {include file="controllers/notification/inPlaceNotification.tpl" notificationId="publonsConnectionFormNotification"}
 
-		<table width="100%" class="data">
-			<tr valign="top">
-				<td class="label">{fieldLabel name="username" required="true" key="user.email"}</td>
-				<td class="value"><input type="text" size="73" name="username" id="username" value="{$username|escape}" size="20" maxlength="90" class="textField" /></td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>{translate key="plugins.generic.publons.settings.usernameDescription"}</td>
-			</tr>
-			<tr valign="top">
-				<td class="label">{fieldLabel name="password" required="true" key="user.password"}</td>
-				<td class="value">
-					<input type="password" size=73" name="password" id="password" value="{$password|escape}" size="20" maxlength="90" class="textField"/>
-				</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>{translate key="plugins.generic.publons.settings.passwordDescription"}</td>
-			</tr>
-			<tr valign="top">
-				<td class="label">{fieldLabel name="auth_key" required="true" key="plugins.generic.publons.settings.auth_key"}</td>
-				<td class="value">
-					<input type="text" size="73" name="auth_key" id="auth_key" value="{$auth_key|escape}" size="20" maxlength="90" class="textField"/>
-				</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>{translate key="plugins.generic.publons.settings.auth_keyDescription"}</td>
-			</tr>
-			<tr valign="top">
-				<td class="label">{fieldLabel name="info_url" key="plugins.generic.publons.settings.url"}</td>
-				<td class="value">
-					<input type="text" size="73" name="info_url" id="info_url" value="{$info_url|escape}" size="20" maxlength="90" class="textField"/>
-				</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>{translate key="plugins.generic.publons.settings.urlDescription"}</td>
-			</tr>
-		</table>
-		<input type="submit" class="button defaultButton" name="save" value="{translate key="common.save"}"	/>
-		<input type="button" class="button" value="{translate key="common.cancel"}" onclick="document.location='{plugin_url path=""}';"/>
-	</form>
-	<p><span class="formRequired">{translate key="common.requiredField"}</span></p>
+        {fbvFormArea id="publonsConnectionFormArea"}
+            <table width="100%" class="data">
+                <tr valign="top">
+                    <td class="label">{fieldLabel name="username" required="true" key="user.email"}</td>
+                    <td class="value">
+                        {fbvElement type="text" id="username" name="username" value="" label="plugins.generic.publons.settings.usernameDescription"}
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td class="label">{fieldLabel name="password" required="true" key="user.password"}</td>
+                    <td class="value">
+                        {fbvElement type="text" id="password" name="password" value="" password="true" label="plugins.generic.publons.settings.passwordDescription"}
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td class="label">{fieldLabel name="auth_key" required="true" key="plugins.generic.publons.settings.auth_key"}</td>
+                    <td class="value">
+                        {fbvElement type="text" id="auth_key" name="auth_key" value="$auth_key" label="plugins.generic.publons.settings.auth_keyDescription"}
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td class="label">{fieldLabel name="info_url" key="plugins.generic.publons.settings.url"}</td>
+                    <td class="value">
+                        {fbvElement type="text" id="info_url" name="info_url" value="$info_url" label="plugins.generic.publons.settings.urlDescription"}
+                    </td>
+                </tr>
+            </table>
+
+        {/fbvFormArea}
+
+        {fbvFormButtons}
+    </form>
+    <p><span class="formRequired">{translate key="common.requiredField"}</span></p>
 </div>
 <p>{translate key="plugins.generic.publons.settings.ps"}</p>
-{include file="common/footer.tpl"}

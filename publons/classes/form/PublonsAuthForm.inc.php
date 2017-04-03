@@ -33,13 +33,14 @@ class PublonsAuthForm extends Form {
         $this->_plugin =& $plugin;
         $this->_journalId = $journalId;
 
-        parent::Form($plugin->getTemplatePath() . 'publonsAuthForm.tpl');
+        parent::__construct($plugin->getTemplatePath() . 'publonsAuthForm.tpl');
         $this->addCheck(new FormValidator($this, 'username', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.publons.settings.usernameRequired'));
         $this->addCheck(new FormValidator($this, 'password', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.publons.settings.passwordRequired'));
         $this->addCheck(new FormValidator($this, 'auth_key', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.publons.settings.authKeyRequired'));
         $this->addCheck(new FormValidator($this, 'auth_token', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.publons.settings.authTokenRequired'));
         $this->addCheck(new FormValidator($this, 'info_url', FORM_VALIDATOR_OPTIONAL_VALUE, 'plugins.generic.publons.settings.invalidHelpUrl', new PublonsHelpURLFormValidator()));
         $this->addCheck(new FormValidatorPost($this));
+        $this->addCheck(new FormValidatorCSRF($this));
     }
 
     /**
@@ -47,21 +48,18 @@ class PublonsAuthForm extends Form {
      */
     function initData() {
         $plugin =& $this->_plugin;
+        $journalId = $this->_journalId;
 
         // Initialize from plugin settings
-        $this->setData('username', $plugin->getSetting($this->_journalId, 'username'));
-        $this->setData('auth_key', $plugin->getSetting($this->_journalId, 'auth_key'));
-        $this->setData('info_url', $plugin->getSetting($this->_journalId, 'info_url'));
-
-        // If password has already been set, echo back slug
-        $password = $plugin->getSetting($this->_journalId, 'password');
-        if (!empty($password)) {
-            $this->setData('password', $password);
-        }
+        $this->setData('auth_key', $plugin->getSetting($journalId, 'auth_key'));
+        $this->setData('info_url', $plugin->getSetting($journalId, 'info_url'));
     }
 
     /**
      * @see Form::readInputData()
+     * Reads the input data - uses the username and password to get the private
+     * access token for sending reviews to publons. The username and password
+     * are not saved.
      */
     function readInputData() {
         $this->readUserVars(array('auth_key', 'username', 'password', 'info_url'));
@@ -104,6 +102,16 @@ class PublonsAuthForm extends Form {
     }
 
     /**
+     * Fetch the form.
+     * @copydoc Form::fetch()
+     */
+    function fetch($request) {
+        $templateMgr = TemplateManager::getManager($request);
+        $templateMgr->assign('pluginName', $this->_plugin->getName());
+        return parent::fetch($request);
+    }
+
+    /**
      * @see Form::execute()
      */
     function execute() {
@@ -111,6 +119,7 @@ class PublonsAuthForm extends Form {
         $plugin->updateSetting($this->_journalId, 'auth_token', $this->getData('auth_token') , 'string');
         $plugin->updateSetting($this->_journalId, 'auth_key', $this->getData('auth_key'), 'string');
         $plugin->updateSetting($this->_journalId, 'info_url', $this->getData('info_url'), 'string');
+
     }
 
 

@@ -12,6 +12,10 @@
   -->
 
 <locale name="ru_RU" full_name="Russian">
+
+  <message key="user.password">Пароль</message>
+  <message key="user.email">Адрес (E-mail)</message>
+
   <message key="plugins.generic.publons.displayName">Publons Плагин</message>
   <message key="plugins.generic.publons.description">Данный плагин позволяет добавлять рецензии к профилю рецензента на Publons.</message>
   <message key="plugins.generic.publons.list">Список рецензий отправленных Publons</message>
