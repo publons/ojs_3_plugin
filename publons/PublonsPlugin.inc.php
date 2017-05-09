@@ -34,7 +34,10 @@ class PublonsPlugin extends GenericPlugin {
             DAORegistry::registerDAO('PublonsReviewsDAO', $publonsReviewsDao);
 
             HookRegistry::register('TemplateManager::display', array(&$this, 'handleTemplateDisplay'));
+            HookRegistry::register('TemplateManager::fetch', array(&$this, 'handleTemplateFetch'));
             HookRegistry::register ('LoadHandler', array(&$this, 'handleRequest'));
+
+
             return true;
         }
         return false;
@@ -112,15 +115,15 @@ class PublonsPlugin extends GenericPlugin {
                     __('plugins.generic.publons.settings.connection'),
                     null
                 ),
-                new LinkAction(
-                    'settings',
-                    new AjaxModal(
-                        $router->url($request, null, null, 'manage', null, array('verb' => 'settings', 'plugin' => $this->getName(), 'category' => 'generic')),
-                        $this->getDisplayName()
-                    ),
-                    __('plugins.generic.publons.settings.published'),
-                    null
-                ),
+                // new LinkAction(
+                //     'settings',
+                //     new AjaxModal(
+                //         $router->url($request, null, null, 'manage', null, array('verb' => 'settings', 'plugin' => $this->getName(), 'category' => 'generic')),
+                //         $this->getDisplayName()
+                //     ),
+                //     __('plugins.generic.publons.settings.published'),
+                //     null
+                // ),
             ):array(),
             parent::getActions($request, $verb)
         );
@@ -152,55 +155,21 @@ class PublonsPlugin extends GenericPlugin {
                     $form->initData();
                 }
                 return new JSONMessage(true, $form->fetch($request));
-            case 'settings':
-                $publonsReviewsDao =& DAORegistry::getDAO('PublonsReviewsDAO');
-                $reviewsByJournal =& $publonsReviewsDao->getPublonsReviewsByJournal($journal->getId());
+            // case 'settings':
+            //     $publonsReviewsDao =& DAORegistry::getDAO('PublonsReviewsDAO');
+            //     $reviewsByJournal =& $publonsReviewsDao->getPublonsReviewsByJournal($journal->getId());
 
-                $this->import('classes.form.SettingsForm');
-                $form = new SettingsForm($this, $journal->getId());
-                    $form->initData();
-                $form->display();
-                return true;
+            //     $this->import('classes.form.SettingsForm');
+            //     $form = new SettingsForm($this, $journal->getId());
+            //         $form->initData();
+            //     $form->display();
+            //     return true;
 
         }
 
-        // switch ($request->getUserVar('verb')) {
-        //     case 'settings':
-        //         $context = $request->getContext();
-
-        //         $this->import('SettingsForm');
-        //         $form = new SettingsForm($this, $context->getId());
-
-        //         if ($request->getUserVar('save')) {
-        //             $form->readInputData();
-        //             if ($form->validate()) {
-        //                 $form->execute();
-        //                 return new JSONMessage(true);
-        //             }
-        //         } else {
-        //             $form->initData();
-        //         }
-        //         return new JSONMessage(true, $form->fetch($request));
-        // }
         return parent::manage($args, $request);
     }
 
-    /**
-     * Hook callback: register output filter to add data citation to submission
-     * summaries; add data citation to reading tools' suppfiles and metadata views.
-     * @see TemplateManager::display()
-     */
-    function handleTemplateDisplay($hookName, $args) {
-        if ($this->getEnabled()) {
-            $templateMgr =& $args[0];
-            $template =& $args[1];
-            if ($template != 'reviewer/submission.tpl') return false;
-
-
-            $templateMgr->register_outputfilter(array(&$this, 'submissionOutputFilter'));
-            return false;
-        }
-    }
 
     function handleRequest($hookName, $params) {
         $page =& $params[0];
@@ -222,48 +191,123 @@ class PublonsPlugin extends GenericPlugin {
     }
 
     /**
+     * Hook callback: register output filter to add data citation to submission
+     * summaries; add data citation to reading tools' suppfiles and metadata views.
+     * @see TemplateManager::display()
+     */
+    function handleTemplateDisplay($hookName, $args) {
+        if ($this->getEnabled()) {
+            $templateMgr =& $args[0];
+            $request = PKPApplication::getRequest();
+
+            // Assign our private stylesheet, for front and back ends.
+            $templateMgr->addStyleSheet(
+                'publons',
+                $request->getBaseUrl() . '/' . $this->getStyleSheet(),
+                array(
+                    'contexts' => array('frontend', 'backend')
+                )
+            );
+
+            return false;
+        }
+    }
+
+    function handleTemplateFetch($hookName, $args) {
+        if ($this->getEnabled()) {
+            $templateMgr =& $args[0];
+            $template =& $args[1];
+
+            switch ($template) {
+                case 'reviewer/review/reviewCompleted.tpl':
+                    $templateMgr->register_outputfilter(array(&$this, 'completedSubmissionOutputFilter'));
+                    break;
+                case 'reviewer/review/step3.tpl':
+                    $templateMgr->register_outputfilter(array(&$this, 'step3SubmissionOutputFilter'));
+                    break;
+                default:
+                    return false;
+            }
+
+            return false;
+        }
+    }
+
+
+    function step3SubmissionOutputFilter($output, &$templateMgr) {
+
+        $plugin =& PluginRegistry::getPlugin('generic', $this->getName());
+
+        $reviewerSubmissionDao =& DAORegistry::getDAO('ReviewerSubmissionDAO');
+        $reviewSubmission = $templateMgr->get_template_vars('submission');
+        $reviewId = $reviewSubmission->getReviewId();
+        $journalId = $reviewSubmission->getJournalId();
+        $auth_token = $plugin->getSetting($journalId, 'auth_token');
+
+
+        // Only display if the plugin has been setup
+        if ($auth_token){
+
+            preg_match_all('/<div class="section formButtons form_buttons ">/s', $output, $matches, PREG_OFFSET_CAPTURE);
+            preg_match('/id="publons-info"/s', $output, $done);
+            if (!is_null(array_values(array_slice($matches[0], -1))[0][1])){
+                $match = array_values(array_slice($matches[0], -1))[0][1];
+
+                $beforeInsertPoint = substr($output, 0, $match);
+                $afterInsertPoint = substr($output, $match - strlen($output));
+
+
+                // $publonsReviewsDao =& DAORegistry::getDAO('PublonsReviewsDAO');
+                // $published =& $publonsReviewsDao->getPublonsReviewsIdByReviewId($reviewId);
+                // $info_url = $this->getSetting($journalId, 'info_url');
+
+                $templateMgr =& TemplateManager::getManager();
+                // $templateMgr->assign('reviewId', $reviewId);
+                // $templateMgr->assign('published', $published);
+                // $templateMgr->assign('infoURL', $info_url);
+
+                $newOutput = $beforeInsertPoint;
+                if (empty($done)){
+                    $newOutput .= $templateMgr->fetch($this->getTemplatePath() . 'publonsNotificationStep.tpl');
+                }
+                $newOutput .= $afterInsertPoint;
+
+                $output = $newOutput;
+            }
+
+        }
+
+        $templateMgr->unregister_outputfilter('step3SubmissionOutputFilter');
+        return $output;
+    }
+
+    /**
      * Output filter adds publons export step to submission process.
      * @param $output string
      * @param $templateMgr TemplateManager
      * @return $string
      */
-    function submissionOutputFilter($output, &$templateMgr) {
+    function completedSubmissionOutputFilter($output, &$templateMgr) {
 
         $plugin =& PluginRegistry::getPlugin('generic', $this->getName());
 
         $reviewerSubmissionDao =& DAORegistry::getDAO('ReviewerSubmissionDAO');
-        $reviewId = $templateMgr->get_template_vars('reviewId');
-        $reviewSubmission = $reviewerSubmissionDao->getReviewerSubmission($reviewId);
+        $reviewSubmission = $templateMgr->get_template_vars('submission');
+        $reviewId = $reviewSubmission->getReviewId();
         $journalId = $reviewSubmission->getJournalId();
         $auth_token = $plugin->getSetting($journalId, 'auth_token');
 
+
         // Only display if the plugin has been setup
         if ($auth_token){
-            // Insert css onto review page
-            preg_match('/<\/head>/', $output, $cssMatch, PREG_OFFSET_CAPTURE);
-            if (!is_null($cssMatch[0])){
-                $beforeInsertPoint = substr($output, 0, $cssMatch[0][1]);
-                $afterInsertPoint = substr($output, $cssMatch[0][1] - strlen($output));
-                $newOutput = $beforeInsertPoint;
-                $newOutput .= '<link rel="stylesheet" href="'.Request::getBaseUrl() . '/' . $plugin->getStyleSheet().'" type="text/css">';
-                $newOutput .= $afterInsertPoint;
-                $output = $newOutput;
-            }
 
-            // Insert Publons step onto review page
-            preg_match('/id="reviewSteps".+<td>5\.<\/td>.+<\/tr>(.+)/s', $output, $matches, PREG_OFFSET_CAPTURE);
-            if (!is_null($matches[1])){
+            preg_match('/<\/p>/s', $output, $matches, PREG_OFFSET_CAPTURE);
+            if (!is_null($matches[0][1])){
 
-                $beforeInsertPoint = substr($output, 0, $matches[1][1]);
-                $afterInsertPoint = substr($output, $matches[1][1] - strlen($output));
-
-                $journalId = $templateMgr->get_template_vars('submission')->getJournalId();
-
-                $eas = $templateMgr->get_template_vars()['submission']->getEditAssignments();
-
+                $beforeInsertPoint = substr($output, 0, $matches[0][1]);
+                $afterInsertPoint = substr($output, $matches[0][1] - strlen($output));
                 $publonsReviewsDao =& DAORegistry::getDAO('PublonsReviewsDAO');
                 $published =& $publonsReviewsDao->getPublonsReviewsIdByReviewId($reviewId);
-
                 $info_url = $this->getSetting($journalId, 'info_url');
 
                 $templateMgr =& TemplateManager::getManager();
@@ -272,14 +316,15 @@ class PublonsPlugin extends GenericPlugin {
                 $templateMgr->assign('infoURL', $info_url);
 
                 $newOutput = $beforeInsertPoint;
-                $newOutput .= $templateMgr->fetch($this->getTemplatePath() . 'publonsStep.tpl');
+                $newOutput .= $templateMgr->fetch($this->getTemplatePath() . 'publonsExportStep.tpl');
                 $newOutput .= $afterInsertPoint;
 
                 $output = $newOutput;
             }
+
         }
 
-        $templateMgr->unregister_outputfilter('submissionOutputFilter');
+        $templateMgr->unregister_outputfilter('completedSubmissionOutputFilter');
         return $output;
     }
 

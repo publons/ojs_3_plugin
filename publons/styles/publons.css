@@ -31,7 +31,6 @@
     font-weight: 600;
     white-space: nowrap;
     text-overflow: ellipsis;
-    overflow: hidden;
 }
 
 .publons-button a:hover {
@@ -41,6 +40,8 @@
 .publons-button a img,
 .publons-button span img {
     float: left;
+    height: 30px;
+    width: 30px;
     margin-right: 10px;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;

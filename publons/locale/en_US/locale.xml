@@ -55,6 +55,12 @@
     ]]>
   </message>
 
+  <message key="plugins.generic.publons.notice.title">Export review to Publons</message>
+  <message key="plugins.generic.publons.notice.explanation">
+    <![CDATA[
+      You will be able to export your review to <a href="https://publons.com">Publons</a> on tab 4 once you have submitted your review.
+    ]]>
+  </message>
   <message key="plugins.generic.publons.export.successful">The review has been successfully exported</message>
   <message key="plugins.generic.publons.export.duplicate">This review has already been exported to Publons</message>
   <message key="plugins.generic.publons.export.error">Error exporting review to Publons</message>
