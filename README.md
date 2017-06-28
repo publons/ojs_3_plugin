@@ -16,7 +16,7 @@ See the accompanying OJS file docs/COPYING for the complete terms of this licens
 
 ### System Requirements
 - OJS 2.4.5 or greater (Not working on OJS 3.0 yet).
-- PHP 5.2 or greater.
+- PHP 5.6.*
 - CURL support for PHP.
 - ZipArchive support for PHP.
 
