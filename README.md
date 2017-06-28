@@ -53,3 +53,4 @@ Original version written by Natalya Mollecker for the Media Sphera Publishing Ho
 - 1.0 - Initial Release
 - 1.1 - Fixed small issues
 - 2.0 - Refactor of how plugin works, large bugfixes, styling changes.
+- 2.0.1 - API token retrieval with password's that have special characters bugfix.
