@@ -76,16 +76,17 @@ class PublonsAuthForm extends Form {
             $url = $_SERVER["HTTP_PUBLONS_URL"]."/api/v2/token/";
         }
 
-        $curlopt = array(
-            CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_POST => true,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => $url,
-            CURLOPT_POSTFIELDS =>  'username='.$this->getData('username').'&password='.$this->getData('password')
-        );
+        $data = array("username" => $this->getData('username'), "password" => $this->getData('password'));
+        $data_string = json_encode($data);
 
-        $curl = curl_init();
-        curl_setopt_array($curl, $curlopt);
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json',
+            'Content-Length: ' . strlen($data_string))
+        );
 
         $httpResult = curl_exec($curl);
         $httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
