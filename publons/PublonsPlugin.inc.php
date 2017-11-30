@@ -198,6 +198,7 @@ class PublonsPlugin extends GenericPlugin {
     function submissionOutputFilter($output, &$templateMgr) {
 
         $plugin =& PluginRegistry::getPlugin('generic', $this->getName());
+        $templateMgr->unregister_outputfilter('submissionOutputFilter');
 
         $reviewerSubmissionDao =& DAORegistry::getDAO('ReviewerSubmissionDAO');
         $reviewId = $templateMgr->get_template_vars('reviewId');
@@ -219,7 +220,7 @@ class PublonsPlugin extends GenericPlugin {
             }
 
             // Insert Publons step onto review page
-            preg_match('/id="reviewSteps".+<td>5\.<\/td>.+<\/tr>(.+)/s', $output, $matches, PREG_OFFSET_CAPTURE);
+            preg_match('/id="reviewSteps".+<\/table>.{1}<\/div>(.+)/s', $output, $matches, PREG_OFFSET_CAPTURE);
             if (!is_null($matches[1])){
 
                 $beforeInsertPoint = substr($output, 0, $matches[1][1]);
@@ -246,8 +247,6 @@ class PublonsPlugin extends GenericPlugin {
                 $output = $newOutput;
             }
         }
-
-        $templateMgr->unregister_outputfilter('submissionOutputFilter');
         return $output;
     }
 

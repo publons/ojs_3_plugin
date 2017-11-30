@@ -15,10 +15,10 @@
   <message key="plugins.generic.publons.description">This plugin allows you to post reviews to Publons.</message>
   <message key="plugins.generic.publons.list">A list of reviews which have been exported to Publons</message>
 
+  <message key="plugins.generic.publons.review.addReviewtoPublons">Export my review to Publons</message>
   <message key="plugins.generic.publons.review.publonsStepInstructions">Get recognition for your review by exporting it to Publons.</message>
   <message key="plugins.generic.publons.review.urlHelp">To find out more follow this link:</message>
 
-  <message key="plugins.generic.publons.button.submitExportReview">Export my review to Publons</message>
   <message key="plugins.generic.publons.button.publishedReview">This review has been exported to Publons</message>
   <message key="plugins.generic.publons.button.completeReview">You must submit your review before it can be exported to Publons</message>
 

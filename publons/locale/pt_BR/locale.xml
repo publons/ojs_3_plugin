@@ -16,10 +16,10 @@
   <message key="plugins.generic.publons.description">Este plugin permite que você publique suas avaliações no Publons.</message>
   <message key="plugins.generic.publons.list">Lista de avaliações enviadas para Publons</message>
 
+  <message key="plugins.generic.publons.review.addReviewtoPublons">Exportar meu parecer para Publons</message>
   <message key="plugins.generic.publons.review.publonsStepInstructions">Certifique e obtenha reconhecimento pelo seu parecer ao exportar ele para Publons.</message>
   <message key="plugins.generic.publons.review.urlHelp">Para mais informações sobre isso, acesse:</message>
 
-  <message key="plugins.generic.publons.button.submitExportReview">Exportar meu parecer para Publons</message>
   <message key="plugins.generic.publons.button.publishedReview">Essa avaliação já foi publicada no Publons</message>
   <message key="plugins.generic.publons.button.completeReview">Você deve submeter o seu parecer antes de exportar ele para Publons</message>
 

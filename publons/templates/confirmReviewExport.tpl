@@ -23,7 +23,7 @@
         <form method="post">
             <input type="hidden" name="reviewId" id="reviewId" value="{$reviewId}"/>
             <button id="sendToPublons" type="submit" class="primary autowidth" style="cursor: pointer;"/>
-                {translate key="plugins.generic.publons.button.submitExportReview"}
+                {translate key="plugins.generic.publons.review.addReviewtoPublons"}
             </button>
         </form>
 

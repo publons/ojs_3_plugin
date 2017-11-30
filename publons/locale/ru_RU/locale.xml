@@ -16,10 +16,10 @@
   <message key="plugins.generic.publons.description">Данный плагин позволяет добавлять рецензии к профилю рецензента на Publons.</message>
   <message key="plugins.generic.publons.list">Список рецензий отправленных Publons</message>
 
+  <message key="plugins.generic.publons.review.addReviewtoPublons">Отправить мою рецензию Publons</message>
   <message key="plugins.generic.publons.review.publonsStepInstructions">Получите признание за свою рецензию добавив ее к своему профилю на Publons.com</message>
   <message key="plugins.generic.publons.review.urlHelp">Что это? Перейдите по данной ссылке чтобы узнать больше:</message>
 
-  <message key="plugins.generic.publons.button.submitExportReview">Отправить мою рецензию Publons</message>
   <message key="plugins.generic.publons.button.publishedReview">Эта рецензия уже отправлена Publons</message>
   <message key="plugins.generic.publons.button.completeReview">Вы должны закончить свою рецензию прежде чем отправлять её Publons</message>
 
