@@ -8,8 +8,9 @@
  *
  *}
 
-<form method="post" action="javascript:openComments('{url op="exportReviews" reviewId=$reviewId}');">
-    <input type="hidden" name="reviewId" id="reviewId" value="{$reviewId}"/>
+<div id="publons-export" class="section">
+    <h3>{translate key="plugins.generic.publons.notice.title"}</h3>
+
     {if $submission->getRecommendation() === null || $submission->getRecommendation() === ''}
         <button type="submit" class="publons-button" disabled>
             <span title="{translate key="plugins.generic.publons.button.completeReview"}">
@@ -17,13 +18,31 @@
                 {translate key="plugins.generic.publons.button.completeReview"}
             </span>
         </button>
+
     {elseif !$published}
-        <button id="sendToPublons" type="submit" class="publons-button" style="cursor: pointer;">
-            <a title="{translate key="plugins.generic.publons.button.submitExportReview"}">
-                <img src="https://publons.com/static/images/logos/square/blue_white_shadow.png" height="30" width="30">
-                {translate key="plugins.generic.publons.button.submitExportReview"}
+        <div class="pkp_linkActions">
+            {assign var=contextId value="reviewStep4"}
+            {assign var=staticId value=$contextId|concat:"-":$exportReviewAction->getId():"-button"}
+            {assign var=buttonId value=$staticId|concat:"-"|uniqid}
+
+            <a href="#" id="{$buttonId|escape}" title="{translate key="plugins.generic.publons.button.submitExportReview"}" class="pkp_controllers_linkAction pkp_linkaction_{$exportReviewAction->getId()} pkp_linkaction_icon_{$exportReviewAction->getImage()}">
+                <button id="sendToPublons" type="submit" class="publons-button" style="cursor: pointer;">
+                    <img src="https://publons.com/static/images/logos/square/blue_white_shadow.png" height="30" width="30">
+                    {translate key="plugins.generic.publons.button.submitExportReview"}
+                </button>
             </a>
-        </button>
+        </div>
+
+        <script>
+            {* Attach the action handler to the button. *}
+            $(function() {ldelim}
+                $('#{$buttonId}').pkpHandler(
+                    '$.pkp.controllers.linkAction.LinkActionHandler',
+                        {include file="linkAction/linkActionOptions.tpl" action=$exportReviewAction selfActivate=$selfActivate staticId=$staticId}
+                    );
+            {rdelim});
+        </script>
+
     {else}
         <button type="submit" class="publons-button" disabled>
             <span title="{translate key="plugins.generic.button.publons.publishedReview"}">
@@ -32,4 +51,5 @@
             </span>
         </button>
     {/if}
-</form>
+
+</div>

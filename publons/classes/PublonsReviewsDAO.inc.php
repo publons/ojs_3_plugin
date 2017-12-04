@@ -53,7 +53,7 @@ class PublonsReviewsDAO extends DAO {
         $publonsReviews = new PublonsReviews();
         $publonsReviews->setId($row['publons_reviews_id']);
         $publonsReviews->setJournalId($row['journal_id']);
-        $publonsReviews->setArticleId($row['article_id']);
+        $publonsReviews->setSubmissionId($row['submission_id']);
         $publonsReviews->setReviewerId($row['reviewer_id']);
         $publonsReviews->setReviewId($row['review_id']);
         $publonsReviews->setTitleEn($row['title_en']);
@@ -74,7 +74,7 @@ class PublonsReviewsDAO extends DAO {
             sprintf('
                 INSERT INTO publons_reviews
                     (journal_id,
-                    article_id,
+                    submission_id,
                     reviewer_id,
                     review_id,
                     title_en,
@@ -85,7 +85,7 @@ class PublonsReviewsDAO extends DAO {
             ),
             array(
                 $publonsReviews->getJournalId(),
-                $publonsReviews->getArticleId(),
+                $publonsReviews->getSubmissionId(),
                 $publonsReviews->getReviewerId(),
                 $publonsReviews->getReviewId(),
                 $publonsReviews->getTitleEn()
@@ -116,7 +116,7 @@ class PublonsReviewsDAO extends DAO {
         $returner = $this->update(
             sprintf('UPDATE publons_reviews
                 SET journal_id = ?,
-                    article_id = ?,
+                    submission_id = ?,
                     reviewer_id = ?,
                     review_id = ?,
                     title_en = ?,
@@ -126,7 +126,7 @@ class PublonsReviewsDAO extends DAO {
             ),
             array(
                 (int) $publonsReviews->getJournal(),
-                (int) $publonsReviews->getArticleId(),
+                (int) $publonsReviews->getSubmissionId(),
                 (int) $publonsReviews->getReviewerId(),
                 (int) $publonsReviews->getReviewId(),
                 $publonsReviews->getTitleEn(),
@@ -162,27 +162,27 @@ class PublonsReviewsDAO extends DAO {
      * @return int
      */
     function getInsertObjectId() {
-        return $this->getInsertId('publons_reviews', 'publons_reviews_id');
+        return $this->_getInsertId('publons_reviews', 'publons_reviews_id');
     }
 
 
     /**
      * Return a submitted book for review id for a given article and journal.
      * @param $journalId int
-     * @param $articleId int
+     * @param $submissionId int
      * @param $reviewerId int
      * @return int
      */
-    function getPublonsReviewsIdByArticle($journalId, $articleId, $reviewerId) {
+    function getPublonsReviewsIdByArticle($journalId, $submissionId, $reviewerId) {
 
         $result =& $this->retrieve(
             'SELECT publons_reviews_id
                 FROM publons_reviews
-                WHERE article_id = ?
+                WHERE submission_id = ?
                 AND journal_id = ?
                 AND reviewer_id = ?',
             array(
-                $articleId,
+                $submissionId,
                 $journalId,
                 $reviewerId
             )

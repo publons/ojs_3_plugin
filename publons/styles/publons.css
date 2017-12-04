@@ -19,7 +19,7 @@
     padding: 0px;
 }
 
-.publons-button a,
+.publons-button,
 .publons-button span {
     display: inline-block;
     text-align: left;
@@ -33,11 +33,11 @@
     text-overflow: ellipsis;
 }
 
-.publons-button a:hover {
+.publons-button:hover {
     background-color: #aaa;
 }
 
-.publons-button a img,
+.publons-button img,
 .publons-button span img {
     float: left;
     height: 30px;
@@ -46,3 +46,75 @@
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
 }
+
+#publons-header{
+    margin-left: -16px;
+    margin-right: -16px;
+    margin-top: -16px;
+}
+
+#publons-background {
+    background-color: #222;
+    width: 100%;
+    text-align: center;
+}
+
+
+#publons-background img{
+    height: 80px;
+    margin: 10px 0px;
+}
+
+#publons-content {
+    font-size: 16px;
+    font-family: Roboto,sans-serif !important;
+}
+
+#publons-content h2{
+    font-size: 28.8px;
+    font-family: Roboto,sans-serif !important;
+}
+
+// #publons-content button {
+//     color: #444;
+//     background-color: #eee;
+//     box-shadow: 0 -2px 0 rgba(0,0,0,.2) inset;
+//     white-space: nowrap;
+//     text-overflow: ellipsis;
+//     -ms-transition-property: all;
+//     -o-transition-property: all;
+//     -webkit-transition-property: all;
+//     transition-property: all;
+//     transition-duration: .1s;
+//     transition-timing-function: ease-out;
+//     overflow: hidden;
+//     padding: 0 15px;
+//     line-height: 36px;
+//     display: block;
+//     text-align: center;
+//     font-weight: 600;
+//     outline: 0;
+//     border-top: 1px solid rgba(255,255,255,.1);
+//     box-sizing: border-box;
+//     font-size: 11px!important;
+//     width: 100%;
+//     text-transform: uppercase;
+//     letter-spacing: 1px;
+//     font-family: Roboto,sans-serif;
+//     border-radius: 3px;
+//     border: 0;
+// }
+
+// #publons-content button.primary {
+//     color: #fff;
+//     background-color: #369;
+// }
+
+// #publons-content button:hover {
+//     opacity: .9;
+// }
+
+// #publons-content button.autowidth {
+//     width: auto;
+//     display: inline-block;
+// }

@@ -25,7 +25,7 @@
 		<field name="journal_id" type="I8">
 			<NOTNULL/>
 		</field>
-		<field name="article_id" type="I8">
+		<field name="submission_id" type="I8">
 			<NOTNULL/>
 		</field>
 		<field name="reviewer_id" type="I8">

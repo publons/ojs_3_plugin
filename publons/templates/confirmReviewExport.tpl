@@ -7,9 +7,18 @@
  * Publons confirm you want to send review to publons page
  *
  *}
+
 {strip}
 {include file="submission/comment/header.tpl"}
 {/strip}
+
+<script>
+    $(function() {ldelim}
+        // Attach the form handler.
+        $('#exportToPublonsForm').pkpHandler('$.pkp.controllers.form.AjaxFormHandler');
+    {rdelim});
+</script>
+
 <div id="publons-header">
     <img src="https://publons.com/static/images/logos/full/blue_white.png"/>
 </div>
@@ -20,11 +29,15 @@
 
         <p>{translate key="plugins.generic.publons.confirmation.termsAndConditions"}</p>
 
-        <form method="post">
+        <form class="pkp_form" id="exportToPublonsForm" method="post" action="{url router=$smarty.const.ROUTE_COMPONENT op="manage" category="generic" plugin=$pluginName verb="connect" save=true}">
+            {csrf}
+
             <input type="hidden" name="reviewId" id="reviewId" value="{$reviewId}"/>
-            <button id="sendToPublons" type="submit" class="primary autowidth" style="cursor: pointer;"/>
+            <button type="submit" class="pkp_button submitFormButton" style="cursor: pointer;"/>
                 {translate key="plugins.generic.publons.button.submitExportReview"}
             </button>
+
+        {fbvFormButtons}
         </form>
 
     </div>

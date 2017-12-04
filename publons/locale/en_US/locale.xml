@@ -98,7 +98,10 @@
     <![CDATA[
       <p>
         Once you have enabled the plugin, the option for Reviewers to receive recognition for their review will appear on
-        the review submission page.</p><p>If the reviewer has opted to receive recognition for their review, upon
+        the review submission page.
+      </p>
+      <p>
+        If the reviewer has opted to receive recognition for their review, upon
         submission, data will be securely transmitted to Publons and the reviewer will be sent
         an email (to the email address they have registered with the journal) containing a link to claim their review.
       </p>

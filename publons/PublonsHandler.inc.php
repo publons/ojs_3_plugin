@@ -13,26 +13,36 @@
  */
 
 
-import('pages.sectionEditor.SectionEditorHandler');
 import('pages.reviewer.ReviewerHandler');
 import('classes.handler.Handler');
+import('lib.pkp.classes.core.JSONMessage');
 
 class PublonsHandler extends Handler {
+
+    /** @var PublonsPlugin The publons plugin */
+
+    static $plugin;
+
+    static function setPlugin($plugin) {
+        self::$plugin = $plugin;
+    }
 
     /**
      * Confirm you want to export the review (GET) then export it (POST)
      * @param array $args
      * @param Request $request
      */
-    function exportReviews($args, &$request) {
-
-        $plugin =& PluginRegistry::getPlugin('generic', PUBLONS_PLUGIN_NAME);
+    function exportReview($args, $request) {
+        $plugin =self::$plugin;
         $templateMgr =& TemplateManager::getManager();
         $templateMgr->addStyleSheet(Request::getBaseUrl() . '/' . $plugin->getStyleSheet());
-        $reviewId = intval($request->getUserVar('reviewId'));
+        $templateMgr->addStyleSheet(Request::getBaseUrl() . '/' . $plugin->getPluginPath() . '/styles/publons-page.css');
+        $templateMgr->addStyleSheet('https://fonts.googleapis.com/css?family=Roboto');
+
+        $reviewId = intval($args[0]);
 
         $publonsReviewsDao =& DAORegistry::getDAO('PublonsReviewsDAO');
-        $articleCommentDao =& DAORegistry::getDAO('ArticleCommentDAO');
+        $submissionCommentDao =& DAORegistry::getDAO('SubmissionCommentDAO');
         $reviewerSubmissionDao =& DAORegistry::getDAO('ReviewerSubmissionDAO');
 
         $exported =& $publonsReviewsDao->getPublonsReviewsIdByReviewId($reviewId);
@@ -43,42 +53,39 @@ class PublonsHandler extends Handler {
 
         $user =& Request::getUser();
 
-        if ($exported)
-        {
+        if ($exported) {
             // Check that the review hasn't been exported already
             $templateMgr->assign('info', __('plugins.generic.publons.export.error.alreadyExported'));
-            $templateMgr->display($plugin->getTemplatePath() . 'export.tpl');
-            return;
-        }
-        elseif (($reviewSubmission->getRecommendation() === null) || ($reviewSubmission->getRecommendation() === ''))
-        {
+            return $templateMgr->fetchJson($plugin->getTemplatePath() . 'export.tpl');
+
+        } elseif (($reviewSubmission->getRecommendation() === null) || ($reviewSubmission->getRecommendation() === '')) {
             // Check that the review has been submitted to the editor
             $templateMgr->assign('info', __('plugins.generic.publons.export.error.reviewNotSubmitted'));
-            $templateMgr->display($plugin->getTemplatePath() . 'export.tpl');
-            return;
+            return $templateMgr->fetchJson($plugin->getTemplatePath() . 'export.tpl');
 
-        }
-        elseif ($user->getId() !== $reviewerId)
-        {
+        } elseif ($user->getId() !== $reviewerId) {
             // Check that user is person who wrote review
             $templateMgr->assign('info', __('plugins.generic.publons.export.error.invalidUser'));
-            $templateMgr->display($plugin->getTemplatePath() . 'export.tpl');
-            return;
+            return $templateMgr->fetchJson($plugin->getTemplatePath() . 'export.tpl');
         }
 
 
 
-        if ($request->isGet())
-        {
+        if ($request->isGet()) {
+
+            $router = $request->getRouter();
             $templateMgr->assign('reviewId', $reviewId);
+            $templateMgr->assign('pageURL', $router->url($request, null, null, 'exportReview', array('reviewId' =>  $reviewId)));
+
+
             $templateMgr->addStyleSheet(Request::getBaseUrl() . '/' . $plugin->getPluginPath() . '/styles/publons-page.css');
             $templateMgr->addStyleSheet('https://fonts.googleapis.com/css?family=Roboto');
-            $templateMgr->display($plugin->getTemplatePath() . 'confirmReviewExport.tpl');
+            return $templateMgr->fetchJson($plugin->getTemplatePath() . 'publonsExportReviewForm.tpl');
         }
         elseif ($request->isPost())
         {
             $journalId = $reviewSubmission->getJournalId();
-            $articleId = $reviewSubmission->getArticleId();
+            $submissionId = $reviewSubmission->getId();
             $rtitle = $reviewSubmission->getLocalizedTitle();
             $rtitle_en = $reviewSubmission->getTitle('en_US');
             $rname = $user->getFullName();
@@ -89,7 +96,7 @@ class PublonsHandler extends Handler {
             $body = '';
             if (!$reviewAssignment->getCancelled()) {
                 // Get the comments associated with this review assignment
-                $articleComments =& $articleCommentDao->getArticleComments($reviewSubmission->getId(), COMMENT_TYPE_PEER_REVIEW, $reviewAssignment->getId());
+                $articleComments =& $submissionCommentDao->getSubmissionComments($reviewSubmission->getId(), COMMENT_TYPE_PEER_REVIEW, $reviewAssignment->getId());
 
                 if($articleComments) {
                     if (is_array($articleComments)) {
@@ -143,7 +150,7 @@ class PublonsHandler extends Handler {
             $publonsReviews = new PublonsReviews();
 
             $publonsReviews->setJournalId($journalId);
-            $publonsReviews->setArticleId($articleId);
+            $publonsReviews->setSubmissionId($submissionId);
             $publonsReviews->setReviewerId($reviewerId);
             $publonsReviews->setReviewId($reviewId);
             $publonsReviews->setTitleEn($rtitle_en);
@@ -215,10 +222,7 @@ class PublonsHandler extends Handler {
 
             $templateMgr->assign('result',$returned['result']);
             $templateMgr->assign('error', $returned['error']);
-
-            $templateMgr->addStyleSheet(Request::getBaseUrl() . '/' . $plugin->getPluginPath() . '/styles/publons-page.css');
-            $templateMgr->addStyleSheet('https://fonts.googleapis.com/css?family=Roboto');
-            $templateMgr->display($plugin->getTemplatePath() . 'export.tpl');
+            return $templateMgr->fetchJson($plugin->getTemplatePath() . 'export.tpl');
         }
 
 

@@ -25,19 +25,16 @@ class PublonsPlugin extends GenericPlugin {
     function register($category, $path) {
 
         if (parent::register($category, $path)) {
+            if ($this->getEnabled()) {
+                $this->import('classes.PublonsReviews');
+                $this->import('classes.PublonsReviewsDAO');
+                $publonsReviewsDao = new PublonsReviewsDAO();
+                DAORegistry::registerDAO('PublonsReviewsDAO', $publonsReviewsDao);
 
-                        if (!$this->php5Installed()) return false;
-
-            $this->import('classes.PublonsReviews');
-            $this->import('classes.PublonsReviewsDAO');
-            $publonsReviewsDao = new PublonsReviewsDAO();
-            DAORegistry::registerDAO('PublonsReviewsDAO', $publonsReviewsDao);
-
-            HookRegistry::register('TemplateManager::display', array(&$this, 'handleTemplateDisplay'));
-            HookRegistry::register('TemplateManager::fetch', array(&$this, 'handleTemplateFetch'));
-            HookRegistry::register ('LoadHandler', array(&$this, 'handleRequest'));
-
-
+                HookRegistry::register('TemplateManager::display', array(&$this, 'handleTemplateDisplay'));
+                HookRegistry::register('TemplateManager::fetch', array(&$this, 'handleTemplateFetch'));
+                HookRegistry::register ('LoadHandler', array(&$this, 'handleRequest'));
+            }
             return true;
         }
         return false;
@@ -60,7 +57,8 @@ class PublonsPlugin extends GenericPlugin {
     function getDisplayName() {
         return __('plugins.generic.publons.displayName');
     }
-        /**
+
+    /**
      * Get the description of this plugin
      * @return string
     */
@@ -69,18 +67,10 @@ class PublonsPlugin extends GenericPlugin {
     }
 
     /**
-     * @see PKPPlugin::getHandlerPath()
-     * @return string
-     */
-    function getHandlerPath() {
-        return $this->getPluginPath() . DIRECTORY_SEPARATOR . 'pages';
-    }
-
-    /**
      * @see PKPPlugin::getTemplatePath()
      */
     function getTemplatePath() {
-        return parent::getTemplatePath() . 'templates/';
+        return parent::getTemplatePath() . 'templates' . DIRECTORY_SEPARATOR;
     }
 
     /**
@@ -95,7 +85,7 @@ class PublonsPlugin extends GenericPlugin {
      * Get the stylesheet for this plugin.
      */
     function getStyleSheet() {
-        return $this->getPluginPath() . '/styles/publons.css';
+        return $this->getPluginPath() . DIRECTORY_SEPARATOR . 'styles' . DIRECTORY_SEPARATOR . 'publons.css';
     }
 
     /**
@@ -139,7 +129,6 @@ class PublonsPlugin extends GenericPlugin {
         $templateMgr->register_function('plugin_url', array($this, 'smartyPluginUrl'));
 
         $journal =& Request::getJournal();
-
         switch ($request->getUserVar('verb')) {
             case 'connect':
                 $this->import('classes.form.PublonsAuthForm');
@@ -164,7 +153,20 @@ class PublonsPlugin extends GenericPlugin {
             //         $form->initData();
             //     $form->display();
             //     return true;
+            case 'export':
+                $this->import('classes.form.PublonsExportReviewForm');
+                $form = new PublonsExportReviewForm($this);
+                if ($request->getUserVar('save')) {
+                    $form->readInputData();
+                    if ($form->validate()) {
 
+                        $form->execute();
+                        return new JSONMessage(true);
+                    }
+                } else {
+                    $form->initData();
+                }
+                return new JSONMessage(true, $form->fetch($request));
         }
 
         return parent::manage($args, $request);
@@ -177,18 +179,30 @@ class PublonsPlugin extends GenericPlugin {
         AppLocale::requireComponents(LOCALE_COMPONENT_APPLICATION_COMMON);
         if ($page == 'reviewer' && $this->getEnabled()) {
             $op =& $params[1];
-            if ($op == 'exportReviews') {
+            if ($op == 'exportReview') {
 
                 define('HANDLER_CLASS', 'PublonsHandler');
-                define('PUBLONS_PLUGIN_NAME', $this->getName());
-                AppLocale::requireComponents(LOCALE_COMPONENT_APPLICATION_COMMON);
-                $handlerFile =& $params[2];
-                $handlerFile = $this->getHandlerPath() . DIRECTORY_SEPARATOR . 'PublonsHandler.inc.php';
+                $this->import('PublonsHandler');
+                PublonsHandler::setPlugin($this);
+
+                // define('HANDLER_CLASS', 'PublonsHandler');
+                // define('PUBLONS_PLUGIN_NAME', $this->getName());
+                // AppLocale::requireComponents(LOCALE_COMPONENT_APPLICATION_COMMON);
+                // $handlerFile =& $params[2];
+                // $handlerFile = $this->getPluginPath() . 'PublonsHandler.inc.php';
+                return true;
             }
         }
         return false;
 
     }
+
+    // function import($class) {
+    //     var_dump($this->getPluginPath() . '/' . str_replace('.', '/', $class) . '.inc.php');
+    //     error_log ( '1-----------------------------------------------------------------------');
+    //     require_once($this->getPluginPath() . '/' . str_replace('.', '/', $class) . '.inc.php');
+    //     var_dump('success');
+    // }
 
     /**
      * Hook callback: register output filter to add data citation to submission
@@ -229,8 +243,9 @@ class PublonsPlugin extends GenericPlugin {
                     return false;
             }
 
-            return false;
         }
+
+        return false;
     }
 
 
@@ -300,31 +315,36 @@ class PublonsPlugin extends GenericPlugin {
 
         // Only display if the plugin has been setup
         if ($auth_token){
+            $publonsReviewsDao =& DAORegistry::getDAO('PublonsReviewsDAO');
+            $published =& $publonsReviewsDao->getPublonsReviewsIdByReviewId($reviewId);
+            $info_url = $this->getSetting($journalId, 'info_url');
 
-            preg_match('/<\/p>/s', $output, $matches, PREG_OFFSET_CAPTURE);
-            if (!is_null($matches[0][1])){
+            $templateMgr =& TemplateManager::getManager();
+            $templateMgr->unregister_outputfilter(array(&$this, 'completedSubmissionOutputFilter'));
 
-                $beforeInsertPoint = substr($output, 0, $matches[0][1]);
-                $afterInsertPoint = substr($output, $matches[0][1] - strlen($output));
-                $publonsReviewsDao =& DAORegistry::getDAO('PublonsReviewsDAO');
-                $published =& $publonsReviewsDao->getPublonsReviewsIdByReviewId($reviewId);
-                $info_url = $this->getSetting($journalId, 'info_url');
+            $request = Application::getRequest();
+            $router = $request->getRouter();
 
-                $templateMgr =& TemplateManager::getManager();
-                $templateMgr->assign('reviewId', $reviewId);
-                $templateMgr->assign('published', $published);
-                $templateMgr->assign('infoURL', $info_url);
+            import('lib.pkp.classes.linkAction.request.AjaxModal');
+            $templateMgr->assign(
+                'exportReviewAction',
+                new LinkAction(
+                    'exportReview',
+                    new AjaxModal(
+                        $router->url($request, null, null, 'exportReview', array('reviewId' =>  $reviewId)),
+                        __('plugins.generic.publons.settings.connection')
+                    ),
+                    __('plugins.generic.publons.settings.connection'),
+                    null
+                )
+            );
+            $templateMgr->assign('reviewId', $reviewId);
+            $templateMgr->assign('published', $published);
+            $templateMgr->assign('infoURL', $info_url);
 
-                $newOutput = $beforeInsertPoint;
-                $newOutput .= $templateMgr->fetch($this->getTemplatePath() . 'publonsExportStep.tpl');
-                $newOutput .= $afterInsertPoint;
-
-                $output = $newOutput;
-            }
-
+            $output .= $templateMgr->fetch($this->getTemplatePath() . 'publonsExportStep.tpl');
         }
 
-        $templateMgr->unregister_outputfilter('completedSubmissionOutputFilter');
         return $output;
     }
 

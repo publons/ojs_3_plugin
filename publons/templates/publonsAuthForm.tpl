@@ -53,11 +53,11 @@
                     </td>
                 </tr>
             </table>
+            <span class="formRequired">{translate key="common.requiredField"}</span>
 
         {/fbvFormArea}
 
         {fbvFormButtons}
     </form>
-    <p><span class="formRequired">{translate key="common.requiredField"}</span></p>
 </div>
 <p>{translate key="plugins.generic.publons.settings.ps"}</p>

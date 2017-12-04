@@ -19,19 +19,19 @@ class PublonsReviews extends DataObject {
 	//
 
 	/**
-	 * Get the article ID of the referral.
+	 * Get the submission ID of the referral.
 	 * @return int
 	 */
-	function getArticleId() {
-		return $this->getData('articleId');
+	function getSubmissionId() {
+		return $this->getData('submissionId');
 	}
 
 	/**
-	 * Set the article ID of the publons reviews.
-	 * @param $articleId int
+	 * Set the submission ID of the publons reviews.
+	 * @param $submissionId int
 	 */
-	function setArticleId($articleId) {
-		return $this->setData('articleId', $articleId);
+	function setSubmissionId($submissionId) {
+		return $this->setData('submissionId', $submissionId);
 	}
 
 	/**
