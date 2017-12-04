@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @file plugins/generic/publons/classes/form/PublonsAuthForm.inc.php
+ * @file plugins/generic/publons/classes/form/PublonsSettingsForm.inc.php
  *
  * Copyright (c) 2017 Publons Ltd.
  * Distributed under the GNU GPL v3.
  *
- * @class PublonsAuthForm
+ * @class PublonsSettingsForm
  * @ingroup plugins_generic_publons
  *
  * @brief Plugin settings: connect to a Publons Network
@@ -29,11 +29,11 @@ class PublonsSettingsForm extends Form {
      * @param $journalId int
      * @see Form::Form()
      */
-    function PublonsAuthForm(&$plugin, $journalId) {
+    function PublonsSettingsForm(&$plugin, $journalId) {
         $this->_plugin =& $plugin;
         $this->_journalId = $journalId;
 
-        parent::__construct($plugin->getTemplatePath() . 'publonsSettingsForm.tpl.tpl');
+        parent::__construct($plugin->getTemplatePath() . 'publonsSettingsForm.tpl');
         $this->addCheck(new FormValidator($this, 'username', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.publons.settings.usernameRequired'));
         $this->addCheck(new FormValidator($this, 'password', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.publons.settings.passwordRequired'));
         $this->addCheck(new FormValidator($this, 'auth_key', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.publons.settings.authKeyRequired'));
