@@ -1,9 +1,9 @@
 <?php
 
 /**
- * @file plugins/generic/publons/pages/PublonsHandler.inc.php
+ * @file plugins/generic/publons/PublonsHandler.inc.php
  *
- * Copyright (c) 2016 Publons Ltd.
+ * Copyright (c) 2017 Publons Ltd.
  * Distributed under the GNU GPL v3.
  *
  * @class PublonsHandler
@@ -36,7 +36,6 @@ class PublonsHandler extends Handler {
         $plugin =self::$plugin;
         $templateMgr =& TemplateManager::getManager();
         $templateMgr->addStyleSheet(Request::getBaseUrl() . '/' . $plugin->getStyleSheet());
-        $templateMgr->addStyleSheet(Request::getBaseUrl() . '/' . $plugin->getPluginPath() . '/styles/publons-page.css');
         $templateMgr->addStyleSheet('https://fonts.googleapis.com/css?family=Roboto');
 
         $reviewId = intval($args[0]);
@@ -56,17 +55,17 @@ class PublonsHandler extends Handler {
         if ($exported) {
             // Check that the review hasn't been exported already
             $templateMgr->assign('info', __('plugins.generic.publons.export.error.alreadyExported'));
-            return $templateMgr->fetchJson($plugin->getTemplatePath() . 'export.tpl');
+            return $templateMgr->fetchJson($plugin->getTemplatePath() . 'exportResults.tpl');
 
         } elseif (($reviewSubmission->getRecommendation() === null) || ($reviewSubmission->getRecommendation() === '')) {
             // Check that the review has been submitted to the editor
             $templateMgr->assign('info', __('plugins.generic.publons.export.error.reviewNotSubmitted'));
-            return $templateMgr->fetchJson($plugin->getTemplatePath() . 'export.tpl');
+            return $templateMgr->fetchJson($plugin->getTemplatePath() . 'exportResults.tpl');
 
         } elseif ($user->getId() !== $reviewerId) {
             // Check that user is person who wrote review
             $templateMgr->assign('info', __('plugins.generic.publons.export.error.invalidUser'));
-            return $templateMgr->fetchJson($plugin->getTemplatePath() . 'export.tpl');
+            return $templateMgr->fetchJson($plugin->getTemplatePath() . 'exportResults.tpl');
         }
 
 
@@ -76,10 +75,6 @@ class PublonsHandler extends Handler {
             $router = $request->getRouter();
             $templateMgr->assign('reviewId', $reviewId);
             $templateMgr->assign('pageURL', $router->url($request, null, null, 'exportReview', array('reviewId' =>  $reviewId)));
-
-
-            $templateMgr->addStyleSheet(Request::getBaseUrl() . '/' . $plugin->getPluginPath() . '/styles/publons-page.css');
-            $templateMgr->addStyleSheet('https://fonts.googleapis.com/css?family=Roboto');
             return $templateMgr->fetchJson($plugin->getTemplatePath() . 'publonsExportReviewForm.tpl');
         }
         elseif ($request->isPost())
@@ -222,7 +217,7 @@ class PublonsHandler extends Handler {
 
             $templateMgr->assign('result',$returned['result']);
             $templateMgr->assign('error', $returned['error']);
-            return $templateMgr->fetchJson($plugin->getTemplatePath() . 'export.tpl');
+            return $templateMgr->fetchJson($plugin->getTemplatePath() . 'exportResults.tpl');
         }
 
 
@@ -258,6 +253,5 @@ class PublonsHandler extends Handler {
         return function_exists('curl_version');
     }
 }
-
 
 ?>

@@ -2,7 +2,7 @@
  * plugins/generic/pln/templates/settingsForm.tpl
  *
  *
- * Copyright (c) 2016 Publons Ltd.
+ * Copyright (c) 2017 Publons Ltd.
  * Distributed under the GNU GPL v3.
  *
  * Export review to publons result page

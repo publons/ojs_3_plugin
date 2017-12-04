@@ -3,7 +3,7 @@
 /**
  * @file plugins/generic/publons/classes/PublonsReviewsDAO.inc.php
  *
- * Copyright (c) 2016 Publons Ltd.
+ * Copyright (c) 2017 Publons Ltd.
  * Distributed under the GNU GPL v3.
  *
  * @class PublonsReviewsDAO

@@ -69,7 +69,7 @@ class PublonsPlugin extends GenericPlugin {
     /**
      * @see PKPPlugin::getTemplatePath()
      */
-    function getTemplatePath() {
+    function getTemplatePath($inCore = false) {
         return parent::getTemplatePath() . 'templates' . DIRECTORY_SEPARATOR;
     }
 
@@ -131,7 +131,7 @@ class PublonsPlugin extends GenericPlugin {
         $journal =& Request::getJournal();
         switch ($request->getUserVar('verb')) {
             case 'connect':
-                $this->import('classes.form.PublonsAuthForm');
+                $this->import('classes.form.publonsSettingsForm');
                 $form = new PublonsAuthForm($this, $journal->getId());
                 if ($request->getUserVar('save')) {
                     $form->readInputData();
@@ -153,20 +153,6 @@ class PublonsPlugin extends GenericPlugin {
             //         $form->initData();
             //     $form->display();
             //     return true;
-            case 'export':
-                $this->import('classes.form.PublonsExportReviewForm');
-                $form = new PublonsExportReviewForm($this);
-                if ($request->getUserVar('save')) {
-                    $form->readInputData();
-                    if ($form->validate()) {
-
-                        $form->execute();
-                        return new JSONMessage(true);
-                    }
-                } else {
-                    $form->initData();
-                }
-                return new JSONMessage(true, $form->fetch($request));
         }
 
         return parent::manage($args, $request);
@@ -176,7 +162,7 @@ class PublonsPlugin extends GenericPlugin {
     function handleRequest($hookName, $params) {
         $page =& $params[0];
         $request = Application::getRequest();
-        AppLocale::requireComponents(LOCALE_COMPONENT_APPLICATION_COMMON);
+        AppLocale::requireComponents();
         if ($page == 'reviewer' && $this->getEnabled()) {
             $op =& $params[1];
             if ($op == 'exportReview') {
@@ -184,25 +170,12 @@ class PublonsPlugin extends GenericPlugin {
                 define('HANDLER_CLASS', 'PublonsHandler');
                 $this->import('PublonsHandler');
                 PublonsHandler::setPlugin($this);
-
-                // define('HANDLER_CLASS', 'PublonsHandler');
-                // define('PUBLONS_PLUGIN_NAME', $this->getName());
-                // AppLocale::requireComponents(LOCALE_COMPONENT_APPLICATION_COMMON);
-                // $handlerFile =& $params[2];
-                // $handlerFile = $this->getPluginPath() . 'PublonsHandler.inc.php';
                 return true;
             }
         }
         return false;
 
     }
-
-    // function import($class) {
-    //     var_dump($this->getPluginPath() . '/' . str_replace('.', '/', $class) . '.inc.php');
-    //     error_log ( '1-----------------------------------------------------------------------');
-    //     require_once($this->getPluginPath() . '/' . str_replace('.', '/', $class) . '.inc.php');
-    //     var_dump('success');
-    // }
 
     /**
      * Hook callback: register output filter to add data citation to submission
@@ -271,15 +244,7 @@ class PublonsPlugin extends GenericPlugin {
                 $beforeInsertPoint = substr($output, 0, $match);
                 $afterInsertPoint = substr($output, $match - strlen($output));
 
-
-                // $publonsReviewsDao =& DAORegistry::getDAO('PublonsReviewsDAO');
-                // $published =& $publonsReviewsDao->getPublonsReviewsIdByReviewId($reviewId);
-                // $info_url = $this->getSetting($journalId, 'info_url');
-
                 $templateMgr =& TemplateManager::getManager();
-                // $templateMgr->assign('reviewId', $reviewId);
-                // $templateMgr->assign('published', $published);
-                // $templateMgr->assign('infoURL', $info_url);
 
                 $newOutput = $beforeInsertPoint;
                 if (empty($done)){
@@ -316,7 +281,7 @@ class PublonsPlugin extends GenericPlugin {
         // Only display if the plugin has been setup
         if ($auth_token){
             $publonsReviewsDao =& DAORegistry::getDAO('PublonsReviewsDAO');
-            $published =& $publonsReviewsDao->getPublonsReviewsIdByReviewId($reviewId);
+            $published = $publonsReviewsDao->getPublonsReviewsIdByReviewId($reviewId);
             $info_url = $this->getSetting($journalId, 'info_url');
 
             $templateMgr =& TemplateManager::getManager();

@@ -1,10 +1,10 @@
 /**
- * plugins/themes/classicGreen/classicGreen.css
+ * plugins/generic/publons/styles/publons.css
  *
- * Copyright (c) 2016 Publons Ltd.
+ * Copyright (c) 2017 Publons Ltd.
  * Distributed under the GNU GPL v3.
  *
- * Publons button styling
+ * Publons styling
  *
  */
 
@@ -23,8 +23,8 @@
 .publons-button span {
     display: inline-block;
     text-align: left;
-    padding: 0px 10px 0px 0px;
-    line-height: 30px;
+    padding: 0px 20px 0px 0px;
+    line-height: 40px;
     text-decoration: none;
     border-radius: 3px;
     color: #111;
@@ -40,9 +40,9 @@
 .publons-button img,
 .publons-button span img {
     float: left;
-    height: 30px;
-    width: 30px;
-    margin-right: 10px;
+    height: 40px;
+    width: 40px;
+    margin-right: 20px;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
 }
@@ -74,47 +74,3 @@
     font-size: 28.8px;
     font-family: Roboto,sans-serif !important;
 }
-
-// #publons-content button {
-//     color: #444;
-//     background-color: #eee;
-//     box-shadow: 0 -2px 0 rgba(0,0,0,.2) inset;
-//     white-space: nowrap;
-//     text-overflow: ellipsis;
-//     -ms-transition-property: all;
-//     -o-transition-property: all;
-//     -webkit-transition-property: all;
-//     transition-property: all;
-//     transition-duration: .1s;
-//     transition-timing-function: ease-out;
-//     overflow: hidden;
-//     padding: 0 15px;
-//     line-height: 36px;
-//     display: block;
-//     text-align: center;
-//     font-weight: 600;
-//     outline: 0;
-//     border-top: 1px solid rgba(255,255,255,.1);
-//     box-sizing: border-box;
-//     font-size: 11px!important;
-//     width: 100%;
-//     text-transform: uppercase;
-//     letter-spacing: 1px;
-//     font-family: Roboto,sans-serif;
-//     border-radius: 3px;
-//     border: 0;
-// }
-
-// #publons-content button.primary {
-//     color: #fff;
-//     background-color: #369;
-// }
-
-// #publons-content button:hover {
-//     opacity: .9;
-// }
-
-// #publons-content button.autowidth {
-//     width: auto;
-//     display: inline-block;
-// }

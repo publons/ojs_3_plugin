@@ -3,7 +3,7 @@
 /**
  * @file plugins/generic/publons/classes/form/PublonsAuthForm.inc.php
  *
- * Copyright (c) 2016 Publons Ltd.
+ * Copyright (c) 2017 Publons Ltd.
  * Distributed under the GNU GPL v3.
  *
  * @class PublonsAuthForm
@@ -15,7 +15,7 @@
 import('lib.pkp.classes.form.Form');
 import('plugins.generic.publons.classes.PublonsHelpURLFormValidator');
 
-class PublonsAuthForm extends Form {
+class PublonsSettingsForm extends Form {
 
     /** @var $_plugin PublonsPlugin */
     var $_plugin;
@@ -33,7 +33,7 @@ class PublonsAuthForm extends Form {
         $this->_plugin =& $plugin;
         $this->_journalId = $journalId;
 
-        parent::__construct($plugin->getTemplatePath() . 'publonsAuthForm.tpl');
+        parent::__construct($plugin->getTemplatePath() . 'publonsSettingsForm.tpl.tpl');
         $this->addCheck(new FormValidator($this, 'username', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.publons.settings.usernameRequired'));
         $this->addCheck(new FormValidator($this, 'password', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.publons.settings.passwordRequired'));
         $this->addCheck(new FormValidator($this, 'auth_key', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.publons.settings.authKeyRequired'));

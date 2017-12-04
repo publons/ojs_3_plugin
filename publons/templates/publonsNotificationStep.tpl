@@ -1,7 +1,7 @@
 {**
  * plugins/generic/publons/publonsNotificationStep.tpl
  *
- * Copyright (c) 2016 Publons Ltd.
+ * Copyright (c) 2017 Publons Ltd.
  * Distributed under the GNU GPL v3.
  *
  * Publons plugin - notification that they can export to publons on the next page

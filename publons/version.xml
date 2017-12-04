@@ -4,7 +4,7 @@
 <!--
   * plugins/generic/publons/version.xml
   *
-  * ight (c) 2016 Publons Ltd.
+  * copyright (c) 2017 Publons Ltd.
   * Distributed under the GNU GPL v3.
   *
   * Plugin version information.
@@ -12,8 +12,8 @@
 <version>
 	<application>publons</application>
 	<type>plugins.generic</type>
-	<release>2.0.0.0</release>
-	<date>2016-12-12</date>
+	<release>3.0.0.0</release>
+	<date>2017-12-02</date>
 	<lazy-load>1</lazy-load>
 	<class>PublonsPlugin</class>
 </version>
