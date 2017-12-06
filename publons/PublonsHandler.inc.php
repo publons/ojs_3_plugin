@@ -68,8 +68,6 @@ class PublonsHandler extends Handler {
             return $templateMgr->fetchJson($plugin->getTemplatePath() . 'exportResults.tpl');
         }
 
-
-
         if ($request->isGet()) {
 
             $router = $request->getRouter();
@@ -87,30 +85,30 @@ class PublonsHandler extends Handler {
             $remail = $user->getEmail();
 
             $reviewAssignmentDao =& DAORegistry::getDAO('ReviewAssignmentDAO');
-            $reviewAssignment =& $reviewAssignmentDao->getReviewAssignment($reviewSubmission->getId(), $reviewerId, $reviewSubmission->getCurrentRound());
+            $reviewAssignment = $reviewAssignmentDao->getById($reviewId);
+
             $body = '';
             if (!$reviewAssignment->getCancelled()) {
                 // Get the comments associated with this review assignment
-                $articleComments =& $submissionCommentDao->getSubmissionComments($reviewSubmission->getId(), COMMENT_TYPE_PEER_REVIEW, $reviewAssignment->getId());
+                $submissionComments = $submissionCommentDao->getSubmissionComments($reviewSubmission->getId(), COMMENT_TYPE_PEER_REVIEW, $reviewAssignment->getId());
 
-                if($articleComments) {
-                    if (is_array($articleComments)) {
-                        foreach ($articleComments as $comment) {
-                            // If the comment is viewable by the author, then add the comment.
-                            if ($comment->getViewable()) $body .= String::html2text($comment->getComments()) . "\n\n";
-                        }
+                if($submissionComments) {
+                    foreach ($submissionComments->toArray() as $comment) {
+                        // If the comment is viewable by the author, then add the comment.
+                        if ($comment->getViewable()) $body .= PKPString::html2text($comment->getComments()) . "\n\n";
                     }
                 }
+
                 if ($reviewFormId = $reviewAssignment->getReviewFormId()) {
 
                     $reviewId = $reviewAssignment->getId();
                     $reviewFormResponseDao =& DAORegistry::getDAO('ReviewFormResponseDAO');
                     $reviewFormElementDao =& DAORegistry::getDAO('ReviewFormElementDAO');
-                    $reviewFormElements =& $reviewFormElementDao->getReviewFormElements($reviewFormId);
+                    $reviewFormElements = $reviewFormElementDao->getReviewFormElements($reviewFormId);
 
                     foreach ($reviewFormElements as $reviewFormElement) if ($reviewFormElement->getIncluded()) {
 
-                        $body .= String::html2text($reviewFormElement->getLocalizedQuestion()) . ": \n";
+                        $body .= PKPString::html2text($reviewFormElement->getLocalizedQuestion()) . ": \n";
                         $reviewFormResponse = $reviewFormResponseDao->getReviewFormResponse($reviewId, $reviewFormElement->getId());
 
                         if ($reviewFormResponse) {
@@ -119,10 +117,10 @@ class PublonsHandler extends Handler {
                             if (in_array($reviewFormElement->getElementType(), $reviewFormElement->getMultipleResponsesElementTypes())) {
                                 if ($reviewFormElement->getElementType() == REVIEW_FORM_ELEMENT_TYPE_CHECKBOXES) {
                                     foreach ($reviewFormResponse->getValue() as $value) {
-                                        $body .= "\t" . String::html2text($possibleResponses[$value-1]['content']) . "\n";
+                                        $body .= "\t" . PKPString::html2text($possibleResponses[$value-1]['content']) . "\n";
                                     }
                                 } else {
-                                    $body .= "\t" . String::html2text($possibleResponses[$reviewFormResponse->getValue()-1]['content']) . "\n";
+                                    $body .= "\t" . PKPString::html2text($possibleResponses[$reviewFormResponse->getValue()-1]['content']) . "\n";
                                 }
                                 $body .= "\n";
                             } else {
@@ -219,7 +217,6 @@ class PublonsHandler extends Handler {
             $templateMgr->assign('error', $returned['error']);
             return $templateMgr->fetchJson($plugin->getTemplatePath() . 'exportResults.tpl');
         }
-
 
     }
 
