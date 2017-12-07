@@ -27,6 +27,7 @@
   <message key="plugins.generic.publons.button.publishedReview">Essa avaliação já foi publicada no Publons</message>
   <message key="plugins.generic.publons.button.completeReview">Você deve submeter o seu parecer antes de exportar ele para Publons</message>
 
+  <message key="plugins.generic.publons.notifications.settingsUpdated">Configurações atualizadas</message>
 
   <message key="plugins.generic.publons.settings.published">Avaliações enviadas</message>
   <message key="plugins.generic.publons.settings.connection">Conexão</message>

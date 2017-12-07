@@ -27,6 +27,7 @@
   <message key="plugins.generic.publons.button.publishedReview">Эта рецензия уже отправлена Publons</message>
   <message key="plugins.generic.publons.button.completeReview">Вы должны закончить свою рецензию прежде чем отправлять её Publons</message>
 
+  <message key="plugins.generic.publons.notifications.settingsUpdated">настройки обновлены</message>
 
   <message key="plugins.generic.publons.settings.published">Отправленные Рецензии</message>
   <message key="plugins.generic.publons.settings.connection">Настройки</message>
