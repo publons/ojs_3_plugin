@@ -95,7 +95,7 @@ class PublonsHandler extends Handler {
                 if($submissionComments) {
                     foreach ($submissionComments->toArray() as $comment) {
                         // If the comment is viewable by the author, then add the comment.
-                        if ($comment->getViewable()) $body .= PKPString::html2text($comment->getComments()) . "\n\n";
+                        if ($comment->getViewable()) $body .= PKPString::html2text($comment->getComments()) . "\n";
                     }
                 }
 
@@ -175,6 +175,7 @@ class PublonsHandler extends Handler {
                 $data["content"] = $body;
 
             $json_data = json_encode($data, JSON_UNESCAPED_UNICODE);
+            $json_data = str_replace("\\\\", '\\', $json_data);
 
             $templateMgr->assign('json_data',$json_data);
 
