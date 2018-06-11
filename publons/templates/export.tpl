@@ -45,6 +45,8 @@
                 {translate key="plugins.generic.publons.export.error.400"}
             {elseif $status==500}
                 {translate key="plugins.generic.publons.export.error.500"}
+            {elseif $info}
+                {$info}
             {/if}
         </p>
     {/if}

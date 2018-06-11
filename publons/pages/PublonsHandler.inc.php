@@ -58,7 +58,7 @@ class PublonsHandler extends Handler {
             return;
 
         }
-        elseif ($user->getId() !== $reviewerId)
+        elseif (!$user || ($user->getId() !== $reviewerId))
         {
             // Check that user is person who wrote review
             $templateMgr->assign('info', __('plugins.generic.publons.export.error.invalidUser'));
