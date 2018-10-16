@@ -268,7 +268,6 @@ class PublonsPlugin extends GenericPlugin {
      * @return $string
      */
     function completedSubmissionOutputFilter($output, &$templateMgr) {
-
         $plugin =& PluginRegistry::getPlugin('generic', $this->getName());
 
         $reviewerSubmissionDao =& DAORegistry::getDAO('ReviewerSubmissionDAO');
@@ -286,7 +285,6 @@ class PublonsPlugin extends GenericPlugin {
 
             $templateMgr =& TemplateManager::getManager();
             $templateMgr->unregister_outputfilter(array(&$this, 'completedSubmissionOutputFilter'));
-
             $request = Application::getRequest();
             $router = $request->getRouter();
 

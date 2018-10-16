@@ -8,6 +8,7 @@
  *
  *}
 
+</div>
 <div id="publons-export" class="section">
     <h3>{translate key="plugins.generic.publons.notice.title"}</h3>
 
@@ -51,5 +52,3 @@
             </span>
         </button>
     {/if}
-
-</div>

@@ -88,48 +88,48 @@ class PublonsHandler extends Handler {
             $reviewAssignment = $reviewAssignmentDao->getById($reviewId);
 
             $body = '';
-            if (!$reviewAssignment->getCancelled()) {
-                // Get the comments associated with this review assignment
-                $submissionComments = $submissionCommentDao->getSubmissionComments($reviewSubmission->getId(), COMMENT_TYPE_PEER_REVIEW, $reviewAssignment->getId());
 
-                if($submissionComments) {
-                    foreach ($submissionComments->toArray() as $comment) {
-                        // If the comment is viewable by the author, then add the comment.
-                        if ($comment->getViewable()) $body .= PKPString::html2text($comment->getComments()) . "\n";
-                    }
+            // Get the comments associated with this review assignment
+            $submissionComments = $submissionCommentDao->getSubmissionComments($reviewSubmission->getId(), COMMENT_TYPE_PEER_REVIEW, $reviewAssignment->getId());
+
+            if($submissionComments) {
+                foreach ($submissionComments->toArray() as $comment) {
+                    // If the comment is viewable by the author, then add the comment.
+                    if ($comment->getViewable()) $body .= PKPString::html2text($comment->getComments()) . "\n";
                 }
+            }
 
-                if ($reviewFormId = $reviewAssignment->getReviewFormId()) {
+            if ($reviewFormId = $reviewAssignment->getReviewFormId()) {
 
-                    $reviewId = $reviewAssignment->getId();
-                    $reviewFormResponseDao =& DAORegistry::getDAO('ReviewFormResponseDAO');
-                    $reviewFormElementDao =& DAORegistry::getDAO('ReviewFormElementDAO');
-                    $reviewFormElements = $reviewFormElementDao->getReviewFormElements($reviewFormId);
+                $reviewId = $reviewAssignment->getId();
+                $reviewFormResponseDao =& DAORegistry::getDAO('ReviewFormResponseDAO');
+                $reviewFormElementDao =& DAORegistry::getDAO('ReviewFormElementDAO');
+                $reviewFormElements = $reviewFormElementDao->getReviewFormElements($reviewFormId);
 
-                    foreach ($reviewFormElements as $reviewFormElement) if ($reviewFormElement->getIncluded()) {
+                foreach ($reviewFormElements as $reviewFormElement) if ($reviewFormElement->getIncluded()) {
 
-                        $body .= PKPString::html2text($reviewFormElement->getLocalizedQuestion()) . ": \n";
-                        $reviewFormResponse = $reviewFormResponseDao->getReviewFormResponse($reviewId, $reviewFormElement->getId());
+                    $body .= PKPString::html2text($reviewFormElement->getLocalizedQuestion()) . ": \n";
+                    $reviewFormResponse = $reviewFormResponseDao->getReviewFormResponse($reviewId, $reviewFormElement->getId());
 
-                        if ($reviewFormResponse) {
+                    if ($reviewFormResponse) {
 
-                            $possibleResponses = $reviewFormElement->getLocalizedPossibleResponses();
-                            if (in_array($reviewFormElement->getElementType(), $reviewFormElement->getMultipleResponsesElementTypes())) {
-                                if ($reviewFormElement->getElementType() == REVIEW_FORM_ELEMENT_TYPE_CHECKBOXES) {
-                                    foreach ($reviewFormResponse->getValue() as $value) {
-                                        $body .= "\t" . PKPString::html2text($possibleResponses[$value-1]['content']) . "\n";
-                                    }
-                                } else {
-                                    $body .= "\t" . PKPString::html2text($possibleResponses[$reviewFormResponse->getValue()-1]['content']) . "\n";
+                        $possibleResponses = $reviewFormElement->getLocalizedPossibleResponses();
+                        if (in_array($reviewFormElement->getElementType(), $reviewFormElement->getMultipleResponsesElementTypes())) {
+                            if ($reviewFormElement->getElementType() == REVIEW_FORM_ELEMENT_TYPE_CHECKBOXES) {
+                                foreach ($reviewFormResponse->getValue() as $value) {
+                                    $body .= "\t" . PKPString::html2text($possibleResponses[$value-1]['content']) . "\n";
                                 }
-                                $body .= "\n";
                             } else {
-                                $body .= "\t" . $reviewFormResponse->getValue() . "\n\n";
+                                $body .= "\t" . PKPString::html2text($possibleResponses[$reviewFormResponse->getValue()-1]['content']) . "\n";
                             }
+                            $body .= "\n";
+                        } else {
+                            $body .= "\t" . $reviewFormResponse->getValue() . "\n\n";
                         }
                     }
                 }
             }
+
             $body = str_replace("\r", '', $body);
             $body = str_replace("\n", '\r\n', $body);
 
