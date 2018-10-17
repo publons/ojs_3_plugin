@@ -35,8 +35,8 @@ class PublonsHandler extends Handler {
     function exportReview($args, $request) {
         $plugin =self::$plugin;
         $templateMgr =& TemplateManager::getManager();
-        $templateMgr->addStyleSheet(Request::getBaseUrl() . '/' . $plugin->getStyleSheet());
-        $templateMgr->addStyleSheet('https://fonts.googleapis.com/css?family=Roboto');
+        $templateMgr->addStyleSheet('publons-base', Request::getBaseUrl() . '/' . $plugin->getStyleSheet());
+        $templateMgr->addStyleSheet('publons-font', 'https://fonts.googleapis.com/css?family=Roboto');
 
         $reviewId = intval($args[0]);
 
@@ -138,6 +138,9 @@ class PublonsHandler extends Handler {
 
             $plugin->import('classes.PublonsReviews');
 
+            $dateRequested = new DateTime($reviewAssignment->getDateNotified());
+            $dateCompleted = new DateTime($reviewAssignment->getDateCompleted());
+
             $locale = AppLocale::getLocale();
 
             $publonsReviews = new PublonsReviews();
@@ -166,9 +169,13 @@ class PublonsHandler extends Handler {
             $data["reviewer"]["name"] = $rname;
             $data["reviewer"]["email"] = $remail;
             $data["publication"]["title"] = $rtitle;
-            $data["complete_date"]["day"] = date('d');
-            $data["complete_date"]["month"] = date('m');
-            $data["complete_date"]["year"] = date('Y');
+            $data["publication"]["abstract"] = $reviewSubmission->getLocalizedAbstract();
+            $data["request_date"]["day"] = $dateRequested->format('d');
+            $data["request_date"]["month"] = $dateRequested->format('m');
+            $data["request_date"]["year"] = $dateRequested->format('Y');
+            $data["complete_date"]["day"] = $dateCompleted->format('d');
+            $data["complete_date"]["month"] = $dateCompleted->format('m');
+            $data["complete_date"]["year"] = $dateCompleted->format('Y');
 
             // Don't send content if it is empty
             if ($body !== '')
