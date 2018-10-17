@@ -22,7 +22,7 @@ See the accompanying OJS file docs/COPYING for the complete terms of this licens
 
 ### Installation
 To install the plugin:
- - Download the plugin file `publons.tar.gz` from https://github.com/publons/ojs/releases/latest
+ - Download the plugin file `publons.tar.gz` from https://github.com/publons/ojs_3/releases/latest
  - On your OJS site go to Settings > Website > Plugins > Upload a New Plugin,
    select the publons.tar.gz file you downloaded  and click "Save"
  - Enable the plugin by going to:  Settings > Website > Plugins > Generic Plugins and ticking "ENABLE" for the "Publons Plugin"
