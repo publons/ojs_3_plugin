@@ -26,7 +26,7 @@ To install the plugin:
  - Enable the plugin by going to:  Settings > Website > Plugins > Generic Plugins and ticking "ENABLE" for the "Publons Plugin"
  - Set up correct credentials to post reviews to Publons by going to Settings > Website > Plugins > Generic Plugins and click “CONNECTION” under "Publons Plugin"
    - Enter the Authorization Token of the Publons user who has API access to Publons. Authorization Token can be found here: https://publons.com/api/v2 (note: you need to be logged in to see this).
-   - Enter the API key of the journal found on the Publons partner dashboard under 'Integrations'.
+   - Enter the Journal Token provided by Publons
    - __Optional__. Add the link to your journal landing page on Publons so users can find more info about this.
 
 ### Usage
@@ -39,3 +39,8 @@ The Publons website certifies only the fact the reviewer has completed peer revi
 Please email us for support, bugfixes or comments.
 
 Email: <ojs@publons.com>
+
+### Version History
+- 1.0.0.0 - Initial Release
+- 3.2.0.0 - Updated crendentials to require API tokens
+- 3.2.1.0 - Fixed issues with review form
