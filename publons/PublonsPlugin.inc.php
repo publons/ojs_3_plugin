@@ -13,18 +13,19 @@
  */
 
 import('lib.pkp.classes.plugins.GenericPlugin');
+import('lib.pkp.classes.site.VersionCheck');
 
 class PublonsPlugin extends GenericPlugin {
 
     /**
      * Called as a plugin is registered to the registry
      * @param $category String Name of category plugin was registered to
-     * @return boolean True iff plugin initialized successfully; if false,
+     * @return boolean True if plugin initialized successfully; if false,
      *  the plugin will not be registered.
      */
-    function register($category, $path) {
+    function register($category, $path, $mainContextId = null) {
 
-        if (parent::register($category, $path)) {
+        if (parent::register($category, $path, $mainContextId)) {
             if ($this->getEnabled()) {
                 $this->import('classes.PublonsReviews');
                 $this->import('classes.PublonsReviewsDAO');
@@ -52,7 +53,7 @@ class PublonsPlugin extends GenericPlugin {
     /**
      * Get the display name of this plugin
      * @return string
-     * @see PKPPlugin::getDisplayName()
+     * @see Plugin::getDisplayName()
      */
     function getDisplayName() {
         return __('plugins.generic.publons.displayName');
@@ -67,21 +68,53 @@ class PublonsPlugin extends GenericPlugin {
     }
 
     /**
-     * @see PKPPlugin::getTemplatePath()
-     */
-    function getTemplatePath($inCore = false) {
-        return parent::getTemplatePath() . 'templates' . DIRECTORY_SEPARATOR;
+     * Get the version of OJS code
+     * @return string
+    */
+    function getVersion() {
+        $codeVersion = VersionCheck::getCurrentCodeVersion();
+        return $codeVersion->getVersionString();
     }
 
     /**
-     * @see PKPPlugin::getInstallSchemaFile()
+     * Compare the current ojs version is later than a specific version
+     * @return boolean
+    */
+    function isCurrentVersionLaterThan($compareWith) {
+        $currentVersionNumbers = explode('.', $this->getVersion());
+        $compareWithVersionNumbers = explode('.', $compareWith);
+
+        foreach (range(0, sizeof($compareWithVersionNumbers)-1) as $index) {
+            if (intval($currentVersionNumbers[$index]) > intval($compareWithVersionNumbers[$index])) {
+                return true;
+            } elseif (intval($currentVersionNumbers[$index]) < intval($compareWithVersionNumbers[$index])) {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @see Plugin::getTemplatePath()
+     */
+    function getTemplatePath($inCore = false) {
+        if ($this->isCurrentVersionLaterThan('3.1.1.4')) {
+            $bathPath = Core::getBaseDir();
+            return 'file:' . $bathPath . DIRECTORY_SEPARATOR . parent::getTemplatePath() . DIRECTORY_SEPARATOR;
+        } else {
+            return parent::getTemplatePath() . 'templates' . DIRECTORY_SEPARATOR;
+        }
+    }
+
+    /**
+     * @see Plugin::getInstallSchemaFile()
      * @return string
      */
     function getInstallSchemaFile() {
         return $this->getPluginPath() . DIRECTORY_SEPARATOR . 'schema.xml';
     }
 
-        /**
+    /**
      * Get the stylesheet for this plugin.
      */
     function getStyleSheet() {
@@ -205,24 +238,27 @@ class PublonsPlugin extends GenericPlugin {
             $templateMgr =& $args[0];
             $template =& $args[1];
 
-            switch ($template) {
-                case 'reviewer/review/reviewCompleted.tpl':
-                    $templateMgr->register_outputfilter(array(&$this, 'completedSubmissionOutputFilter'));
-                    break;
-                case 'reviewer/review/step3.tpl':
-                    $templateMgr->register_outputfilter(array(&$this, 'step3SubmissionOutputFilter'));
-                    break;
-                default:
-                    return false;
+            $filterName = '';
+            if ($template == 'reviewer/review/reviewCompleted.tpl'){
+                $filterName = 'completedSubmissionOutputFilter';
+            } elseif ($template == 'reviewer/review/step3.tpl') {
+                $filterName = 'step3SubmissionOutputFilter';
             }
 
+            if ($filterName !== '') {
+                if ($this->isCurrentVersionLaterThan('3.1.1.4')) {
+                    $templateMgr->registerFilter('output', array(&$this, $filterName));
+                } else {
+                    $templateMgr->register_outputfilter(array(&$this, $filterName));
+                }
+            }
         }
 
         return false;
     }
 
 
-    function step3SubmissionOutputFilter($output, &$templateMgr) {
+    function step3SubmissionOutputFilter($output, $templateMgr) {
 
         $plugin =& PluginRegistry::getPlugin('generic', $this->getName());
 
@@ -257,7 +293,12 @@ class PublonsPlugin extends GenericPlugin {
 
         }
 
-        $templateMgr->unregister_outputfilter('step3SubmissionOutputFilter');
+        if ($this->isCurrentVersionLaterThan('3.1.1.4')) {
+            $templateMgr->unregisterFilter('output', 'step3SubmissionOutputFilter');
+        } else {
+            $templateMgr->unregister_outputfilter('step3SubmissionOutputFilter');
+        }
+
         return $output;
     }
 
@@ -267,7 +308,7 @@ class PublonsPlugin extends GenericPlugin {
      * @param $templateMgr TemplateManager
      * @return $string
      */
-    function completedSubmissionOutputFilter($output, &$templateMgr) {
+    function completedSubmissionOutputFilter($output, $templateMgr) {
         $plugin =& PluginRegistry::getPlugin('generic', $this->getName());
 
         $reviewerSubmissionDao =& DAORegistry::getDAO('ReviewerSubmissionDAO');
@@ -284,7 +325,13 @@ class PublonsPlugin extends GenericPlugin {
             $info_url = $this->getSetting($journalId, 'info_url');
 
             $templateMgr =& TemplateManager::getManager();
-            $templateMgr->unregister_outputfilter(array(&$this, 'completedSubmissionOutputFilter'));
+
+            if ($this->isCurrentVersionLaterThan('3.1.1.4')) {
+                $templateMgr->unregisterFilter('output', array(&$this, 'completedSubmissionOutputFilter'));
+            } else {
+                $templateMgr->unregister_outputfilter(array(&$this, 'completedSubmissionOutputFilter'));
+            }
+
             $request = Application::getRequest();
             $router = $request->getRouter();
 
@@ -326,10 +373,11 @@ class PublonsPlugin extends GenericPlugin {
     function curlInstalled() {
         return function_exists('curl_version');
     }
+
     /**
-     * @see PKPPlugin::smartyPluginUrl()
+     * @see Plugin::smartyPluginUrl()
      */
-    function smartyPluginUrl($params, &$smarty) {
+    function smartyPluginUrl($params, $smarty) {
         $path = array($this->getCategory(), $this->getName());
         if (is_array($params['path'])) {
             $params['path'] = array_merge($path, $params['path']);

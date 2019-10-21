@@ -104,7 +104,7 @@ class PublonsHandler extends Handler {
                 $reviewId = $reviewAssignment->getId();
                 $reviewFormResponseDao =& DAORegistry::getDAO('ReviewFormResponseDAO');
                 $reviewFormElementDao =& DAORegistry::getDAO('ReviewFormElementDAO');
-                $reviewFormElements = $reviewFormElementDao->getReviewFormElements($reviewFormId);
+                $reviewFormElements = $reviewFormElementDao->getByReviewFormId($reviewFormId)->toArray();
 
                 foreach ($reviewFormElements as $reviewFormElement) if ($reviewFormElement->getIncluded()) {
 
@@ -243,6 +243,7 @@ class PublonsHandler extends Handler {
         $httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         $httpError = curl_error($curl);
         curl_close ($curl);
+
         return array(
             'status' => $httpStatus,
             'result' => json_decode($httpResult, true),

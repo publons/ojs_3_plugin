@@ -52,6 +52,6 @@
 
     </div>
     {if $serverAction == 'PARTNER_TO_EMAIL' ||  $serverAction == 'REVIEWER_EMAILED' || $serverAction == 'REVIEWER_UNSUBSCRIBED'}
-        <a href="{ $claimURL}" target="_blank" class="pkp_button">{translate key="plugins.generic.publons.export.claimReview"}</a>
+        <a href="{$claimURL}" target="_blank" class="pkp_button">{translate key="plugins.generic.publons.export.claimReview"}</a>
     {/if}
 </div>

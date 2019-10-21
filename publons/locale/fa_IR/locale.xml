@@ -36,23 +36,19 @@
     <message key="plugins.generic.publons.settings.publishedTable.review">داوری</message>
     <message key="plugins.generic.publons.settings.publishedTable.noReviews">تاکنون داوری برای پابلون ارسال نشده است.
     </message>
-    <message key="plugins.generic.publons.settings.usernameRequired">لطفا آدرس ایمیلی را وارد نمایید که در سیستم پابلون
-        به ثبت رسیده است.
-    </message>
-    <message key="plugins.generic.publons.settings.passwordRequired">لطفا رمز عبور خود را تصحیح نمایید.</message>
-    <message key="plugins.generic.publons.settings.authKeyRequired">لطفا کلید API صحیح را برای اتصال به سیستم پابلون
+    <message key="plugins.generic.publons.settings.auth_tokenDescription">The Authorization token for the specified account (you can find that on https://publons.com/api/v2/ under Token).</message>
+    <message key="plugins.generic.publons.settings.journalTokenRequired">لطفا کلید API صحیح را برای اتصال به سیستم پابلون
         وارد نمایید.
     </message>
     <message key="plugins.generic.publons.settings.invalidHelpUrl">آدرس وارد شده می بایست با https://publons.com آغاز
         گردد.
     </message>
-    <message key="plugins.generic.publons.settings.authTokenRequired">از صحت آدرس ایمیل و رمز عبور مطمئن شوید.</message>
-    <message key="plugins.generic.publons.settings.usernameDescription">ایمیل حساب پابلون با توکن ادغام شد.</message>
-    <message key="plugins.generic.publons.settings.passwordDescription">رمز عبور برای حساب تعریف شده در بالا</message>
+    <message key="plugins.generic.publons.settings.authTokenRequired">Please ensure that your Authorization token is correct.</message>
     <message key="plugins.generic.publons.settings.urlDescription">آدرس صفحه نشریه در سیستم پابلون</message>
     <message key="plugins.generic.publons.settings.url">آدرس</message>
-    <message key="plugins.generic.publons.settings.auth_key">کلید API</message>
-    <message key="plugins.generic.publons.settings.auth_keyDescription">کلید API نشریه برای ارسال داوری ها به پابلون
+    <message key="plugins.generic.publons.settings.journalToken">کلید API</message>
+    <message key="plugins.generic.publons.settings.auth_token">Authorization Token</message>
+    <message key="plugins.generic.publons.settings.journalTokenDescription">کلید API نشریه برای ارسال داوری ها به پابلون
     </message>
     <message key="plugins.generic.publons.confirmation.title">ارسال داوری به پابلون</message>
     <message key="plugins.generic.publons.confirmation.termsAndConditions">

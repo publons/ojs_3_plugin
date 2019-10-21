@@ -12,7 +12,6 @@
 
 <locale name="en_US" full_name="U.S. English">
 
-  <message key="user.password">Password</message>
   <message key="user.email">Email</message>
 
   <message key="plugins.generic.publons.displayName">Publons Plugin</message>
@@ -34,17 +33,16 @@
   <message key="plugins.generic.publons.settings.publishedTable.date.added">Date added</message>
   <message key="plugins.generic.publons.settings.publishedTable.review">Review</message>
   <message key="plugins.generic.publons.settings.publishedTable.noReviews">No reviews have been exported to Publons</message>
-  <message key="plugins.generic.publons.settings.usernameRequired">Please enter an email address which is associated with the integration token holder's account on Publons.</message>
-  <message key="plugins.generic.publons.settings.passwordRequired">Please enter the correct password.</message>
-  <message key="plugins.generic.publons.settings.authKeyRequired">Please enter the correct API key for your Publons integration.</message>
+  <message key="plugins.generic.publons.settings.journalTokenRequired">Please enter the correct journal token for your Publons integration.</message>
   <message key="plugins.generic.publons.settings.invalidHelpUrl">Please start the url with https://publons.com</message>
-  <message key="plugins.generic.publons.settings.authTokenRequired">Please ensure that your email address and password are correct.</message>
-  <message key="plugins.generic.publons.settings.usernameDescription">The email address of the Publons account with an integration token.</message>
-  <message key="plugins.generic.publons.settings.passwordDescription">The password for the account specified above.</message>
+  <message key="plugins.generic.publons.settings.auth_tokenDescription">The Authorization token for the specified account (you can find that on https://publons.com/api/v2/ under Token).</message>
+  <message key="plugins.generic.publons.settings.authTokenRequired">Please ensure that your Authorization token is correct.</message>
   <message key="plugins.generic.publons.settings.urlDescription">The URL of the journal landing page on Publons.</message>
   <message key="plugins.generic.publons.settings.url">URL</message>
-  <message key="plugins.generic.publons.settings.auth_key">API Key</message>
-  <message key="plugins.generic.publons.settings.auth_keyDescription">The journal API key used to export reviews to Publons</message>
+  <message key="plugins.generic.publons.settings.journalToken">Journal Token</message>
+  <message key="plugins.generic.publons.settings.auth_token">Authorization Token</message>
+
+  <message key="plugins.generic.publons.settings.journalTokenDescription">The journal token used to export reviews to Publons</message>
 
 
   <message key="plugins.generic.publons.confirmation.title">Send your review to Publons</message>
@@ -71,7 +69,7 @@
   <message key="plugins.generic.publons.export.claimReview">Claim review</message>
   <message key="plugins.generic.publons.export.next.autoClaimed">Your review has been auto-claimed on Publons.</message>
   <message key="plugins.generic.publons.export.next.partnerEmailed">Your journal has emailed you with a link to claim this review or you can click on the button below.</message>
-  <message key="plugins.generic.publons.export.next.publonsEmailed">Publons has emailed you with a link to clain this review or you can click on the button below.</message>
+  <message key="plugins.generic.publons.export.next.publonsEmailed">Publons has emailed you with a link to claim this review or you can click on the button below.</message>
   <message key="plugins.generic.publons.export.next.setAutoClaim">To skip this step in future please select "Automatically add reviews from partnered journals" in your Publons settings.</message>
   <message key="plugins.generic.publons.export.next.linkClick">You have opted out of receiving Publons emails, to claim this review you must click the link below.</message>
   <message key="plugins.generic.publons.export.backToReviewPage">Back to review page</message>

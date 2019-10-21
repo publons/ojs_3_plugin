@@ -13,7 +13,6 @@
 
 <locale name="ru_RU" full_name="Russian">
 
-  <message key="user.password">Пароль</message>
   <message key="user.email">Адрес (E-mail)</message>
 
   <message key="plugins.generic.publons.displayName">Publons Плагин</message>
@@ -35,17 +34,15 @@
   <message key="plugins.generic.publons.settings.publishedTable.date.added">Дата добавления</message>
   <message key="plugins.generic.publons.settings.publishedTable.review">Рецензия</message>
   <message key="plugins.generic.publons.settings.publishedTable.noReviews">Нет рецензий отправленных Publons</message>
-  <message key="plugins.generic.publons.settings.usernameRequired">Пожалуйста введите логин (адрес электронной почты) пользователя Publons с правом доступа к API.</message>
-  <message key="plugins.generic.publons.settings.passwordRequired">Пожалуйста введите верный пароль.</message>
-  <message key="plugins.generic.publons.settings.authKeyRequired">Пожалуйста введите верный API ключ для интеграции с Publons.</message>
-  <message key="plugins.generic.publons.settings.authTokenRequired">Пожалуйста убедитесь что вы ввели верные логин и пароль.</message>
+  <message key="plugins.generic.publons.settings.journalTokenRequired">Пожалуйста введите верный API ключ для интеграции с Publons.</message>
+  <message key="plugins.generic.publons.settings.authTokenRequired">Please ensure that your Authorization token is correct.</message>
   <message key="plugins.generic.publons.settings.invalidHelpUrl">Пожалуйста убедитесь что URL начинается с https://publons.com</message>
-  <message key="plugins.generic.publons.settings.usernameDescription">Логин (адрес электронной почты) пользователя Publons с правом доступа к API.</message>
-  <message key="plugins.generic.publons.settings.passwordDescription">Пароль учетной записи Publons.</message>
+  <message key="plugins.generic.publons.settings.auth_tokenDescription">The Authorization token for the specified account (you can find that on https://publons.com/api/v2/ under Token).</message>
   <message key="plugins.generic.publons.settings.urlDescription">URL адрес целевой страницы (landing page) на Publons.</message>
   <message key="plugins.generic.publons.settings.url">URL</message>
-  <message key="plugins.generic.publons.settings.auth_key">API ключ</message>
-  <message key="plugins.generic.publons.settings.auth_keyDescription">API ключ журнала для отправки рецензий Publons</message>
+  <message key="plugins.generic.publons.settings.journalToken">API ключ</message>
+  <message key="plugins.generic.publons.settings.auth_token">Authorization Token</message>
+  <message key="plugins.generic.publons.settings.journalTokenDescription">API ключ журнала для отправки рецензий Publons</message>
 
 
   <message key="plugins.generic.publons.confirmation.title">Отправить мою рецензию Publons</message>
@@ -56,6 +53,12 @@
       </p>
     ]]>
   </message>
+
+  <message key="plugins.generic.publons.notice.title">Добавить мою рецензию к профилю Publons</message>
+  <message key="plugins.generic.publons.notice.explanation">
+    <![CDATA[
+      Вы сможете добавить свою рецензию на <a href="https://publons.com">Publons</a> на 4й вкладке по окончании рецензирования.
+    ]]>
 
   <message key="plugins.generic.publons.export.successful">Данная рецензия успешно отправлена</message>
   <message key="plugins.generic.publons.export.duplicate">Эта рецензия уже отправлена Publons</message>
@@ -79,14 +82,8 @@
 
   <message key="plugins.generic.publons.settings.info">
     <![CDATA[
-      <p> Для активации возможности получать признание за написанные рецензии на Publons, пожалуйста зарегистрируйте
-        свой интерес по <a href="http://publons.com/partner/info">данной ссылке</a> или
-        <a href="mailto:partnerships@publons.com">напишите Publons</a>. Вам будет предоставлен соответствующий доступ
-        к сайту с инструкцией по настройке плагина.
-      </p>
-      <p>
-        Для активации плагина заполните поля ниже
-      </p>
+      <p>Для предоставления рецензентам возможности добавлять их рецензии к своим профилям в Publons, пожалуйста зарегистрируйте свой интерес перейдя по следующей <a href="https://publons.com/benefits/publishers">ссылке</a> или <a href="mailto:partnerships@publons.com">напишите Publons</a>. Вам будет предоставлен соответствующий доступ к сайту с инструкцией по настройке плагина.</p>
+      <p>Для активации плагина заполните поля ниже:</p>
     ]]>
   </message>
 
