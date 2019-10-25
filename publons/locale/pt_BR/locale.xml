@@ -58,7 +58,7 @@
   <message key="plugins.generic.publons.notice.title">Exportar minha revisão para Publons</message>
   <message key="plugins.generic.publons.notice.explanation">
     <![CDATA[
-      Você poderá exportar sua revisão para <a href="https://publons.com">Publons</a> na aba 4 após submetê-lo.
+      Você poderá exportar sua revisão para <a href="https://publons.com">Publons</a> na aba 4 após submetê-la.
     ]]>
   </message>
 
