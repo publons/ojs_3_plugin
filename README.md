@@ -44,3 +44,4 @@ Email: <ojs@publons.com>
 - 1.0.0.0 - Initial Release
 - 3.2.0.0 - Updated crendentials to require API tokens
 - 3.2.1.0 - Fixed issues with review form
+- 3.2.2.0 - Minor fix for portuguese translations
