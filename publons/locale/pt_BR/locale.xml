@@ -55,6 +55,13 @@
     ]]>
   </message>
 
+  <message key="plugins.generic.publons.notice.title">Exportar minha revisão para Publons</message>
+  <message key="plugins.generic.publons.notice.explanation">
+    <![CDATA[
+      Você poderá exportar sua revisão para <a href="https://publons.com">Publons</a> na aba 4 após submetê-lo.
+    ]]>
+  </message>
+
   <message key="plugins.generic.publons.export.successful">A avaliação foi exportada com sucesso</message>
   <message key="plugins.generic.publons.export.duplicate">Essa avaliação já foi publicada no Publons</message>
   <message key="plugins.generic.publons.export.error">Erro ao exportar para Publons</message>
