@@ -1,7 +1,5 @@
 # OJS 3.x Publons Plugin
 
-For OJS 2 Plugin please visit https://github.com/publons/ojs_2_plugin
-
 Developed and maintained by: Publons Ltd.
 
 ### About
@@ -45,3 +43,5 @@ Email: <ojs@publons.com>
 - 3.2.0.0 - Updated crendentials to require API tokens
 - 3.2.1.0 - Fixed issues with review form
 - 3.2.2.0 - Minor fix for portuguese translations
+
+For OJS 2 Plugin please visit https://github.com/publons/ojs_2_plugin
