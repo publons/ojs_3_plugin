@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/generic/publons/locale/en_US/locale.xml
+  *
+  * Copyright (c) 2017 Publons Ltd.
+  * Distributed under the GNU GPL v3.
+  *
+  * Localization strings
+  -->
+
+<locale name="pt_PT" full_name="Português (Portugal)">
+
+  <message key="user.email">E-mail</message>
+
+  <message key="plugins.generic.publons.displayName">Plugin Publons</message>
+  <message key="plugins.generic.publons.description">Este plugin permite enviar revisões para o Publons.</message>
+  <message key="plugins.generic.publons.list">Uma lista das revisões que foram exportadas para o Publons.</message>
+
+  <message key="plugins.generic.publons.review.publonsStepInstructions">Tenha reconhecimento pelas suas revisões, expotando-as para o Publons.</message>
+  <message key="plugins.generic.publons.review.urlHelp">Para mais informação siga esta ligação:</message>
+
+  <message key="plugins.generic.publons.button.submitExportReview">Exportar a minha revisão para o Publons</message>
+  <message key="plugins.generic.publons.button.publishedReview">Esta revisão foi exportada para o Publons</message>
+  <message key="plugins.generic.publons.button.completeReview">Terá de completar a sua revisão antes de a poder exportar para o Publons</message>
+
+  <message key="plugins.generic.publons.notifications.settingsUpdated">Configuração atualizada</message>
+
+  <message key="plugins.generic.publons.settings.published">Revisões Exportadas</message>
+  <message key="plugins.generic.publons.settings.connection">Conexão</message>
+  <message key="plugins.generic.publons.settings.publishedTable.reviewer">Revisor</message>
+  <message key="plugins.generic.publons.settings.publishedTable.date.added">Data de adição</message>
+  <message key="plugins.generic.publons.settings.publishedTable.review">Revisão</message>
+  <message key="plugins.generic.publons.settings.publishedTable.noReviews">Nenhuma revisão exportada para o Publons</message>
+  <message key="plugins.generic.publons.settings.journalTokenRequired">Por favor introduza a chave correta da revista para integração com o Publons.</message>
+  <message key="plugins.generic.publons.settings.invalidHelpUrl">Por favor inicie o URL com https://publons.com</message>
+  <message key="plugins.generic.publons.settings.auth_tokenDescription">A chave de autorização para o registo especificado (pode-o encontrar em https://publons.com/api/v2/, secção Token).</message>
+  <message key="plugins.generic.publons.settings.authTokenRequired">Garanta que a chave de autorização está correta.</message>
+  <message key="plugins.generic.publons.settings.urlDescription">O endereço da revista no site Publons.</message>
+  <message key="plugins.generic.publons.settings.url">URL</message>
+  <message key="plugins.generic.publons.settings.journalToken">Chave da Revista</message>
+  <message key="plugins.generic.publons.settings.auth_token">Chave de Autorização</message>
+
+  <message key="plugins.generic.publons.settings.journalTokenDescription">A chave da revista usada para exportar revisões para o Publons</message>
+
+
+  <message key="plugins.generic.publons.confirmation.title">Envie a sua revisão para o Publons</message>
+  <message key="plugins.generic.publons.confirmation.termsAndConditions">
+    <![CDATA[
+      <p>
+        Escolheu exportar a sua revisão para o Publons. <br> <a href="https://publons.com/about/terms">Termos e condições</a>.
+      </p>
+    ]]>
+  </message>
+
+  <message key="plugins.generic.publons.notice.title">Exportar revisão para o Publons</message>
+  <message key="plugins.generic.publons.notice.explanation">
+    <![CDATA[
+      Poderá exportar a sua revisão para o <a href="https://publons.com">Publons</a> no separador 4, quando terminar a sua revisão.
+    ]]>
+  </message>
+  <message key="plugins.generic.publons.export.successful">A revisão foi exportada com sucesso</message>
+  <message key="plugins.generic.publons.export.duplicate">Esta revisão já foi exportada para o Publons</message>
+  <message key="plugins.generic.publons.export.error">Erro ao exportar a revisão para o Publons</message>
+  <message key="plugins.generic.publons.export.error.400">Houve um erro de permissões. Por favor contacte o administrador desta revista.</message>
+  <message key="plugins.generic.publons.export.error.500">Houve um erro no servidor. O Publons não está a responder, por favor tente daqui a 10 minutos.</message>
+
+  <message key="plugins.generic.publons.export.claimReview">Reivindicar revisão</message>
+  <message key="plugins.generic.publons.export.next.autoClaimed">A sua revisão foi reivindicada no Publons.</message>
+  <message key="plugins.generic.publons.export.next.partnerEmailed">A revista enviou-lhe um e-mail com uma hiperligação para poder reivindicar a sua revisão. Também poderá usar o botão abaixo.</message>
+  <message key="plugins.generic.publons.export.next.publonsEmailed">O Publons enviou-lhe uma ligação para reivindicar esta revisão. Também poderá usar o botão abaixo.</message>
+  <message key="plugins.generic.publons.export.next.setAutoClaim">Para saltar este passo no futuro, selecione "Adicionar revisões de revistas parceiras automaticamente"  na sua configuração no Publons.</message>
+  <message key="plugins.generic.publons.export.next.linkClick">Optou por não receber e-mails do Publons, por isso, para reivindicar esta revisão deverá usar o botão abaixo.</message>
+  <message key="plugins.generic.publons.export.backToReviewPage">Voltar à página de revisão</message>
+
+  <message key="plugins.generic.publons.export.error.alreadyExported">Esta revisão já foi exportada para o Publons</message>
+  <message key="plugins.generic.publons.export.error.reviewNotSubmitted">Deverá terminar a sua revisão antes de a poder exportar para o Publons</message>
+  <message key="plugins.generic.publons.export.error.invalidUser">Detalhes de autenticação OJS errados</message>
+
+
+
+  <message key="plugins.generic.publons.settings.info">
+    <![CDATA[
+      <p> De modo a permitir aos seus revisores a oportunidade de terem reconhecimento pelas suas revisões no Publons,
+        registe o seu interesse junto da Publons usando esta <a href="http://publons.com/partner/info">ligação</a> ou
+        enviando um <a href="mailto:partnerships@publons.com">e-mail para o Publons</a>. Depois terá acesso à zona de gestão 
+        dos parceiros, onde irá encontrar as instruções de configuração, ao usar a ligação Instruções na barra de navegação.
+      </p>
+      <p>
+        Para ativar este plugin preencha os campos abaixo.
+      </p>
+    ]]>
+  </message>
+
+  <message key="plugins.generic.publons.settings.ps">
+    <![CDATA[
+      <p>
+        Uma vez ativado o plugin, a opção para os Revisores terem reconhecimento pelas suas revisões irá aparecer na página
+        de submissão de revisões.
+      </p>
+      <p>
+        Se o revisor tiver optado por receber este reconhecimento, após a submissão, os dados serão transmitidos de forma
+        segura para o Publons, e o revisor irá receber um e-mail (no endereço de e-mail que registou junto da revista)
+        para poder reivindicar a sua revisão.
+      </p>
+      <p>
+        Quando os revisores seguem esse link, serão direcionados para a autenticação do Publons, e a revisão será adicionada
+        no registo do revisor. Os revisores podem selecionar "Adicionar revisões de revistar parceiras automaticamente" na
+        configuração do seu perfil no Publons para saltar este passo.
+      </p>
+      <p>
+        Por omissão, o Publons não publica o conteúdo das revisões. No entanto, se Jornal e Revisor o permitirem, 
+        o Publons irá publicar a revisão completa uma vez publicado o artigo.
+      </p>
+      <p>
+        O separador "Revisões Exportadas" irá mostrar a lista de revisões exportadas para o Publons.
+      </p>
+    ]]>
+  </message>
+
+</locale>
