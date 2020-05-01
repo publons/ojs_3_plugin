@@ -35,7 +35,7 @@ class PublonsHandler extends Handler {
     function exportReview($args, $request) {
         $plugin =self::$plugin;
         $templateMgr =& TemplateManager::getManager();
-        $templateMgr->addStyleSheet('publons-base', Request::getBaseUrl() . '/' . $plugin->getStyleSheet());
+        $templateMgr->addStyleSheet('publons-base', $request->getBaseUrl() . '/' . $plugin->getStyleSheet());
         $templateMgr->addStyleSheet('publons-font', 'https://fonts.googleapis.com/css?family=Roboto');
 
         $reviewId = intval($args[0]);
@@ -50,7 +50,7 @@ class PublonsHandler extends Handler {
 
         $reviewerId = $reviewSubmission->getReviewerId();
 
-        $user =& Request::getUser();
+        $user =& $request->getUser();
 
         if ($exported) {
             // Check that the review hasn't been exported already
@@ -187,7 +187,7 @@ class PublonsHandler extends Handler {
             $templateMgr->assign('json_data',$json_data);
 
             if (is_null($_SERVER["HTTP_PUBLONS_URL"])) {
-                $url = "https://publons.com/api/v2/review/";
+                $url = "http://localhost:8000/api/v2/review/";
             } else {
                 $url = $_SERVER["HTTP_PUBLONS_URL"]."/api/v2/review/";
             }
@@ -213,7 +213,7 @@ class PublonsHandler extends Handler {
             if ($returned['status'] == 201){
                 $templateMgr->assign('serverAction',$returned['result']['action']);
                 if (is_null($_SERVER["HTTP_PUBLONS_URL"])) {
-                    $claimUrl = "https://publons.com/review/credit/" . $returned['result']['token'] . "/claim/";
+                    $claimUrl = "http://localhost:8000/review/credit/" . $returned['result']['token'] . "/claim/";
                 } else {
                     $claimUrl = $_SERVER["HTTP_PUBLONS_URL"]."/review/credit/" . $returned['result']['token'] . "/claim/";
                 }
