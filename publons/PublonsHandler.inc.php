@@ -187,7 +187,7 @@ class PublonsHandler extends Handler {
             $templateMgr->assign('json_data',$json_data);
 
             if (is_null($_SERVER["HTTP_PUBLONS_URL"])) {
-                $url = "http://localhost:8000/api/v2/review/";
+                $url = "http://publons:8000/api/v2/review/";
             } else {
                 $url = $_SERVER["HTTP_PUBLONS_URL"]."/api/v2/review/";
             }
@@ -213,7 +213,7 @@ class PublonsHandler extends Handler {
             if ($returned['status'] == 201){
                 $templateMgr->assign('serverAction',$returned['result']['action']);
                 if (is_null($_SERVER["HTTP_PUBLONS_URL"])) {
-                    $claimUrl = "http://localhost:8000/review/credit/" . $returned['result']['token'] . "/claim/";
+                    $claimUrl = "http://publons:8000/review/credit/" . $returned['result']['token'] . "/claim/";
                 } else {
                     $claimUrl = $_SERVER["HTTP_PUBLONS_URL"]."/review/credit/" . $returned['result']['token'] . "/claim/";
                 }
