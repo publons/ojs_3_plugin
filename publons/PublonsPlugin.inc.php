@@ -161,7 +161,7 @@ class PublonsPlugin extends GenericPlugin {
         $templateMgr = TemplateManager::getManager($request);
         $templateMgr->register_function('plugin_url', array($this, 'smartyPluginUrl'));
 
-        $journal =& Request::getJournal();
+        $journal = $request->getJournal();
         switch ($request->getUserVar('verb')) {
             case 'connect':
                 $this->import('classes.form.publonsSettingsForm');

@@ -35,7 +35,7 @@ class PublonsHandler extends Handler {
     function exportReview($args, $request) {
         $plugin =self::$plugin;
         $templateMgr =& TemplateManager::getManager();
-        $templateMgr->addStyleSheet('publons-base', Request::getBaseUrl() . '/' . $plugin->getStyleSheet());
+        $templateMgr->addStyleSheet('publons-base', $request->getBaseUrl() . '/' . $plugin->getStyleSheet());
         $templateMgr->addStyleSheet('publons-font', 'https://fonts.googleapis.com/css?family=Roboto');
 
         $reviewId = intval($args[0]);
@@ -50,7 +50,7 @@ class PublonsHandler extends Handler {
 
         $reviewerId = $reviewSubmission->getReviewerId();
 
-        $user =& Request::getUser();
+        $user =& $request->getUser();
 
         if ($exported) {
             // Check that the review hasn't been exported already
