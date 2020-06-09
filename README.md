@@ -1,4 +1,4 @@
-# OJS 3.x Publons Plugin
+# OJS 3.x Publons Reviewer Recognition plugin
 
 Developed and maintained by: Publons Ltd.
 
@@ -11,7 +11,7 @@ This plugin is licensed under the GNU General Public License v3.
 See the accompanying OJS file docs/COPYING for the complete terms of this license.
 
 ### System Requirements
-- OJS 3.1
+- OJS 3.1, or 3.2
 - PHP 5.6 or greater.
 - CURL support for PHP.
 - ZipArchive support for PHP.
@@ -28,20 +28,15 @@ To install the plugin:
    - __Optional__. Add the link to your journal landing page on Publons so users can find more info about this.
 
 ### Usage
-For the plugin to work correctly the journal should be registered at http://publons.com (Please contact mailto:partnerships@publons.com to learn more). Then the corresponding registration data should be entered in the appropriate fields on the plugin page "Connection": Settings > Website > Plugins > Generic Plugins > Publons.
+For the plugin to work correctly the journal should be registered at https://publons.com (please contact partnerships@publons.com to learn more). Then the corresponding registration data should be entered in the appropriate fields on the plugin page "Connection": Settings > Website > Plugins > Generic Plugins > Publons.
 
 When the plugin is enabled, a button “Send your review to Publons” will be present on "Completed" tab after the reviewer has submitted their review. After the reviewer has clicked on this button and confirmed they want to send their review to Publons, the review data is sent to Publons automatically and reviewer receives an invitation to claim it (or it is automatically added if reviewer has profile with Publons and opted in to automatically add reviews from partnered journals).
 The Publons website certifies only the fact the reviewer has completed peer review for the current journal. The text of the review can be disclosed on Publons website only after publication of the article and if both the publication author and journal allow it. To disclose the text of the review, the reviewer should input the DOI of the published article on Publons.
 
-### Contact/Support
-Please email us for support, bugfixes or comments.
+### Contact
+For enquiries regarding usage, support, bugfixes, or comments please email:
+ojs@publons.com
 
-Email: <ojs@publons.com>
-
-### Version History
-- 1.0.0.0 - Initial Release
-- 3.2.0.0 - Updated crendentials to require API tokens
-- 3.2.1.0 - Fixed issues with review form
-- 3.2.2.0 - Minor fix for portuguese translations
-
-For OJS 2 Plugin please visit https://github.com/publons/ojs_2_plugin
+### OJS 2 compatibility 
+For an OJS 2 compatible version of the plugin please visit:
+https://github.com/publons/ojs_2_plugin
