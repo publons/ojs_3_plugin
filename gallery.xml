@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<plugin category="generic" product="publons">
+
+  <name locale="en_US">Publons Reviewer Recognition</name>
+
+  <homepage>https://github.com/publons/ojs_3_plugin/</homepage>
+
+  <summary locale="en_US">
+    This plugin enables integration with Publons Reviewer Recognition Service.
+  </summary>
+
+  <description locale="en_US">
+    <![CDATA[<p>In order to provide your reviewers with the opportunity to gain recognition for their reviews on Publons, please register your interest with Publons by visiting <a href="https://publons.com/benefits/publishers/">https://publons.com/benefits/publishers/</a>. Our accounts team will then be in touch to discuss your options and provide further instructions on how to integrate your journal with Publons.</p>]]>
+  </description>
+
+  <maintainer>
+    <name>Publons</name>
+    <institution>Publons</institution>
+    <email>ojs@publons.com</email>
+  </maintainer>
+
+  <release date="2020-06-05" version="2020.6.5.0" md5="71d1dbed08050f4eb589927f02d8e4ab">
+
+    <package>
+      https://github.com/publons/ojs_3_plugin/releases/download/2020.6.5.0/publons.tar.gz
+    </package>
+   
+    <compatibility application="ojs2">
+      <version>3.2.0.3</version>
+    </compatibility>
+    <compatibility application="ojs2">
+      <version>3.1.2.4</version>
+    </compatibility>
+    <compatibility application="ojs2">
+      <version>3.1.1.4</version>
+    </compatibility>
+   
+    <certification type="partner"/>
+   
+    <description>
+      Update to be compatible with OJS v3.2.0.
+    </description>
+ 
+  </release>
+
+</plugin>
