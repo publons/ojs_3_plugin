@@ -7,11 +7,11 @@
   <homepage>https://github.com/publons/ojs_3_plugin/</homepage>
 
   <summary locale="en_US">
-    This plugin enables integration with Publons Reviewer Recognition Service.
+    This plugin enables integration with Publons Reviewer Recognition Service. To install and use this plugin you must first purchase the Publons Reviewer Recognition Service.
   </summary>
-
+  
   <description locale="en_US">
-    <![CDATA[<p>In order to provide your reviewers with the opportunity to gain recognition for their reviews on Publons, please register your interest with Publons by visiting <a href="https://publons.com/benefits/publishers/">https://publons.com/benefits/publishers/</a>. Our accounts team will then be in touch to discuss your options and provide further instructions on how to integrate your journal with Publons.</p>]]>
+    <![CDATA[<p>Publons Reviewer Recognition Service is a third-party workflow solution allowing you to provide your reviewers with the opportunity to gain recognition for their reviews on Publons.</p><p>To install and use this plugin you must first purchase the Publons Reviewer Recognition Service. To do this please register your interest by visiting <a href="https://publons.com/benefits/publishers/">https://publons.com/benefits/publishers/</a>. The Publons team will then be in touch to discuss your options and provide further instructions on how to integrate your journal with Publons Reviewer Recognition.</p>]]>
   </description>
 
   <maintainer>
