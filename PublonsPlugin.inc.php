@@ -109,9 +109,20 @@ class PublonsPlugin extends GenericPlugin {
     /**
      * @see Plugin::getInstallSchemaFile()
      * @return string
+     *
+     * This function only work for OJS 3.2.0-1 and eariler versions
      */
-    function getInstallSchemaFile() {
-        return $this->getPluginPath() . DIRECTORY_SEPARATOR . 'schema.xml';
+    // function getInstallSchemaFile() {
+    //     return $this->getPluginPath() . DIRECTORY_SEPARATOR . 'schema.xml';
+    // }
+
+    /**
+     * @copydoc PKPPlugin::getInstallMigration()
+     * This function only work from OJS 3.3.0-6
+     */
+    function getInstallMigration() {
+        $this->import('classes.PublonsSchemaMigration');
+        return new PublonsSchemaMigration();
     }
 
     /**

@@ -1,0 +1,146 @@
+msgid "user.password"
+msgstr "Senha"
+
+msgid "user.email"
+msgstr "E-mail"
+
+msgid "plugins.generic.publons.displayName"
+msgstr "Publons Plugin"
+
+msgid "plugins.generic.publons.description"
+msgstr "Este plugin permite que você publique suas avaliações no Publons."
+
+msgid "plugins.generic.publons.list"
+msgstr "Lista de avaliações enviadas para Publons"
+
+msgid "plugins.generic.publons.review.publonsStepInstructions"
+msgstr "Certifique e obtenha reconhecimento pelo seu parecer ao exportar ele para Publons."
+
+msgid "plugins.generic.publons.review.urlHelp"
+msgstr "Para mais informações sobre isso, acesse:"
+
+msgid "plugins.generic.publons.button.submitExportReview"
+msgstr "Exportar meu parecer para Publons"
+
+msgid "plugins.generic.publons.button.publishedReview"
+msgstr "Essa avaliação já foi publicada no Publons"
+
+msgid "plugins.generic.publons.button.completeReview"
+msgstr "Você deve submeter o seu parecer antes de exportar ele para Publons"
+
+msgid "plugins.generic.publons.notifications.settingsUpdated"
+msgstr "Configurações atualizadas"
+
+msgid "plugins.generic.publons.settings.published"
+msgstr "Avaliações enviadas"
+
+msgid "plugins.generic.publons.settings.connection"
+msgstr "Conexão"
+
+msgid "plugins.generic.publons.settings.publishedTable.reviewer"
+msgstr "Avaliador"
+
+msgid "plugins.generic.publons.settings.publishedTable.date.added"
+msgstr "Data da adição"
+
+msgid "plugins.generic.publons.settings.publishedTable.review"
+msgstr "Parecer"
+
+msgid "plugins.generic.publons.settings.publishedTable.noReviews"
+msgstr "Nenhum parecer foi exportado para Publons"
+
+msgid "plugins.generic.publons.settings.journalTokenRequired"
+msgstr "Por favor, insira o API key correto para sua integração com Publons."
+
+msgid "plugins.generic.publons.settings.invalidHelpUrl"
+msgstr "Por favor, inicie a url com https://publons.com"
+
+msgid "plugins.generic.publons.settings.authTokenRequired"
+msgstr "Please ensure that your Authorization token is correct."
+
+msgid "plugins.generic.publons.settings.auth_tokenDescription"
+msgstr "The Authorization token for the specified account (you can find that on https://publons.com/api/v2/ under Token)."
+
+msgid "plugins.generic.publons.settings.urlDescription"
+msgstr "A URL da página de recepção do periódico no Publons."
+
+msgid "plugins.generic.publons.settings.url"
+msgstr "URL"
+
+msgid "plugins.generic.publons.settings.journalToken"
+msgstr "API Key"
+
+msgid "plugins.generic.publons.settings.auth_token"
+msgstr "Authorization Token"
+
+msgid "plugins.generic.publons.settings.journalTokenDescription"
+msgstr "O código API do periódico utilizado para exportar avaliações para Publons"
+
+msgid "plugins.generic.publons.confirmation.title"
+msgstr "Enviar seu parecer para Publons"
+
+msgid "plugins.generic.publons.confirmation.termsAndConditions"
+msgstr "<p>Você optou por exportar suas avaliações para Publons. <br> <a href=\"https://publons.com/about/terms\">Termos e condições</a>.</p>"
+
+msgid "plugins.generic.publons.notice.title"
+msgstr "Exportar minha revisão para Publons"
+
+msgid "plugins.generic.publons.notice.explanation"
+msgstr "Você poderá exportar sua revisão para <a href=\"https://publons.com\">Publons</a> na aba 4 após submetê-la."
+
+msgid "plugins.generic.publons.export.successful"
+msgstr "A avaliação foi exportada com sucesso"
+
+msgid "plugins.generic.publons.export.duplicate"
+msgstr "Essa avaliação já foi publicada no Publons"
+
+msgid "plugins.generic.publons.export.error"
+msgstr "Erro ao exportar para Publons"
+
+msgid "plugins.generic.publons.export.error.400"
+msgstr "Há um erro de permissão/acesso. Por favor, entre em contato com o administrador deste periódico."
+
+msgid "plugins.generic.publons.export.error.500"
+msgstr "Há um erro no servidor. Publons não está respondendo, por favor tente novamente em 10 minutos."
+
+msgid "plugins.generic.publons.export.claimReview"
+msgstr "Reconhecer parecer"
+
+msgid "plugins.generic.publons.export.next.autoClaimed"
+msgstr "Seu parecer foi solicitado manualmente em Publons."
+
+msgid "plugins.generic.publons.export.next.partnerEmailed"
+msgstr "O periódico enviou um email para você com o link para reconhecer este parecer ou você pode clicar no link abaixo."
+
+msgid "plugins.generic.publons.export.next.publonsEmailed"
+msgstr "Publons enviou um email para você com o link para reconhecer este parecer ou você pode clicar no link abaixo."
+
+msgid "plugins.generic.publons.export.next.setAutoClaim"
+msgstr "Para pular esta etapa no futuro, por favor selecione “Automatically add reviews from partnered journals” nas configurações do seu perfil em Publons."
+
+msgid "plugins.generic.publons.export.next.linkClick"
+msgstr "Você optou por não receber emails de Publons, para reconhecer este parecer você deve clicar no link abaixo."
+
+msgid "plugins.generic.publons.export.backToReviewPage"
+msgstr "Voltar para a página da avaliação"
+
+msgid "plugins.generic.publons.export.error.alreadyExported"
+msgstr "Essa avaliação já foi publicada no Publons"
+
+msgid "plugins.generic.publons.export.error.reviewNotSubmitted"
+msgstr "Você deve submeter o seu parecer antes de poder exportar ele para Publons"
+
+msgid "plugins.generic.publons.export.error.invalidUser"
+msgstr "Informações de login OJS inválidas"
+
+msgid "plugins.generic.publons.settings.info"
+msgstr ""
+"<p> Para possibilitar que os seus avaliadores obtenham reconhecimento no Publons pelas avaliações realizada, por favor registre seu interesse com Publons em <a href=\"http://publons.com/partner/info\">link</a> ou por <a href=\"mailto:partnerships@publons.com\">emailing Publons</a>. Você receberá acesso ao painel de parceiros com informações necessárias para completar a configuração da integração nas Instruções disponíveis.</p>"
+"<p>Para ativar o plugin, preencha os dados abaixo</p>"
+
+msgid "plugins.generic.publons.settings.ps"
+msgstr ""
+"<p>Depois de ativar o plugin, a opção de enviar as avaliações ficará disponível aos revisores na página com os dados da submissão.</p><p> Se o avaliador optar por receber o crédito pela avaliação, a informação será seguramente enviada para Publons, e o avaliador receberá um email de Publons (para o endereço registrado na revista) com um link para reconhecer a avaliação.</p>"
+"<p>Depois de acessar esse link, o revisor deverá entrar em seu perfil Publons e a avaliação será adicionada na sua conta. Os avaliadores podem selecionar "Automatically add reviews from partnered journals" nas configurações do perfil em Publons para pular esta etapa de solicitação.</p>"
+"<p>Como opção padrão, Publons não publica o conteúdo da avaliação. Contudo, se tanto a revista como o avaliador autorizarem, Publons irá disponibilizar o texto assim que o artigo for publicado.</p>"
+"<p>A aba 'Exported Reviews' irá mostrar a lista de avaliações exportadas para Publons.</p>"

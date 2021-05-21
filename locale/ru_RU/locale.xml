@@ -44,7 +44,6 @@
   <message key="plugins.generic.publons.settings.auth_token">Authorization Token</message>
   <message key="plugins.generic.publons.settings.journalTokenDescription">API ключ журнала для отправки рецензий Publons</message>
 
-
   <message key="plugins.generic.publons.confirmation.title">Отправить мою рецензию Publons</message>
   <message key="plugins.generic.publons.confirmation.termsAndConditions">
     <![CDATA[
@@ -59,6 +58,7 @@
     <![CDATA[
       Вы сможете добавить свою рецензию на <a href="https://publons.com">Publons</a> на 4й вкладке по окончании рецензирования.
     ]]>
+  </message>
 
   <message key="plugins.generic.publons.export.successful">Данная рецензия успешно отправлена</message>
   <message key="plugins.generic.publons.export.duplicate">Эта рецензия уже отправлена Publons</message>
@@ -77,8 +77,6 @@
   <message key="plugins.generic.publons.export.error.alreadyExported">Эта рецензия уже отправлена Publons</message>
   <message key="plugins.generic.publons.export.error.reviewNotSubmitted">Вы должны закончить свою рецензию прежде чем отправлять её Publons</message>
   <message key="plugins.generic.publons.export.error.invalidUser">Неверные имя пользователя/пароль для журнала</message>
-
-
 
   <message key="plugins.generic.publons.settings.info">
     <![CDATA[
@@ -113,4 +111,3 @@
   </message>
 
 </locale>
-

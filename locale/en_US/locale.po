@@ -1,0 +1,144 @@
+msgid "user.email"
+msgstr "Email"
+
+msgid "plugins.generic.publons.displayName"
+msgstr "Publons Plugin"
+
+msgid "plugins.generic.publons.description"
+msgstr "This plugin allows you to post reviews to Publons."
+
+msgid "plugins.generic.publons.list"
+msgstr "A list of reviews which have been exported to Publons"
+
+msgid "plugins.generic.publons.review.publonsStepInstructions"
+msgstr "Get recognition for your review by exporting it to Publons."
+
+msgid "plugins.generic.publons.review.urlHelp"
+msgstr "To find out more follow this link:"
+
+msgid "plugins.generic.publons.button.submitExportReview"
+msgstr "Export my review to Publons"
+
+msgid "plugins.generic.publons.button.publishedReview"
+msgstr "This review has been exported to Publons"
+
+msgid "plugins.generic.publons.button.completeReview"
+msgstr "You must submit your review before it can be exported to Publons"
+
+msgid "plugins.generic.publons.notifications.settingsUpdated"
+msgstr "Settings updated"
+
+msgid "plugins.generic.publons.settings.published"
+msgstr "Exported Reviews"
+
+msgid "plugins.generic.publons.settings.connection"
+msgstr "Connection"
+
+msgid "plugins.generic.publons.settings.publishedTable.reviewer"
+msgstr "Reviewer"
+
+msgid "plugins.generic.publons.settings.publishedTable.date.added"
+msgstr "Date added"
+
+msgid "plugins.generic.publons.settings.publishedTable.review"
+msgstr "Review"
+
+msgid "plugins.generic.publons.settings.publishedTable.noReviews"
+msgstr "No reviews have been exported to Publons"
+
+msgid "plugins.generic.publons.settings.journalTokenRequired"
+msgstr "Please enter the correct journal token for your Publons integration."
+
+msgid "plugins.generic.publons.settings.invalidHelpUrl"
+msgstr "Please start the url with https://publons.com"
+
+msgid "plugins.generic.publons.settings.auth_tokenDescription"
+msgstr "The Authorization token for the specified account (you can find that on https://publons.com/api/v2/ under Token)."
+
+msgid "plugins.generic.publons.settings.authTokenRequired"
+msgstr "Please ensure that your Authorization token is correct."
+
+msgid "plugins.generic.publons.settings.urlDescription"
+msgstr "The URL of the journal landing page on Publons."
+
+msgid "plugins.generic.publons.settings.url"
+msgstr "URL"
+
+msgid "plugins.generic.publons.settings.journalToken"
+msgstr "Journal Token"
+
+msgid "plugins.generic.publons.settings.auth_token"
+msgstr "Authorization Token"
+
+msgid "plugins.generic.publons.settings.journalTokenDescription"
+msgstr "The journal token used to export reviews to Publons"
+
+msgid "plugins.generic.publons.confirmation.title"
+msgstr "Send your review to Publons"
+
+msgid "plugins.generic.publons.confirmation.termsAndConditions"
+msgstr "<p>You have chosen to export your review to Publons. <br> <a href=\"https://publons.com/about/terms\">Terms and conditions</a>.</p>"
+
+msgid "plugins.generic.publons.notice.title"
+msgstr "Export review to Publons"
+
+msgid "plugins.generic.publons.notice.explanation"
+msgstr "You will be able to export your review to <a href=\"https://publons.com\">Publons</a> on tab 4 once you have submitted your review."
+
+msgid "plugins.generic.publons.export.successful"
+msgstr "The review has been successfully exported"
+
+msgid "plugins.generic.publons.export.duplicate"
+msgstr "This review has already been exported to Publons"
+
+msgid "plugins.generic.publons.export.error"
+msgstr "Error exporting review to Publons"
+
+msgid "plugins.generic.publons.export.error.400"
+msgstr "There is a permissions error. Please contact the web administrator for this journal."
+
+msgid "plugins.generic.publons.export.error.500"
+msgstr "There is a server error. Publons is not responding, please try again in 10 minutes."
+
+msgid "plugins.generic.publons.export.claimReview"
+msgstr "Claim review"
+
+msgid "plugins.generic.publons.export.next.autoClaimed"
+msgstr "Your review has been auto-claimed on Publons."
+
+msgid "plugins.generic.publons.export.next.partnerEmailed"
+msgstr "Your journal has emailed you with a link to claim this review or you can click on the button below."
+
+msgid "plugins.generic.publons.export.next.publonsEmailed"
+msgstr "Publons has emailed you with a link to claim this review or you can click on the button below."
+
+msgid "plugins.generic.publons.export.next.setAutoClaim"
+msgstr "To skip this step in future please select "Automatically add reviews from partnered journals" in your Publons settings."
+
+msgid "plugins.generic.publons.export.next.linkClick"
+msgstr "You have opted out of receiving Publons emails, to claim this review you must click the link below."
+
+msgid "plugins.generic.publons.export.backToReviewPage"
+msgstr "Back to review page"
+
+msgid "plugins.generic.publons.export.error.alreadyExported"
+msgstr "Review has already been exported to Publons"
+
+msgid "plugins.generic.publons.export.error.reviewNotSubmitted"
+msgstr "You must submit your review before you can export it to Publons"
+
+msgid "plugins.generic.publons.export.error.invalidUser"
+msgstr "Invalid OJS login details"
+
+msgid "plugins.generic.publons.settings.info"
+msgstr ""
+"<p> In order to provide your reviewers the opportunity to get recognition for their reviews on Publons, please register your interest with Publons either at this <a href=\"http://publons.com/partner/info\">link</a> or by <a href=\"mailto:partnerships@publons.com\">emailing Publons</a>. You will then be provided with access to the partner dashboard where you will find the integration set-up instructions by clicking on Instructions in the navigation bar.</p>
+"<p>To enable the plugin fill in the fields below</p>"
+
+msgid "plugins.generic.publons.settings.ps"
+msgstr ""
+"<p>Once you have enabled the plugin, the option for Reviewers to receive recognition for their review will appear on the review submission page.</p>"
+"<p>If the reviewer has opted to receive recognition for their review, upon submission, data will be securely transmitted to Publons and the reviewer will be sent an email (to the email address they have registered with the journal) containing a link to claim their review.</p>"
+"<p>When they follow this link the Reviewer will be asked to sign up to Publons and the review will be added to the reviewer's account. Reviewers can select "Automatically add reviews from partnered journals" in their Publons settings to obviate this claiming step.</p>"
+"<p>By default, Publons doesn't publish the content of reviews. However, if both the journal and Reviewer allow it, Publons will publish the full review text once the article has been published.</p>"
+"<p>The 'Exported Reviews' tab will show you the list of the reviews exported to Publons.</p>"

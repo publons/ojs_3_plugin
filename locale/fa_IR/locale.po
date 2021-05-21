@@ -1,0 +1,152 @@
+msgid "user.password"
+msgstr "رمز عبور"
+
+msgid "user.email"
+msgstr "ایمیل"
+
+msgid "plugins.generic.publons.displayName"
+msgstr "پلاگین پابلون"
+
+msgid "plugins.generic.publons.description"
+msgstr "این پلاگین اجازه ارسال و انتشار نظرات داوری به پابلون را می دهد
+    "
+
+msgid "plugins.generic.publons.list"
+msgstr "لیستی از داوری های که برای پابلون ارسال شده اند."
+
+msgid "plugins.generic.publons.review.publonsStepInstructions"
+msgstr "برای به رسمیت شناختن داوری انجام شده آن را به
+        پابلون ارسال نمایید.
+    "
+
+msgid "plugins.generic.publons.review.urlHelp"
+msgstr "برای اطلاعات بیشتر بر روی این لینک کلیک نمایید:"
+
+msgid "plugins.generic.publons.button.submitExportReview"
+msgstr "ارسال داوری من به پابلون"
+
+msgid "plugins.generic.publons.button.publishedReview"
+msgstr "این داوری برای پابلون ارسال شده است."
+
+msgid "plugins.generic.publons.button.completeReview"
+msgstr "شما می بایست در مرحله اول داوری خود را تایید کرده و سپس به پابلون ارسال نمایید."
+
+msgid "plugins.generic.publons.notifications.settingsUpdated"
+msgstr "تنظیمات به روز گردید."
+
+msgid "plugins.generic.publons.settings.published"
+msgstr "داوری های ارسال شده"
+
+msgid "plugins.generic.publons.settings.connection"
+msgstr "ارتباطات"
+
+msgid "plugins.generic.publons.settings.publishedTable.reviewer"
+msgstr "داوران"
+
+msgid "plugins.generic.publons.settings.publishedTable.date.added"
+msgstr "تاریخ اضافه شدن"
+
+msgid "plugins.generic.publons.settings.publishedTable.review"
+msgstr "داوری"
+
+msgid "plugins.generic.publons.settings.publishedTable.noReviews"
+msgstr "تاکنون داوری برای پابلون ارسال نشده است.
+    "
+
+msgid "plugins.generic.publons.settings.auth_tokenDescription"
+msgstr "The Authorization token for the specified account (you can find that on https://publons.com/api/v2/ under Token)."
+
+msgid "plugins.generic.publons.settings.journalTokenRequired"
+msgstr "لطفا کلید API صحیح را برای اتصال به سیستم پابلون وارد نمایید."
+
+msgid "plugins.generic.publons.settings.invalidHelpUrl"
+msgstr "آدرس وارد شده می بایست با https://publons.com آغاز گردد."
+
+msgid "plugins.generic.publons.settings.authTokenRequired"
+msgstr "Please ensure that your Authorization token is correct."
+
+msgid "plugins.generic.publons.settings.urlDescription"
+msgstr "آدرس صفحه نشریه در سیستم پابلون"
+
+msgid "plugins.generic.publons.settings.url"
+msgstr "آدرس"
+
+msgid "plugins.generic.publons.settings.journalToken"
+msgstr "کلید API"
+
+msgid "plugins.generic.publons.settings.auth_token"
+msgstr "Authorization Token"
+
+msgid "plugins.generic.publons.settings.journalTokenDescription"
+msgstr "کلید API نشریه برای ارسال داوری ها به پابلون
+    "
+
+msgid "plugins.generic.publons.confirmation.title"
+msgstr "ارسال داوری به پابلون"
+
+msgid "plugins.generic.publons.confirmation.termsAndConditions"
+msgstr "<p>شما تصمیم دارید داوری خود را برای پابلون ارسال نمایید. <br> <a href=\"https://publons.com/about/terms\">Terms and conditions</a>.</p>"
+
+msgid "plugins.generic.publons.notice.title"
+msgstr "ارسال داوری به پابلون"
+
+msgid "plugins.generic.publons.notice.explanation"
+msgstr "شما می توانید داوری خود را برای پابلون <a href=\"https://publons.com\">Publons</a> در تب ۴ ارسال نمایید."
+
+msgid "plugins.generic.publons.export.successful"
+msgstr "داوری با موفقیت ارسال شد"
+
+msgid "plugins.generic.publons.export.duplicate"
+msgstr "این داوری پیش تر در پابلون به ثبت رسیده است."
+
+msgid "plugins.generic.publons.export.error"
+msgstr "خطا در ارسال داوری به پابلون"
+
+msgid "plugins.generic.publons.export.error.400"
+msgstr "خطای دسترسی. لطفا با مدیر سامانه در این مورد تماس بگیرید."
+
+msgid "plugins.generic.publons.export.error.500"
+msgstr "خطا در سرور. هیچ پاسخی از پابلون دریافت نشد. لطفا ۱۰ دقیقه دیگر امتحان نمایید."
+
+msgid "plugins.generic.publons.export.claimReview"
+msgstr "بررسی داوری"
+
+msgid "plugins.generic.publons.export.next.autoClaimed"
+msgstr "داوری شمابه صورت خودکار در پابلون مورد بررسی قرار می گیرد."
+
+msgid "plugins.generic.publons.export.next.partnerEmailed"
+msgstr "نشریه شما، یک درخواست داوری به همراه لینک برای آدرس ایمیلتان ارسال کرده یا می توانید برای بررسی بر روی دکمه زیر کلیک کنید."
+
+msgid "plugins.generic.publons.export.next.publonsEmailed"
+msgstr "پابلون، یک درخواست داوری به همراه لینک برای آدرس ایمیلتان ارسال کرده یا می توانید برای بررسی بر روی دکمه زیر کلیک کنید."
+
+msgid "plugins.generic.publons.export.next.setAutoClaim"
+msgstr "برای عدم نمایش این مرحله در آینده لطفا گزینه "اضافه کردن داوری های من به صورت خودکار در سیتم پابلون" را در تنظیمات پابلون فعال نمایید."
+
+msgid "plugins.generic.publons.export.next.linkClick"
+msgstr "شما از دریافت ایمیل Publons خودداری کرده اید، برای داوری باید روی لینک زیر کلیک کنید."
+
+msgid "plugins.generic.publons.export.backToReviewPage"
+msgstr "بازگشت به صفحه داوری"
+
+msgid "plugins.generic.publons.export.error.alreadyExported"
+msgstr "داوری قبلا به پابلون ارسال شده است."
+
+msgid "plugins.generic.publons.export.error.reviewNotSubmitted"
+msgstr "شما می بایست در مرحله اول داوری خود را تایید کرده و سپس به پابلون ارسال نمایید."
+
+msgid "plugins.generic.publons.export.error.invalidUser"
+msgstr "خطا در ورود جزئیات سیستم نشریات"
+
+msgid "plugins.generic.publons.settings.info"
+msgstr ""
+"<p> به منظور به ثبت رساندن فرصت های داوری و سازماندهی آنهابرای داوران در پابلون , لطفا علاقه مندی های خود را از طریق لینک روبه رو به ثبت برسانید. <a href=\"http://publons.com/partner/info\">link</a> یا از طریق <a href=\"mailto:partnerships@publons.com\">مکاتبه با پابلون</a>. پس از آن به شما امکان دسترسی به صفحه داشبورد ارائه می شود که در آن شما می توانید دستورالعمل های یکپارچه سازی را با کلیک بر روی دستورالعمل ها در نوار ناوبری پیدا کنید.</p>"
+"<p>برای فعال کردن افزونه، فیلدهای زیر را پر کنید</p>"
+
+msgid "plugins.generic.publons.settings.ps"
+msgstr ""
+"<p>پس از فعالسازی افزونه, گزینه ای برای به ثبت رساندن داوری در صفحه داوری مقالات برای داوران فعال می شود.</p>"
+"<p>اگر داور اجازه ارسال داوری به پابلون را بدهد, اطلاعات مقاله به نحو محرمانه ای به پابلون ارسال می شود و داوران با ارسال یک ایمیل (از طریق ایمیلی که در سیستم نشریات با آن عضو شده اند) محتویات داوری خود را در سیستم پابلون می توانند مشاهده نمایند..</p>"
+"<p>هنگامی که بر روی لینک مورد نظر کلیک نمایند از داور برای ثبت نام در پابلون درخواست می شود و داوری انجام شده به حساب کاربری داور اضافه می گردد. داوران می توانند با انتخاب گزینه "اضافه شدن خودکار داوری در پابلون" در تنظیمات پابلون در نشریه از طی کردن مراحل فوق صرف نظر کنند.</p>"
+"<p>در حال عمومی پابلون محتویات داوری را منتشر نمی کند اما اگر مدیر نشریه و داور با هم این اجاره را به پابلون دهند، پابلون تمام متون داوری به همراه مقاله منتشر می کند.</p>"
+"<p>سربرگ 'داوری های ارسال شده' برای شما لیستی از داوری های ارسال شده به پابلون را نمایش خواهد داد.</p>"
