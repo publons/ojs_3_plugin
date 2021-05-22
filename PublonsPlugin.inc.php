@@ -13,7 +13,6 @@
  */
 
 import('lib.pkp.classes.plugins.GenericPlugin');
-import('lib.pkp.classes.site.VersionCheck');
 
 class PublonsPlugin extends GenericPlugin {
 
@@ -68,53 +67,12 @@ class PublonsPlugin extends GenericPlugin {
     }
 
     /**
-     * Get the version of OJS code
-     * @return string
-    */
-    function getVersion() {
-        $codeVersion = VersionCheck::getCurrentCodeVersion();
-        return $codeVersion->getVersionString();
-    }
-
-    /**
-     * Compare the current ojs version is later than a specific version
-     * @return boolean
-    */
-    function isCurrentVersionLaterThan($compareWith) {
-        $currentVersionNumbers = explode('.', $this->getVersion());
-        $compareWithVersionNumbers = explode('.', $compareWith);
-
-        foreach (range(0, sizeof($compareWithVersionNumbers)-1) as $index) {
-            if (intval($currentVersionNumbers[$index]) > intval($compareWithVersionNumbers[$index])) {
-                return true;
-            } elseif (intval($currentVersionNumbers[$index]) < intval($compareWithVersionNumbers[$index])) {
-                return false;
-            }
-        }
-        return false;
-    }
-
-    /**
      * @see Plugin::getTemplatePath()
      */
     function getTemplatePath($inCore = false) {
-        if ($this->isCurrentVersionLaterThan('3.1.1.4')) {
-            $bathPath = Core::getBaseDir();
-            return 'file:' . $bathPath . DIRECTORY_SEPARATOR . parent::getTemplatePath() . DIRECTORY_SEPARATOR;
-        } else {
-            return parent::getTemplatePath() . 'templates' . DIRECTORY_SEPARATOR;
-        }
+        $bathPath = Core::getBaseDir();
+        return 'file:' . $bathPath . DIRECTORY_SEPARATOR . parent::getTemplatePath() . DIRECTORY_SEPARATOR;
     }
-
-    /**
-     * @see Plugin::getInstallSchemaFile()
-     * @return string
-     *
-     * This function only work for OJS 3.2.0-1 and eariler versions
-     */
-    // function getInstallSchemaFile() {
-    //     return $this->getPluginPath() . DIRECTORY_SEPARATOR . 'schema.xml';
-    // }
 
     /**
      * @copydoc PKPPlugin::getInstallMigration()
@@ -257,11 +215,7 @@ class PublonsPlugin extends GenericPlugin {
             }
 
             if ($filterName !== '') {
-                if ($this->isCurrentVersionLaterThan('3.1.1.4')) {
-                    $templateMgr->registerFilter('output', array(&$this, $filterName));
-                } else {
-                    $templateMgr->register_outputfilter(array(&$this, $filterName));
-                }
+                $templateMgr->registerFilter('output', array(&$this, $filterName));
             }
         }
 
@@ -304,11 +258,7 @@ class PublonsPlugin extends GenericPlugin {
 
         }
 
-        if ($this->isCurrentVersionLaterThan('3.1.1.4')) {
-            $templateMgr->unregisterFilter('output', 'step3SubmissionOutputFilter');
-        } else {
-            $templateMgr->unregister_outputfilter('step3SubmissionOutputFilter');
-        }
+        $templateMgr->unregisterFilter('output', 'step3SubmissionOutputFilter');
 
         return $output;
     }
@@ -336,12 +286,7 @@ class PublonsPlugin extends GenericPlugin {
             $info_url = $this->getSetting($journalId, 'info_url');
 
             $templateMgr =& TemplateManager::getManager();
-
-            if ($this->isCurrentVersionLaterThan('3.1.1.4')) {
-                $templateMgr->unregisterFilter('output', array(&$this, 'completedSubmissionOutputFilter'));
-            } else {
-                $templateMgr->unregister_outputfilter(array(&$this, 'completedSubmissionOutputFilter'));
-            }
+            $templateMgr->unregisterFilter('output', array(&$this, 'completedSubmissionOutputFilter'));
 
             $request = Application::getRequest();
             $router = $request->getRouter();
