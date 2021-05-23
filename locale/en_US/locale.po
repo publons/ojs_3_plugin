@@ -113,7 +113,7 @@ msgid "plugins.generic.publons.export.next.publonsEmailed"
 msgstr "Publons has emailed you with a link to claim this review or you can click on the button below."
 
 msgid "plugins.generic.publons.export.next.setAutoClaim"
-msgstr "To skip this step in future please select "Automatically add reviews from partnered journals" in your Publons settings."
+msgstr "To skip this step in future please select \"Automatically add reviews from partnered journals\" in your Publons settings."
 
 msgid "plugins.generic.publons.export.next.linkClick"
 msgstr "You have opted out of receiving Publons emails, to claim this review you must click the link below."
@@ -132,13 +132,13 @@ msgstr "Invalid OJS login details"
 
 msgid "plugins.generic.publons.settings.info"
 msgstr ""
-"<p> In order to provide your reviewers the opportunity to get recognition for their reviews on Publons, please register your interest with Publons either at this <a href=\"http://publons.com/partner/info\">link</a> or by <a href=\"mailto:partnerships@publons.com\">emailing Publons</a>. You will then be provided with access to the partner dashboard where you will find the integration set-up instructions by clicking on Instructions in the navigation bar.</p>
+"<p> In order to provide your reviewers the opportunity to get recognition for their reviews on Publons, please register your interest with Publons either at this <a href=\"http://publons.com/partner/info\">link</a> or by <a href=\"mailto:partnerships@publons.com\">emailing Publons</a>. You will then be provided with access to the partner dashboard where you will find the integration set-up instructions by clicking on Instructions in the navigation bar.</p>"
 "<p>To enable the plugin fill in the fields below</p>"
 
 msgid "plugins.generic.publons.settings.ps"
 msgstr ""
 "<p>Once you have enabled the plugin, the option for Reviewers to receive recognition for their review will appear on the review submission page.</p>"
 "<p>If the reviewer has opted to receive recognition for their review, upon submission, data will be securely transmitted to Publons and the reviewer will be sent an email (to the email address they have registered with the journal) containing a link to claim their review.</p>"
-"<p>When they follow this link the Reviewer will be asked to sign up to Publons and the review will be added to the reviewer's account. Reviewers can select "Automatically add reviews from partnered journals" in their Publons settings to obviate this claiming step.</p>"
+"<p>When they follow this link the Reviewer will be asked to sign up to Publons and the review will be added to the reviewer's account. Reviewers can select \"Automatically add reviews from partnered journals\" in their Publons settings to obviate this claiming step.</p>"
 "<p>By default, Publons doesn't publish the content of reviews. However, if both the journal and Reviewer allow it, Publons will publish the full review text once the article has been published.</p>"
 "<p>The 'Exported Reviews' tab will show you the list of the reviews exported to Publons.</p>"
