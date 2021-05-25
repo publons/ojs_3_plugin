@@ -30,7 +30,7 @@ class PublonsReviewsDAO extends DAO {
         if ($result->RecordCount() != 0) {
             $returner =& $this->_returnPublonsReviewsFromRow($result->GetRowAssoc(false));
         }
-        $result->Close();
+
         return $returner;
     }
 
@@ -190,7 +190,6 @@ class PublonsReviewsDAO extends DAO {
 
         $returner = isset($result->fields[0]) && $result->fields[0] != 0 ? $result->fields[0] : null;
 
-        $result->Close();
         unset($result);
 
         return $returner;
@@ -214,7 +213,6 @@ class PublonsReviewsDAO extends DAO {
 
         $returner = isset($result->fields[0]) && $result->fields[0] != 0 ? $result->fields[0] : null;
 
-        $result->Close();
         unset($result);
 
         return $returner;

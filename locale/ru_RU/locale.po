@@ -1,0 +1,140 @@
+msgid "user.email"
+msgstr "Адрес (E-mail)"
+
+msgid "plugins.generic.publons.displayName"
+msgstr "Publons Плагин"
+
+msgid "plugins.generic.publons.description"
+msgstr "Данный плагин позволяет добавлять рецензии к профилю рецензента на Publons."
+
+msgid "plugins.generic.publons.review.publonsStepInstructions"
+msgstr "Получите признание за свою рецензию добавив ее к своему профилю на Publons.com"
+
+msgid "plugins.generic.publons.review.urlHelp"
+msgstr "Что это? Перейдите по данной ссылке чтобы узнать больше:"
+
+msgid "plugins.generic.publons.button.submitExportReview"
+msgstr "Отправить мою рецензию Publons"
+
+msgid "plugins.generic.publons.button.publishedReview"
+msgstr "Эта рецензия уже отправлена Publons"
+
+msgid "plugins.generic.publons.button.completeReview"
+msgstr "Вы должны закончить свою рецензию прежде чем отправлять её Publons"
+
+msgid "plugins.generic.publons.notifications.settingsUpdated"
+msgstr "настройки обновлены"
+
+msgid "plugins.generic.publons.settings.published"
+msgstr "Отправленные Рецензии"
+
+msgid "plugins.generic.publons.settings.connection"
+msgstr "Настройки"
+
+msgid "plugins.generic.publons.settings.publishedTable.reviewer"
+msgstr "Рецензент"
+
+msgid "plugins.generic.publons.settings.publishedTable.date.added"
+msgstr "Дата добавления"
+
+msgid "plugins.generic.publons.settings.publishedTable.review"
+msgstr "Рецензия"
+
+msgid "plugins.generic.publons.settings.publishedTable.noReviews"
+msgstr "Нет рецензий отправленных Publons"
+
+msgid "plugins.generic.publons.settings.journalTokenRequired"
+msgstr "Пожалуйста введите верный API ключ для интеграции с Publons."
+
+msgid "plugins.generic.publons.settings.authTokenRequired"
+msgstr "Please ensure that your Authorization token is correct."
+
+msgid "plugins.generic.publons.settings.invalidHelpUrl"
+msgstr "Пожалуйста убедитесь что URL начинается с https://publons.com"
+
+msgid "plugins.generic.publons.settings.auth_tokenDescription"
+msgstr "The Authorization token for the specified account (you can find that on https://publons.com/api/v2/ under Token)."
+
+msgid "plugins.generic.publons.settings.urlDescription"
+msgstr "URL адрес целевой страницы (landing page) на Publons."
+
+msgid "plugins.generic.publons.settings.url"
+msgstr "URL"
+
+msgid "plugins.generic.publons.settings.journalToken"
+msgstr "API ключ"
+
+msgid "plugins.generic.publons.settings.auth_token"
+msgstr "Authorization Token"
+
+msgid "plugins.generic.publons.settings.journalTokenDescription"
+msgstr "API ключ журнала для отправки рецензий Publons"
+
+msgid "plugins.generic.publons.confirmation.title"
+msgstr "Отправить мою рецензию Publons"
+
+msgid "plugins.generic.publons.confirmation.termsAndConditions"
+msgstr "<p>Вы согласились отправить свою рецензию Publons. <br> <a href=\"https://publons.com/about/terms\">Условия пользования</a>.</p>"
+
+msgid "plugins.generic.publons.notice.title"
+msgstr "Добавить мою рецензию к профилю Publons"
+
+msgid "plugins.generic.publons.notice.explanation"
+msgstr "Вы сможете добавить свою рецензию на <a href=\"https://publons.com\">Publons</a> на 4й вкладке по окончании рецензирования."
+
+msgid "plugins.generic.publons.export.successful"
+msgstr "Данная рецензия успешно отправлена"
+
+msgid "plugins.generic.publons.export.duplicate"
+msgstr "Эта рецензия уже отправлена Publons"
+
+msgid "plugins.generic.publons.export.error"
+msgstr "Ошибка отправки рецензии Publons"
+
+msgid "plugins.generic.publons.export.error.400"
+msgstr "Ошибка доступа. Пожалуйста свяжитесь с администратором журнала."
+
+msgid "plugins.generic.publons.export.error.500"
+msgstr "Ошибка сервера. Publons не отвечает, пожалуйста попробуйте еще раз через 10 минут."
+
+msgid "plugins.generic.publons.export.claimReview"
+msgstr "Добавить рецензию"
+
+msgid "plugins.generic.publons.export.next.autoClaimed"
+msgstr "Ваша рецензия была автоматически добавлена к профилю Publons."
+
+msgid "plugins.generic.publons.export.next.partnerEmailed"
+msgstr "Ссылка на добавление рецензии была отправлена вам по email от журнала, вы также можете добавить рецензию нажав на кнопку ниже."
+
+msgid "plugins.generic.publons.export.next.publonsEmailed"
+msgstr "Ссылка на добавление рецензии была отправлена вам по email от Publons, вы также можете добавить рецензию нажав на кнопку ниже."
+
+msgid "plugins.generic.publons.export.next.setAutoClaim"
+msgstr "Чтобы пропустить данный шаг в будущем - выберите \"Automatically add reviews from partnered journals\" в настройках профиля Publons."
+
+msgid "plugins.generic.publons.export.next.linkClick"
+msgstr "Вы отписаны от писем Publons, для добавления рецензии Вам надо перейти по ссылке ниже."
+
+msgid "plugins.generic.publons.export.backToReviewPage"
+msgstr "Назад к странице рецензии"
+
+msgid "plugins.generic.publons.export.error.alreadyExported"
+msgstr "Эта рецензия уже отправлена Publons"
+
+msgid "plugins.generic.publons.export.error.reviewNotSubmitted"
+msgstr "Вы должны закончить свою рецензию прежде чем отправлять её Publons"
+
+msgid "plugins.generic.publons.export.error.invalidUser"
+msgstr "Неверные имя пользователя/пароль для журнала"
+
+msgid "plugins.generic.publons.settings.info"
+msgstr ""
+"<p>Для предоставления рецензентам возможности добавлять их рецензии к своим профилям в Publons, пожалуйста зарегистрируйте свой интерес перейдя по следующей <a href=\"https://publons.com/benefits/publishers\">ссылке</a> или <a href=\"mailto:partnerships@publons.com\">напишите Publons</a>. Вам будет предоставлен соответствующий доступ к сайту с инструкцией по настройке плагина.</p>"
+"<p>Для активации плагина заполните поля ниже:</p>"
+
+msgid "plugins.generic.publons.settings.ps"
+msgstr ""
+"<p>После активации плагина рецензенты могут добавлять рецензии к своим профилям на Publons. Соответствующая опция будет доступна на странице рецензирования, после того как рецензия закончена.</p>"
+"<p>Если рецензент подтвердил отправление своей рецензии Publon, информация о рецензии будет автоматически отправлена Publons и рецензент получит email (на адрес электронной почты с которым они зарегистрированы на сайте журнала) с приглашением добавить рецензию к их профилю на Publons.</p>"
+"<p>Когда пользователь переходит по ссылке в приглашении, он будет перенаправлен на сайт Publons, где после регистрации (или входа в существующую учетную запись) рецензия будет добавлена к их профилю. Пользователи также могут выбрать соответствующую опцию \"Automatically add reviews from partnered journals\" на странице настроек профиля Publons чтобы автоматически добавлять отправленные рецензии.</p>"
+"<p>По умолчанию Publons не публикует содержимое рецензий. Тем не менее, если редакция журнала и рецензент позволяют, Publons опубликует содержимое рецензии как только статья будет опубликована.</p>"

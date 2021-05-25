@@ -9,7 +9,7 @@
   <summary locale="en_US">
     This plugin enables integration with Publons Reviewer Recognition Service. To install and use this plugin you must first purchase the Publons Reviewer Recognition Service.
   </summary>
-  
+
   <description locale="en_US">
     <![CDATA[<p>Publons Reviewer Recognition Service is a third-party workflow solution allowing you to provide your reviewers with the opportunity to gain recognition for their reviews on Publons.</p><p>To install and use this plugin you must first purchase the Publons Reviewer Recognition Service. To do this please register your interest by visiting <a href="https://publons.com/benefits/publishers/">https://publons.com/benefits/publishers/</a>. The Publons team will then be in touch to discuss your options and provide further instructions on how to integrate your journal with Publons Reviewer Recognition.</p>]]>
   </description>
@@ -20,28 +20,25 @@
     <email>ojs@publons.com</email>
   </maintainer>
 
-  <release date="2020-06-05" version="2020.6.5.0" md5="71d1dbed08050f4eb589927f02d8e4ab">
+  <release date="2021-05-25" version="2021.5.25.0" md5="71d1dbed08050f4eb589927f02d8e4ab">
 
     <package>
-      https://github.com/publons/ojs_3_plugin/releases/download/2020.6.5.0/publons.tar.gz
+      https://github.com/publons/ojs_3_plugin/releases/download/2021.5.25.0/publons.tar.gz
     </package>
-   
-    <compatibility application="ojs2">
-      <version>3.2.0.3</version>
+
+    <compatibility application="ojs3">
+      <version>3.3.0.6</version>
     </compatibility>
-    <compatibility application="ojs2">
-      <version>3.1.2.4</version>
+    <compatibility application="ojs3">
+      <version>3.3.0.4</version>
     </compatibility>
-    <compatibility application="ojs2">
-      <version>3.1.1.4</version>
-    </compatibility>
-   
+
     <certification type="partner"/>
-   
+
     <description>
-      Update to be compatible with OJS v3.2.0.
+      Only support OJS 3.3
     </description>
- 
+
   </release>
 
 </plugin>
