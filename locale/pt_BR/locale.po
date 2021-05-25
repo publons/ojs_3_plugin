@@ -10,9 +10,6 @@ msgstr "Publons Plugin"
 msgid "plugins.generic.publons.description"
 msgstr "Este plugin permite que você publique suas avaliações no Publons."
 
-msgid "plugins.generic.publons.list"
-msgstr "Lista de avaliações enviadas para Publons"
-
 msgid "plugins.generic.publons.review.publonsStepInstructions"
 msgstr "Certifique e obtenha reconhecimento pelo seu parecer ao exportar ele para Publons."
 
@@ -143,4 +140,3 @@ msgstr ""
 "<p>Depois de ativar o plugin, a opção de enviar as avaliações ficará disponível aos revisores na página com os dados da submissão.</p><p> Se o avaliador optar por receber o crédito pela avaliação, a informação será seguramente enviada para Publons, e o avaliador receberá um email de Publons (para o endereço registrado na revista) com um link para reconhecer a avaliação.</p>"
 "<p>Depois de acessar esse link, o revisor deverá entrar em seu perfil Publons e a avaliação será adicionada na sua conta. Os avaliadores podem selecionar \"Automatically add reviews from partnered journals\" nas configurações do perfil em Publons para pular esta etapa de solicitação.</p>"
 "<p>Como opção padrão, Publons não publica o conteúdo da avaliação. Contudo, se tanto a revista como o avaliador autorizarem, Publons irá disponibilizar o texto assim que o artigo for publicado.</p>"
-"<p>A aba 'Exported Reviews' irá mostrar a lista de avaliações exportadas para Publons.</p>"

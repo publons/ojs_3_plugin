@@ -7,9 +7,6 @@ msgstr "Publons Plugin"
 msgid "plugins.generic.publons.description"
 msgstr "This plugin allows you to post reviews to Publons."
 
-msgid "plugins.generic.publons.list"
-msgstr "A list of reviews which have been exported to Publons"
-
 msgid "plugins.generic.publons.review.publonsStepInstructions"
 msgstr "Get recognition for your review by exporting it to Publons."
 
@@ -141,4 +138,3 @@ msgstr ""
 "<p>If the reviewer has opted to receive recognition for their review, upon submission, data will be securely transmitted to Publons and the reviewer will be sent an email (to the email address they have registered with the journal) containing a link to claim their review.</p>"
 "<p>When they follow this link the Reviewer will be asked to sign up to Publons and the review will be added to the reviewer's account. Reviewers can select \"Automatically add reviews from partnered journals\" in their Publons settings to obviate this claiming step.</p>"
 "<p>By default, Publons doesn't publish the content of reviews. However, if both the journal and Reviewer allow it, Publons will publish the full review text once the article has been published.</p>"
-"<p>The 'Exported Reviews' tab will show you the list of the reviews exported to Publons.</p>"

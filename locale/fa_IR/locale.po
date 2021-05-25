@@ -8,16 +8,10 @@ msgid "plugins.generic.publons.displayName"
 msgstr "پلاگین پابلون"
 
 msgid "plugins.generic.publons.description"
-msgstr "این پلاگین اجازه ارسال و انتشار نظرات داوری به پابلون را می دهد
-    "
-
-msgid "plugins.generic.publons.list"
-msgstr "لیستی از داوری های که برای پابلون ارسال شده اند."
+msgstr "این پلاگین اجازه ارسال و انتشار نظرات داوری به پابلون را می دهد"
 
 msgid "plugins.generic.publons.review.publonsStepInstructions"
-msgstr "برای به رسمیت شناختن داوری انجام شده آن را به
-        پابلون ارسال نمایید.
-    "
+msgstr "برای به رسمیت شناختن داوری انجام شده آن را به پابلون ارسال نمایید."
 
 msgid "plugins.generic.publons.review.urlHelp"
 msgstr "برای اطلاعات بیشتر بر روی این لینک کلیک نمایید:"
