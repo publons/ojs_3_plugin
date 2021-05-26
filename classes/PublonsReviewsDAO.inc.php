@@ -211,11 +211,12 @@ class PublonsReviewsDAO extends DAO {
             )
         );
 
-        $returner = isset($result->fields[0]) && $result->fields[0] != 0 ? $result->fields[0] : null;
+        $row = $result->current();
+        $publons_reviews_id = $row ? $row->publons_reviews_id : null;
 
         unset($result);
 
-        return $returner;
+        return $publons_reviews_id;
     }
 
     /**
