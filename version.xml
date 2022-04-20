@@ -12,8 +12,8 @@
 <version>
 	<application>publons</application>
 	<type>plugins.generic</type>
-	<release>2021.5.25.0</release>
-	<date>2021-05-25</date>
+	<release>2021.6.1.1</release>
+	<date>2021-06-01</date>
 	<lazy-load>1</lazy-load>
 	<class>PublonsPlugin</class>
 </version>
