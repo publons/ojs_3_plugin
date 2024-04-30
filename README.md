@@ -3,7 +3,7 @@
 Developed and maintained by: Publons Ltd.
 
 ### About
-This plugin provides the ability to send and publish reviews to Publons (https://publons.com).
+This plugin provides the ability to send and publish reviews to Web of Science Researcher Profiles (formerly known as Publons, https://webofscience.com).
 
 ### License
 This plugin is licensed under the GNU General Public License v3.
@@ -11,7 +11,7 @@ This plugin is licensed under the GNU General Public License v3.
 See the accompanying OJS file docs/COPYING for the complete terms of this license.
 
 ### System Requirements
-- OJS 3.1, or 3.2
+- OJS 3.1, 3.2, or early versions of 3.3 (there are known issues with 3.3.0-16, plugin doesn't currently work with this version)
 - PHP 5.6 or greater.
 - CURL support for PHP.
 - ZipArchive support for PHP.
@@ -36,7 +36,7 @@ The Publons website certifies only the fact the reviewer has completed peer revi
 
 ### Contact
 For enquiries regarding usage, support, bugfixes, or comments please email:
-partners@publons.com
+reviewservices@clarivate.com
 
 ### OJS 2 compatibility 
 For an OJS 2 compatible version of the plugin please visit:
