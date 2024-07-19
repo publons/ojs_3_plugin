@@ -163,7 +163,7 @@ class PublonsPlugin extends GenericPlugin {
 
     function handleRequest($hookName, $params) {
         $page =& $params[0];
-        $request = Application::getRequest();
+        $request = Application::get()->getRequest();
         AppLocale::requireComponents();
         if ($page == 'reviewer' && $this->getEnabled()) {
             $op =& $params[1];
@@ -187,7 +187,7 @@ class PublonsPlugin extends GenericPlugin {
     function handleTemplateDisplay($hookName, $args) {
         if ($this->getEnabled()) {
             $templateMgr =& $args[0];
-            $request = PKPApplication::getRequest();
+            $request = Application::get()->getRequest();
 
             // Assign our private stylesheet, for front and back ends.
             $templateMgr->addStyleSheet(
@@ -288,7 +288,7 @@ class PublonsPlugin extends GenericPlugin {
             $templateMgr =& TemplateManager::getManager();
             $templateMgr->unregisterFilter('output', array(&$this, 'completedSubmissionOutputFilter'));
 
-            $request = Application::getRequest();
+            $request = Application::get()->getRequest();
             $router = $request->getRouter();
 
             import('lib.pkp.classes.linkAction.request.AjaxModal');
