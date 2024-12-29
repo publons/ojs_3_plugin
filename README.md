@@ -2,6 +2,11 @@
 
 Developed and maintained by: Publons Ltd.
 
+## Deprecation notice
+This plugin is being replaced with a Web of Science branded one. Please use the new one. 
+- For OJS 3.1-3.3: https://github.com/clarivate/wos_reviewer_recognition_plugin_ojs_old
+- For OJS 3.4+: https://github.com/clarivate/wos_reviewer_recognition_plugin_ojs_3
+
 ### About
 This plugin provides the ability to send and publish reviews to Web of Science Researcher Profiles (formerly known as Publons, https://webofscience.com).
 
